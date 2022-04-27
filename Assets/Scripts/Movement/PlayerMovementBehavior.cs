@@ -11,6 +11,9 @@ public class PlayerMovementBehavior : MonoBehaviour
     private Rigidbody _rigidbody;
     private Vector3 _moveDirection;
     private Vector3 _rotationDirection;
+    [SerializeField]
+    private float _maxDistance;
+
     public Vector3 MoveDirection
     {
         get { return _moveDirection; }
@@ -27,6 +30,7 @@ public class PlayerMovementBehavior : MonoBehaviour
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _maxDistance += transform.position.z;
     }
 
     // Update is called once per frame
@@ -34,7 +38,21 @@ public class PlayerMovementBehavior : MonoBehaviour
     {
         //Moves the Player
         Vector3 velocity = MoveDirection * _speed * Time.fixedDeltaTime;
-        _rigidbody.MovePosition(transform.position + velocity);
+        velocity += transform.position;
+
+        //If the object's new position would be within the bound...
+        if (velocity.z < _maxDistance)
+        {
+            //...Translate the object
+            transform.Translate(MoveDirection * _speed * Time.fixedDeltaTime);
+        }
+
+        //If the object would go beyond the bounds...
+        else if (velocity.z < _maxDistance)
+        {
+            //Set the objects x to be the minimum distance
+            transform.position = new Vector3(transform.position.x, transform.position.y, _maxDistance);
+        }
 
         //Rotates the Player and Camera
         Quaternion playerRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + MouseDirection.x * _rotationSpeed * Time.fixedDeltaTime, 0);
