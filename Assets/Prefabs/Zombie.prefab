@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6848169275459675320}
   - component: {fileID: 6848169275459675327}
   - component: {fileID: 6848169275459675326}
-  - component: {fileID: 6848169275459675325}
   - component: {fileID: -6149171030906238157}
   - component: {fileID: 5217407197777317128}
+  - component: {fileID: 1345860875778687933}
   m_Layer: 0
-  m_Name: Skeleton
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,23 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &6848169275459675325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848169275459675324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30005391f584d614e82e49699fddc45c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 0}
-  _target: {fileID: 0}
-  _speed: 2
-  _damage: 1
-  _maxRange: 2
 --- !u!114 &-6149171030906238157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletRef: {fileID: 3249397583550397884, guid: 707bf0ba7034ece44b132d630f55e5ee, type: 3}
-  _bulletForce: 10
+  _bulletForce: 5
   _owner: {fileID: 6848169275459675324}
 --- !u!114 &5217407197777317128
 MonoBehaviour:
@@ -144,6 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gun: {fileID: -6149171030906238157}
-  _bulletCooldown: 2
+  _bulletCooldown: 5
   _ammo: 1
   _infiniteAmmo: 1
+--- !u!114 &1345860875778687933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6848169275459675324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc31bb58f608114fa13365d97276a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _velocity: {x: 0, y: 0, z: 0}
+  _target: {fileID: 0}
+  _speed: 2
+  _damage: 1

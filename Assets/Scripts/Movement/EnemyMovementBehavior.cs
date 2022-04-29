@@ -11,6 +11,12 @@ public class EnemyMovementBehavior : MovementBehavior
     [SerializeField]
     private float _damage;
 
+    /// <summary>
+    /// How far the enemy can be from the player before attacking.
+    /// </summary>
+    [SerializeField]
+    private float _seekDistance;
+
     public Transform Target
     {
         get { return _target; }
@@ -23,11 +29,25 @@ public class EnemyMovementBehavior : MovementBehavior
         set { _speed = value; }
     }
 
+
+    private void Awake()
+    {
+        _seekDistance += Target.transform.position.z;
+    }
+
     // Update is called once per frame
     public override void Update()
     {
+
         Vector3 direction = Target.position - transform.position;
-        Velocity = direction.normalized * Speed;
+
+        if (transform.position.z < _seekDistance)
+        {
+            Velocity = direction.normalized * Speed;
+            transform.LookAt(Target);
+        }
+        else
+            Velocity = new Vector3(0, 0, -1) * Speed;
 
         base.Update();
     }
