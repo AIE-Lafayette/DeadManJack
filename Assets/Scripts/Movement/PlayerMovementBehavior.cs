@@ -55,7 +55,7 @@ public class PlayerMovementBehavior : MonoBehaviour
         }
 
         //Rotates the Player and Camera
-        Quaternion playerRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + MouseDirection.x * _rotationSpeed * Time.fixedDeltaTime, 0);
-        _rigidbody.MoveRotation(playerRotation);
+        if (velocity.magnitude > 0)
+            transform.forward = velocity.normalized;
     }
 }
