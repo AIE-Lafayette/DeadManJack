@@ -25,6 +25,12 @@ public class BulletBehavior : MonoBehaviour
         get { return _rigidbody; }
     }
 
+    public float Damage
+    {
+        get { return _damage; }
+        set { _damage = value; }
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();

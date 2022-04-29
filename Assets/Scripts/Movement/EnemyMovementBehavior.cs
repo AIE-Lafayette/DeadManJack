@@ -37,9 +37,9 @@ public class EnemyMovementBehavior : MovementBehavior
         if (other.transform == _target)
         {
             //Increment
-            GoalBehavior goalHealth = other.GetComponent<GoalBehavior>();
-            if (goalHealth)
-                goalHealth.TakeDamage(_damage);
+            HealthBehavior health = other.GetComponent<HealthBehavior>();
+            if (health)
+                health.TakeDamage(_damage);
             Destroy(gameObject);
         }
     }
