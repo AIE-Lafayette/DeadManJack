@@ -35,7 +35,7 @@ public class SkeletonMovementBehavior : EnemyMovementBehavior
             }
             else
                 Velocity = new Vector3(0, 0, -1) * Speed;
-        }
             base.Update();
+        }
     }
 }

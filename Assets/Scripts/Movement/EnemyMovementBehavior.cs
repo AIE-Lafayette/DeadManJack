@@ -40,9 +40,4 @@ public class EnemyMovementBehavior : MovementBehavior
             Destroy(gameObject);
         }
     }
-
-    private void OnMouseDown()
-    {
-        Destroy(gameObject);
-    }
 }

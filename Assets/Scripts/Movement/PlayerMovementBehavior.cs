@@ -6,8 +6,6 @@ public class PlayerMovementBehavior : MonoBehaviour
 {
     [SerializeField]
     private float _speed;
-    [SerializeField]
-    private float _rotationSpeed;
     private Rigidbody _rigidbody;
     private Vector3 _moveDirection;
     private Vector3 _rotationDirection;
@@ -20,7 +18,7 @@ public class PlayerMovementBehavior : MonoBehaviour
         set { _moveDirection = value; }
     }
 
-    public Vector3 MouseDirection
+    public Vector3 RotationDirection
     {
         get { return _rotationDirection; }
         set { _rotationDirection = value; }
@@ -38,6 +36,8 @@ public class PlayerMovementBehavior : MonoBehaviour
     {
         //Moves the Player
         Vector3 velocity = MoveDirection * _speed * Time.fixedDeltaTime;
+
+        RotationDirection = velocity.normalized;
         velocity += transform.position;
 
         //If the object's new position would be within the bound...
@@ -47,7 +47,7 @@ public class PlayerMovementBehavior : MonoBehaviour
             transform.Translate(MoveDirection * _speed * Time.fixedDeltaTime);
         }
 
-        //If the object would go beyond the bounds...
+            //If the object would go beyond the bounds...
         else if (velocity.z < _maxDistance)
         {
             //Set the objects x to be the minimum distance
