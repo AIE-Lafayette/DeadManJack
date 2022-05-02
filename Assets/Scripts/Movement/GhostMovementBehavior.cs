@@ -15,5 +15,6 @@ public class GhostMovementBehavior : EnemyMovementBehavior
             _moveDirection = new Vector3(-1, 0, 0);
 
         Velocity = _moveDirection * Speed;
+        base.Update();
     }
 }

@@ -53,9 +53,5 @@ public class PlayerMovementBehavior : MonoBehaviour
             //Set the objects x to be the minimum distance
             transform.position = new Vector3(transform.position.x, transform.position.y, _maxDistance);
         }
-
-        //Rotates the Player and Camera
-        if (velocity.magnitude > 0)
-            transform.forward = velocity.normalized;
     }
 }

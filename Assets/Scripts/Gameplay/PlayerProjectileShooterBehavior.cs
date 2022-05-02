@@ -19,7 +19,7 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
     {
         if (_delayTimer >= _delay)
         {
-
+            transform.forward = new Vector3(0, 0, 1);
             if (_fireButtonHeldTimer < _chargeTimer)
             {
                 FireRight();
