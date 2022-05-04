@@ -7,9 +7,6 @@ public class MovementBehavior : MonoBehaviour
     [SerializeField]
     private Vector3 _velocity;
 
-    /// <summary>
-    /// The Speed and Direction of the object
-    /// </summary>
     public Vector3 Velocity
     { 
         get { return _velocity; }

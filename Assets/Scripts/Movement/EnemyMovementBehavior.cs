@@ -26,9 +26,6 @@ public class EnemyMovementBehavior : MovementBehavior
     // Update is called once per frame
     public override void Update()
     {
-        Vector3 direction = Target.position - transform.position;
-        Velocity = direction.normalized * Speed;
-
         base.Update();
     }
 
@@ -42,10 +39,5 @@ public class EnemyMovementBehavior : MovementBehavior
                 health.TakeDamage(_damage);
             Destroy(gameObject);
         }
-    }
-
-    private void OnMouseDown()
-    {
-        Destroy(gameObject);
     }
 }
