@@ -13,11 +13,6 @@ public class SkeletonMovementBehavior : EnemyMovementBehavior
     [SerializeField]
     private float _seekDistance;
 
-    private void Awake()
-    {
-        _seekDistance += Target.transform.position.z;
-    }
-
     // Update is called once per frame
     public override void Update()
     {

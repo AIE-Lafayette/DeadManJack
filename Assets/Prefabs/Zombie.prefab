@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 6848169275459675320}
   - component: {fileID: 6848169275459675327}
   - component: {fileID: 6848169275459675326}
-  - component: {fileID: -6149171030906238157}
-  - component: {fileID: 5217407197777317128}
-  - component: {fileID: 1345860875778687933}
+  - component: {fileID: 6291048238549936013}
+  - component: {fileID: -3737020764046729507}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848169275459675324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.341, y: 0.5, z: 8.273}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be9ca3cbe76e34749b9c0a8479686e4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,13 +92,13 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848169275459675324}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &-6149171030906238157
+--- !u!114 &6291048238549936013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,41 +107,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6848169275459675324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa35de910930f6843847fd338043fa51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletRef: {fileID: 3249397583550397884, guid: 707bf0ba7034ece44b132d630f55e5ee, type: 3}
-  _bulletForce: 5
-  _owner: {fileID: 6848169275459675324}
---- !u!114 &5217407197777317128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848169275459675324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2394d53d6f661a640b7fba0946086250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gun: {fileID: -6149171030906238157}
-  _bulletCooldown: 5
-  _ammo: 1
-  _infiniteAmmo: 1
---- !u!114 &1345860875778687933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848169275459675324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc31bb58f608114fa13365d97276a6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 454fe4a5d69cbed439bf666f1a522992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 0, z: 0}
   _target: {fileID: 0}
   _speed: 2
   _damage: 1
+  _seekDistance: -9
+--- !u!114 &-3737020764046729507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6848169275459675324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3
+  _isAlive: 0
+  _destroyOnDeath: 1

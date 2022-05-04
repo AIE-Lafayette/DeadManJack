@@ -19,11 +19,14 @@ public class PlayerGrabBehavior : MonoBehaviour
         if (!_playerProjectile)
             return;
 
-        if(other.name == "Zombie")
+        if (_playerProjectile.CurrentAbility != Ability.NONE)
+            return;
+
+        if(other.name == "Zombie(Clone)")
         {
             _playerProjectile.CurrentAbility = Ability.ZOMBIE;
         }
-        else if(other.name == "Skeleton")
+        else if(other.name == "Skeleton(Clone)")
         {
             _playerProjectile.CurrentAbility = Ability.SKELETON;
         }
