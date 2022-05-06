@@ -31,6 +31,13 @@ public class BulletBehavior : MonoBehaviour
         set { _damage = value; }
     }
 
+    public bool DestroyOnHit
+    { 
+        get { return _destroyOnHit; }
+        set { _destroyOnHit = value; }
+    }
+    
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -45,7 +52,8 @@ public class BulletBehavior : MonoBehaviour
         if (!otherHealth)
             return;
 
-        otherHealth.TakeDamage(_damage);
+        if (other.name != "Ghost")
+            otherHealth.TakeDamage(_damage);
 
         if (_destroyOnHit)
             Destroy(gameObject);

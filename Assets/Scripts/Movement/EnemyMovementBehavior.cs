@@ -8,8 +8,6 @@ public class EnemyMovementBehavior : MovementBehavior
     private Transform _target;
     [SerializeField]
     private float _speed;
-    [SerializeField]
-    private float _damage;
 
     public Transform Target
     {
@@ -27,22 +25,5 @@ public class EnemyMovementBehavior : MovementBehavior
     public override void Update()
     {
         base.Update();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform == _target)
-        {
-            //Increment
-            HealthBehavior health = other.GetComponent<HealthBehavior>();
-            if (health)
-                health.TakeDamage(_damage);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnMouseDown()
-    {
-        Destroy(gameObject);
     }
 }
