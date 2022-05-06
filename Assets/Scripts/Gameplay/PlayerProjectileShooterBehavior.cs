@@ -11,8 +11,6 @@ public enum Ability
 
 public class PlayerProjectileShooterBehavior : MonoBehaviour
 {
-    
-
     [SerializeField]
     private BulletBehavior _bulletRef;
     [SerializeField]
@@ -32,7 +30,6 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         get { return _currentAbility; }
         set { _currentAbility = value; }
     }
-
 
     public void Fire()
     {
@@ -74,6 +71,7 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         bulletBehavior.OwnerTag = _owner.tag;
         bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
     }
+
     private void FireLeft()
     {
         GameObject bullet = Instantiate(_bulletRef.gameObject, new Vector3(transform.position.x - 0.25f, transform.position.y, transform.position.z), transform.rotation);
@@ -81,6 +79,7 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         bulletBehavior.OwnerTag = _owner.tag;
         bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
     }
+
     private void FireCharged()
     {
         if(_currentAbility == Ability.NONE)
