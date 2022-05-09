@@ -14,7 +14,7 @@ public class ZombieMovementBehavior : EnemyMovementBehavior
         base.Update();
     }
 
-    public override void OnBeingGrabbed(PlayerProjectileShooterBehavior player)
+    public override void OnBeingGrabbed(PlayerFistBehavior player)
     {
         if (!player)
             return;

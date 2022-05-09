@@ -48,7 +48,7 @@ public class EnemyMovementBehavior : MovementBehavior
     /// Determines what happens when the enemy is grabbed by the player
     /// </summary>
     /// <param name="player"></param>
-    public virtual void OnBeingGrabbed(PlayerProjectileShooterBehavior player)
+    public virtual void OnBeingGrabbed(PlayerFistBehavior player)
     {
         PlayerGrabBehavior grabBehavior = Target.GetComponent<PlayerGrabBehavior>();
         if (!grabBehavior)
