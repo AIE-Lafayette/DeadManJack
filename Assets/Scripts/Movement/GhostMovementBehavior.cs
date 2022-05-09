@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class GhostMovementBehavior : EnemyMovementBehavior
 {
-    [SerializeField]
-    private float _leftBoundry = 5;
-    [SerializeField]
-    private float _rightBoundry = 5;
-    private Vector3 _moveDirection;
     private float _teleportTimer = 1;
     private float _timeUntillNextTeleport = 0;
     public override void Update()

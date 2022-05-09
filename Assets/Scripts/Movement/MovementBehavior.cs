@@ -14,7 +14,6 @@ public class MovementBehavior : MonoBehaviour
                Vector3.ClampMagnitude(_velocity, 100.0f); }
     }
 
-    // Update is called once per frame
     public virtual void Update()
     {
         transform.position += Velocity * Time.deltaTime;

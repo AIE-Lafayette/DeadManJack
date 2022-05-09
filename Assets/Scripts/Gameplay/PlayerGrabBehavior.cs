@@ -22,15 +22,6 @@ public class PlayerGrabBehavior : MonoBehaviour
         if (_playerProjectile.CurrentAbility != Ability.NONE)
             return;
 
-        if(other.name == "Zombie(Clone)")
-        {
-            _playerProjectile.CurrentAbility = Ability.ZOMBIE;
-        }
-        else if(other.name == "Skeleton(Clone)")
-        {
-            _playerProjectile.CurrentAbility = Ability.SKELETON;
-        }
-
-        Destroy(other.gameObject);
+        other.GetComponent<EnemyMovementBehavior>().OnBeingGrabbed(_playerProjectile);
     }
 }
