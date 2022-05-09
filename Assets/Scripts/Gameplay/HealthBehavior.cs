@@ -22,6 +22,11 @@ public class HealthBehavior : MonoBehaviour
         get { return _isAlive; }
     }
 
+    private void Awake()
+    {
+        _health = _maxHealth;
+    }
+
     private void Update()
     {
         //If the object is still alive, but has less than zero health, call the on Death function
