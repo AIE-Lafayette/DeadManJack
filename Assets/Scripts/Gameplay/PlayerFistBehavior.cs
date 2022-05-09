@@ -54,6 +54,9 @@ public class PlayerFistBehavior : MonoBehaviour
     /// </summary>
     private float _secondShotDelayTimer = 0;
 
+    /// <summary>
+    /// The boolean that determines whether or not the second shot is charging.
+    /// </summary>
     private bool _secondShotIncoming = false;
 
     public Ability CurrentAbility
@@ -64,10 +67,6 @@ public class PlayerFistBehavior : MonoBehaviour
 
     private void Update()
     {
-        // If the second shot is charging, it will add delta time to the delay timer.
-        if (_secondShotIncoming)
-            _secondShotDelayTimer += Time.deltaTime;
-
         // Once the delay timer is past the point of the delay...
         if (_secondShotDelayTimer >= _secondShotDelay)
         {
@@ -77,6 +76,10 @@ public class PlayerFistBehavior : MonoBehaviour
             _secondShotIncoming = false;
         }
 
+        // If the second shot is charging, it will add delta time to the delay timer.
+        if (_secondShotIncoming)
+            _secondShotDelayTimer += Time.deltaTime;
+
         // If the player lifts up the key after pressing space and the delay timer is past a certain point...
         if (Input.GetKeyUp(KeyCode.Space) && _shotDelayTimer >= _shotDelay)
         {
@@ -85,6 +88,7 @@ public class PlayerFistBehavior : MonoBehaviour
             _shotDelayTimer = 0;
             _secondShotIncoming = true;
         }
+        // If the timer is less than the delay add delta time to the timer.
         else if (_shotDelayTimer < _shotDelay)
             _shotDelayTimer += Time.deltaTime;
 
