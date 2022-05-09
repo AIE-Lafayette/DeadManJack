@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerGrabBehavior : MonoBehaviour
 {
-    private PlayerProjectileShooterBehavior _playerProjectile;
+    private PlayerFistBehavior _playerProjectile;
 
     void Awake()
     {
-        _playerProjectile = transform.parent.GetChild(0).GetComponent<PlayerProjectileShooterBehavior>();
+        _playerProjectile = transform.parent.GetChild(0).GetComponent<PlayerFistBehavior>();
     }
 
     private void OnTriggerEnter(Collider other)
