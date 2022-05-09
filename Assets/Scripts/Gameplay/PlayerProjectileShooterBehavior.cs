@@ -9,14 +9,8 @@ public enum Ability
     SKELETON
 }
 
-public class PlayerProjectileShooterBehavior : MonoBehaviour
+public class PlayerProjectileShooterBehavior : BulletEmitterBehavior
 {
-    [SerializeField]
-    private BulletBehavior _bulletRef;
-    [SerializeField]
-    private float _bulletForce;
-    [SerializeField]
-    private GameObject _owner;
     private float _delay = 0.3f;
     private float _delayTimer = 0;
     private float _fireButtonHeldTimer = 0;
@@ -31,14 +25,16 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         set { _currentAbility = value; }
     }
 
-    public void Fire()
+    public override void Fire()
     {
         if (_delayTimer >= _delay)
         {
             if (_fireButtonHeldTimer < _chargeTimer)
             {
-                FireRight();
-                Invoke("FireLeft", 0.25f);
+                transform.position = new Vector3(1, 0, 0);
+                BaseFire();
+                transform.position = new Vector3(-1, 0, 0);
+                Invoke("BaseFire", 0.25f);
             }
             else
                 FireCharged();
@@ -64,20 +60,12 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         }
     }
 
-    private void FireRight()
+    /// <summary>
+    /// Calls the base fire function from the BulletEmmitterBehavior
+    /// </summary>
+    private void BaseFire()
     {
-        GameObject bullet = Instantiate(_bulletRef.gameObject, new Vector3(transform.position.x + 0.25f, transform.position.y, transform.position.z), transform.rotation);
-        BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
-        bulletBehavior.OwnerTag = _owner.tag;
-        bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
-    }
-
-    private void FireLeft()
-    {
-        GameObject bullet = Instantiate(_bulletRef.gameObject, new Vector3(transform.position.x - 0.25f, transform.position.y, transform.position.z), transform.rotation);
-        BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
-        bulletBehavior.OwnerTag = _owner.tag;
-        bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
+        base.Fire();
     }
 
     private void FireCharged()
@@ -88,22 +76,11 @@ public class PlayerProjectileShooterBehavior : MonoBehaviour
         }
         else if(_currentAbility == Ability.ZOMBIE)
         {
-            GameObject bullet = Instantiate(_bulletRef.gameObject, transform.position, transform.rotation);
-            bullet.gameObject.transform.localScale *= 3;
-            BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
-            bulletBehavior.OwnerTag = _owner.tag;
-            bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
-            bulletBehavior.Damage *= 5;
+
         }
         else if(_currentAbility == Ability.SKELETON)
         {
-            GameObject bullet = Instantiate(_bulletRef.gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            bullet.gameObject.transform.localScale = new Vector3(bullet.gameObject.transform.localScale.x * 3, bullet.gameObject.transform.localScale.y, bullet.gameObject.transform.localScale.z);
-            BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
-            bulletBehavior.DestroyOnHit = false;
-            bulletBehavior.OwnerTag = _owner.tag;
-            bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
-            bulletBehavior.Damage *= 3;
+
         }
     }
 }
