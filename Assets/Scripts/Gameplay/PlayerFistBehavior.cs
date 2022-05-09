@@ -24,6 +24,18 @@ public class PlayerFistBehavior : MonoBehaviour
     BulletEmitterBehavior _leftFist;
 
     /// <summary>
+    /// The basic bullet that the player can shoot.
+    /// </summary>
+    [SerializeField]
+    BulletBehavior _basicBulletRef;
+
+    /// <summary>
+    /// The bullet the player can shoot when they have absorbed a zombie.
+    /// </summary>
+    [SerializeField]
+    BulletBehavior _zombieChargeShotRef;
+
+    /// <summary>
     /// The ability that the player currently holds.
     /// </summary>
     private Ability _currentAbility;
@@ -59,6 +71,16 @@ public class PlayerFistBehavior : MonoBehaviour
     /// </summary>
     private bool _secondShotIncoming = false;
 
+    /// <summary>
+    /// The amount of time necessary for the charge shot to fire.
+    /// </summary>
+    private float _chargeShotDelay = 0.75f;
+
+    /// <summary>
+    /// The amount of time necessary to get to the charge shot.
+    /// </summary>
+    private float _chargeShotTimer;
+
     public Ability CurrentAbility
     {
         get { return _currentAbility; }
@@ -80,8 +102,12 @@ public class PlayerFistBehavior : MonoBehaviour
         if (_secondShotIncoming)
             _secondShotDelayTimer += Time.deltaTime;
 
+        if (Input.GetKeyUp(KeyCode.Space) && _chargeShotTimer >= _chargeShotDelay && CurrentAbility == Ability.NONE)
+        {
+            
+        }
         // If the player lifts up the key after pressing space and the delay timer is past a certain point...
-        if (Input.GetKeyUp(KeyCode.Space) && _shotDelayTimer >= _shotDelay)
+        else if (Input.GetKeyUp(KeyCode.Space) && _shotDelayTimer >= _shotDelay)
         {
             // ...the player will fire the first shot. The delay timer will be set to zero and the second shot will begin charging.
             _rightFist.Fire();
