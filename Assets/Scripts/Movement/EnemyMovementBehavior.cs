@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyMovementBehavior : MovementBehavior
 {
+    [SerializeField]
+    private GameManagerBehavior _gameManager;
+
     //The Enemy's target
     [SerializeField]
     private Transform _target;
@@ -50,7 +53,7 @@ public class EnemyMovementBehavior : MovementBehavior
     /// <param name="player"></param>
     public virtual void OnBeingGrabbed(PlayerFistBehavior player)
     {
-        PlayerGrabBehavior grabBehavior = Target.GetComponent<PlayerGrabBehavior>();
+        PlayerGrabBehavior grabBehavior = _gameManager.Player.GetComponentInChildren<PlayerGrabBehavior>();
         if (!grabBehavior)
             return;
 
