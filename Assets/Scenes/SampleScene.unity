@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43632972, g: 0.47471184, b: 0.5147129, a: 1}
+  m_IndirectSpecularColor: {r: 0.43632913, g: 0.47471154, b: 0.5147122, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -721,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 1001796223828366862, guid: 1fc2ff4df7a6e9b42bff94434aabd8db, type: 3}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1129186129}
     - target: {fileID: 1001796223828366862, guid: 1fc2ff4df7a6e9b42bff94434aabd8db, type: 3}
       propertyPath: _leftBoundry
       value: -5
@@ -884,7 +884,6 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   _target: {fileID: 550534895}
   _speed: 2
-  _damage: 1
   _seekDistance: 3
 --- !u!1 &2111901514 stripped
 GameObject:

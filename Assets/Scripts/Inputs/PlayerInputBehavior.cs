@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInputBehavior : MonoBehaviour
 {
+    /// <summary>
+    /// The behavior that allows the player to move.
+    /// </summary>
     private PlayerMovementBehavior _playerMovement;
 
     // Start is called before the first frame update
@@ -15,6 +18,7 @@ public class PlayerInputBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerMovement.MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        // The player can only move on the x-axis.
+        _playerMovement.MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0).normalized;
     }
 }
