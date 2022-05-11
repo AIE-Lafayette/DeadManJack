@@ -104,7 +104,7 @@ public class PlayerFistBehavior : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space) && _chargeShotTimer >= _chargeShotDelay && CurrentAbility == Ability.NONE)
         {
-            
+
         }
         // If the player lifts up the key after pressing space and the delay timer is past a certain point...
         else if (Input.GetKeyUp(KeyCode.Space) && _shotDelayTimer >= _shotDelay)
@@ -117,7 +117,5 @@ public class PlayerFistBehavior : MonoBehaviour
         // If the timer is less than the delay add delta time to the timer.
         else if (_shotDelayTimer < _shotDelay)
             _shotDelayTimer += Time.deltaTime;
-
-
     }
 }
