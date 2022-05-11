@@ -48,15 +48,10 @@ public class EnemyMovementBehavior : MovementBehavior
     }
 
     /// <summary>
-    /// Determines what happens when the enemy is grabbed by the player
+    /// Determines what happens when the enemy is grabbed by the player.
     /// </summary>
-    /// <param name="player"></param>
     public virtual void OnBeingGrabbed(PlayerFistBehavior player)
     {
-        PlayerGrabBehavior grabBehavior = _gameManager.Player.GetComponentInChildren<PlayerGrabBehavior>();
-        if (!grabBehavior)
-            return;
 
-        Destroy(gameObject);
     }
 }

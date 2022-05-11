@@ -1,0 +1,74 @@
+{
+    "name": "PlayerController",
+    "maps": [
+        {
+            "name": "DeadManJack",
+            "id": "212b7528-9ce1-4d37-88e1-50ed03b2d8b9",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "8b438d69-fb91-4850-ac12-be37f6c42a37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "c026db93-0dcb-4dda-aa07-6e35af0cd701",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "AD Movement",
+                    "id": "1095977c-0504-48e7-b788-1702c63b132b",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "Clamp(min=-5,max=5)",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "e6072d59-ed79-4752-87c7-e1fea5e18b97",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9f77372e-e0be-42cc-b59b-8cc9e97e325f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5939f4fe-261e-45f5-ad25-5633fc3d6574",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

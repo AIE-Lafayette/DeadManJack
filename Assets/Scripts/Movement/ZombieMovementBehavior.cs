@@ -18,8 +18,5 @@ public class ZombieMovementBehavior : EnemyMovementBehavior
     {
         if (!player)
             return;
-
-        base.OnBeingGrabbed(player);
-        player.CurrentAbility = Ability.ZOMBIE;
     }
 }
