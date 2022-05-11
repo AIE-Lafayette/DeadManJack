@@ -15,7 +15,7 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     private float _enemySpawnTime = 5.0f;
     private float _spawnTimer = 0.0f;
-    private float _waveCooldown = 15.0f;
+    private float _waveCooldown = 7.5f;
     private float _waveCooldownTimer = 0.0f;
     private bool _isBossWave = false;
 
@@ -34,7 +34,7 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        WaveManager();
     }
 
     private void WaveManager()
@@ -47,36 +47,39 @@ public class GameManagerBehavior : MonoBehaviour
             _waveOver = false;
         }
 
-        bool enemyChosen = false;
-        while(!enemyChosen)
+        if(_enemySpawnTime <= _spawnTimer)
         {
-            int randEnemy = Random.Range(1, 100);
+            bool enemyChosen = false;
+            while (!enemyChosen)
+            {
+                int randEnemy = Random.Range(1, 100);
 
-            if (randEnemy <= 80)
-            {
-                _zombieSpawner.SpawnEnemy();
-                enemyChosen = true;
+                if (randEnemy <= 80)
+                {
+                    _zombieSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
+                {
+                    _skeltonSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                else if (randEnemy > 95 && _waveCount >= 4)
+                {
+                    _ghostSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
             }
-            else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
-            {
-                _skeltonSpawner.SpawnEnemy();
-                enemyChosen = true;
-            }
-            else if (randEnemy > 95 && _waveCount <= 4)
-            {
-                _ghostSpawner.SpawnEnemy();
-                enemyChosen = true;
-            }
+            _spawnTimer = 0;
+            _waveSize--;
         }
+
+        _spawnTimer += Time.deltaTime;
     }
 
     private void GetNextWave()
     {
-        if(_waveCount == 1)
-        {
-            _waveSize = 15;
-            _enemySpawnTime = 5;
-            _waveCooldown = 7.5f;
-        }
+        _waveCooldown = 0;
+        _waveSize = 15 + (6 * _waveCount);
     }
 }

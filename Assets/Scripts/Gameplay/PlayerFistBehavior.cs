@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum Ability
+{
+    NONE,
+    ZOMBIE,
+    SKELETON
+}
+
 public class PlayerFistBehavior : MonoBehaviour
 {
     /// <summary>
@@ -24,6 +31,17 @@ public class PlayerFistBehavior : MonoBehaviour
     private GameObject _grabRadius;
 
     private bool _currentFistRight = true;
+
+    /// <summary>
+    /// The ability that the player currently holds.
+    /// </summary>
+    private Ability _currentAbility;
+
+    public Ability CurrentAbility
+    {
+        get { return _currentAbility; }
+        set { _currentAbility = value; }
+    }
 
     /// <summary>
     /// The ability for the player to throw hands at enemies. Swaps which hand after firing a projectile.
