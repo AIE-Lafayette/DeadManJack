@@ -11,12 +11,6 @@ public class BulletEmitterBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _owner;
 
-    public BulletBehavior BulletRef
-    {
-        get { return _bulletRef; }
-        set { _bulletRef = value; }
-    }
-
     public GameObject Owner
     {
         get { return _owner; }

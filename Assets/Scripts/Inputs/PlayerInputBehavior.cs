@@ -1,24 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputBehavior : MonoBehaviour
 {
-    /// <summary>
-    /// The behavior that allows the player to move.
-    /// </summary>
+    private PlayerController _playerController;
     private PlayerMovementBehavior _playerMovement;
+    private PlayerFistBehavior _playerFists;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
+        _playerController = new PlayerController();
         _playerMovement = GetComponent<PlayerMovementBehavior>();
+        _playerFists = GetComponent<PlayerFistBehavior>();
+    }
+
+    private void OnEnable()
+    {
+        _playerController.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerController.Disable();
+    }
+
+    private void Start()
+    {
+        _playerController.DeadManJack.Shoot.started += context => _playerFists.Punch(context);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        // The player can only move on the x-axis.
-        _playerMovement.MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0).normalized;
+        Vector2 moveDirection = _playerController.DeadManJack.Movement.ReadValue<Vector2>();
+        _playerMovement.Move(moveDirection);
     }
 }
