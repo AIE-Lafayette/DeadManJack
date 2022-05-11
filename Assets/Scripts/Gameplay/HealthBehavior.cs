@@ -10,7 +10,7 @@ public class HealthBehavior : MonoBehaviour
     private float _health;
     [SerializeField]
     private bool _destroyOnDeath;
-    private bool _isAlive;
+    private bool _isAlive = true;
 
     public float Health
     {
@@ -30,7 +30,7 @@ public class HealthBehavior : MonoBehaviour
     private void Update()
     {
         //If the object is still alive, but has less than zero health, call the on Death function
-        if (_health >= 0 && IsAlive)
+        if (_health <= 0 && IsAlive)
             OnDeath();
     }
 
