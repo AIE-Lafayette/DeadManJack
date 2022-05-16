@@ -9,21 +9,18 @@ public class PlayerFistBehavior : MonoBehaviour
     /// The first fist the player character will shoot from.
     /// </summary>
     [SerializeField]
-    BulletEmitterBehavior _rightFist;
+    private BulletEmitterBehavior _rightFist;
 
     /// <summary>
     /// The second fist the player character will shoot from.
     /// </summary>
     [SerializeField]
-    BulletEmitterBehavior _leftFist;
+    private BulletEmitterBehavior _leftFist;
 
     /// <summary>
-    /// The area that the player's grapple will work in.
+    /// The player's ability to grab enemies.
     /// </summary>
-    [SerializeField]
-    private GameObject _grabRadius;
-
-    private GrappleAbilityBehavior playerGrapple;
+    private GrappleBehavior _playerGrapple;
 
     /// <summary>
     /// Checks to see which fist is currently active for the user.
@@ -41,6 +38,11 @@ public class PlayerFistBehavior : MonoBehaviour
     public UseAbilityBehavior CurrentPlayerAbility
     {
         get { return _currentPlayerAbility; }
+    }
+
+    public GrappleBehavior PlayerGrapple
+    {
+        get { return _playerGrapple; }
     }
 
     /// <summary>
@@ -67,12 +69,8 @@ public class PlayerFistBehavior : MonoBehaviour
     private void Start()
     {
         // Sets up the new grapple ability and gives it the player's grab radius.
-        GrappleAbilityBehavior playerGrapple = new GrappleAbilityBehavior();
-        playerGrapple.GrabRadius = _grabRadius;
+        _playerGrapple = GetComponent<GrappleBehavior>();
 
         _currentPlayerAbility = GetComponent<UseAbilityBehavior>();
-
-        // Sets the player's current ability to be the player's grapple.
-        _currentPlayerAbility.CurrentAbility = playerGrapple;
     }
 }

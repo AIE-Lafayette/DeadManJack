@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityBehavior : MonoBehaviour
+public class Ability
 {
     /// <summary>
     /// The owner of the ability, the one who used it.s
