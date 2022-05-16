@@ -18,6 +18,13 @@ public class EnemyMovementBehavior : MovementBehavior
     [SerializeField]
     private float _approachDistance;
 
+    private Ability _currentAbility;
+
+    public Ability CurrentAbility
+    {
+        get { return _currentAbility; }
+    }
+
     public Transform Target
     {
         get { return _target; }
@@ -45,6 +52,11 @@ public class EnemyMovementBehavior : MovementBehavior
         //Do not add Speed to enemies anywhere else
         Velocity *= Speed;
         base.Update();
+    }
+
+    public void SetCurrentAbility(Ability ability)
+    {
+        _currentAbility = ability;
     }
 
     /// <summary>

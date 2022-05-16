@@ -20,6 +20,11 @@ public class PlayerInputBehavior : MonoBehaviour
     /// </summary>
     private PlayerFistBehavior _playerFists;
 
+    /// <summary>
+    /// Checks whether or not the player can grab or use an ability.
+    /// </summary>
+    private bool _playerCanGrab;
+
     private void Awake()
     {
         _playerController = new PlayerController();
@@ -40,7 +45,7 @@ public class PlayerInputBehavior : MonoBehaviour
     private void Start()
     {
         _playerController.DeadManJack.Shoot.started += context => _playerFists.Punch(context);
-        _playerController.DeadManJack.ChargeAbility.started += context => _playerFists.PlayerGrapple.Activate();
+        _playerController.DeadManJack.ChargeAbility.started += context => _playerFists.Activate();
     }
 
     // Update is called once per frame

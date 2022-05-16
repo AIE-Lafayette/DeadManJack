@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ZombieMovementBehavior : EnemyMovementBehavior
 {
+    private void Start()
+    {
+        SetCurrentAbility(new ZombieAbility());
+    }
+
     public override void Update()
     {
         //Gets the direction of the target from the Zombie
