@@ -45,11 +45,14 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(OwnerTag))
-            return;
-
         HealthBehavior otherHealth = other.GetComponent<HealthBehavior>();
         if (!otherHealth)
+            return;
+
+        if (!otherHealth.IsAlive)
+            return;
+
+        if (other.CompareTag(OwnerTag))
             return;
 
         if (other.name != "Ghost")

@@ -6,6 +6,10 @@ public class SkeletonBehavior : EnemyBehavior
 {
     [SerializeField]
     private GameObject _head;
+    [SerializeField]
+    private Transform _body = null;
+    private bool _headSpawned = false;
+
     private HealthBehavior _health;
 
     public override void Start()
@@ -32,7 +36,16 @@ public class SkeletonBehavior : EnemyBehavior
         }
         else
         {
-            GameObject spawnedEnemy = Instantiate(_head, transform.position, transform.rotation);
+            Movement.Velocity = Vector3.zero;
+            if(_body.rotation.eulerAngles.x < 80)
+                _body.Rotate(Time.deltaTime * 100, 0, 0);
+            if (_body.position.y > 0.1)
+                _body.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
+            if(!_headSpawned)
+            {
+                _head.GetComponent<Rigidbody>().isKinematic = false;
+                _head.GetComponent<EnemyMovementBehavior>().Speed = Movement.Speed;
+            }
         }
     }
 
