@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : UseAbilityBehavior
 {
     [SerializeField]
     private GameManagerBehavior _gameManager;

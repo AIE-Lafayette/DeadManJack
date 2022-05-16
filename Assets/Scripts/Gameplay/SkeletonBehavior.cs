@@ -45,8 +45,12 @@ public class SkeletonBehavior : EnemyBehavior
             {
                 _head.GetComponent<Rigidbody>().isKinematic = false;
                 _head.GetComponent<EnemyMovementBehavior>().Speed = Movement.Speed;
+                _head.transform.SetParent(transform);
+                _headSpawned = true;
             }
         }
+        if (!_head)
+            Destroy(gameObject);
     }
 
     public override void OnBeingGrabbed(PlayerFistBehavior player)
