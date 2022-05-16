@@ -66,6 +66,14 @@ public class PlayerFistBehavior : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        if (CurrentPlayerAbility.CurrentAbility == null)
+            PlayerGrapple.Activate();
+        else
+            CurrentPlayerAbility.CurrentAbility.Activate();
+    }
+
     private void Start()
     {
         // Sets up the new grapple ability and gives it the player's grab radius.

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ZombieBehavior : EnemyBehavior
 {
+    public override void Start()
+    {
+        base.Start();
+        SetCurrentAbility(new ZombieAbility());
+    }
+
     public override void Update()
     {
         //Gets the direction and distance of the target from the Zombie
