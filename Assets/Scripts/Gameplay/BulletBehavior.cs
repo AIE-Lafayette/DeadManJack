@@ -45,6 +45,9 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other == null)
+            return;
+
         HealthBehavior otherHealth = other.GetComponent<HealthBehavior>();
         if (!otherHealth)
             return;
