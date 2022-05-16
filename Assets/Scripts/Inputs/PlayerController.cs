@@ -33,6 +33,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChargeAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""93d2dd82-8136-402f-ad16-7c1d7325c2ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -79,6 +87,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c5e8d68-efba-4b31-a97f-47f71b035797"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargeAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +108,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_DeadManJack = asset.FindActionMap("DeadManJack", throwIfNotFound: true);
         m_DeadManJack_Movement = m_DeadManJack.FindAction("Movement", throwIfNotFound: true);
         m_DeadManJack_Shoot = m_DeadManJack.FindAction("Shoot", throwIfNotFound: true);
+        m_DeadManJack_ChargeAbility = m_DeadManJack.FindAction("ChargeAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,12 +160,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private IDeadManJackActions m_DeadManJackActionsCallbackInterface;
     private readonly InputAction m_DeadManJack_Movement;
     private readonly InputAction m_DeadManJack_Shoot;
+    private readonly InputAction m_DeadManJack_ChargeAbility;
     public struct DeadManJackActions
     {
         private @PlayerController m_Wrapper;
         public DeadManJackActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_DeadManJack_Movement;
         public InputAction @Shoot => m_Wrapper.m_DeadManJack_Shoot;
+        public InputAction @ChargeAbility => m_Wrapper.m_DeadManJack_ChargeAbility;
         public InputActionMap Get() { return m_Wrapper.m_DeadManJack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,6 +183,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnShoot;
+                @ChargeAbility.started -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
+                @ChargeAbility.performed -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
+                @ChargeAbility.canceled -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
             }
             m_Wrapper.m_DeadManJackActionsCallbackInterface = instance;
             if (instance != null)
@@ -171,6 +196,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @ChargeAbility.started += instance.OnChargeAbility;
+                @ChargeAbility.performed += instance.OnChargeAbility;
+                @ChargeAbility.canceled += instance.OnChargeAbility;
             }
         }
     }
@@ -179,5 +207,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnChargeAbility(InputAction.CallbackContext context);
     }
 }

@@ -30,11 +30,7 @@ public class SkeletonMovementBehavior : EnemyMovementBehavior
 
     public override void OnBeingGrabbed(PlayerFistBehavior player)
     {
-        if (!player)
-            return;
-
-        base.OnBeingGrabbed(player);
-        player.CurrentAbility = Ability.SKELETON;
+        
     }
 
     private void OnTriggerEnter(Collider other)

@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum Ability
-{
-    NONE,
-    ZOMBIE,
-    SKELETON
-}
-
 public class PlayerFistBehavior : MonoBehaviour
 {
     /// <summary>
@@ -30,17 +23,24 @@ public class PlayerFistBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _grabRadius;
 
+    private GrappleAbilityBehavior playerGrapple;
+
+    /// <summary>
+    /// Checks to see which fist is currently active for the user.
+    /// </summary>
     private bool _currentFistRight = true;
 
     /// <summary>
-    /// The ability that the player currently holds.
+    /// The player's current ability.
     /// </summary>
-    private Ability _currentAbility;
+    private UseAbilityBehavior _currentPlayerAbility;
 
-    public Ability CurrentAbility
+    /// <summary>
+    /// The player's current ability.
+    /// </summary>
+    public UseAbilityBehavior CurrentPlayerAbility
     {
-        get { return _currentAbility; }
-        set { _currentAbility = value; }
+        get { return _currentPlayerAbility; }
     }
 
     /// <summary>
@@ -64,8 +64,15 @@ public class PlayerFistBehavior : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        // Sets up the new grapple ability and gives it the player's grab radius.
+        GrappleAbilityBehavior playerGrapple = new GrappleAbilityBehavior();
+        playerGrapple.GrabRadius = _grabRadius;
+
+        _currentPlayerAbility = GetComponent<UseAbilityBehavior>();
+
+        // Sets the player's current ability to be the player's grapple.
+        _currentPlayerAbility.CurrentAbility = playerGrapple;
     }
 }
