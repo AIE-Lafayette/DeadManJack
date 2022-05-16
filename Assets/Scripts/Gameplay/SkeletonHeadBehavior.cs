@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkeletonHeadBehavior : EnemyBehavior
 {
+    [SerializeField]
+    private GameObject _body;
     private bool _isGrounded = false;
     private HealthBehavior _health;
 
@@ -28,7 +30,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
 
         if(!_health.IsAlive)
         {
-            Destroy(transform.parent.gameObject);
+            Destroy(_body);
         }
     }
 

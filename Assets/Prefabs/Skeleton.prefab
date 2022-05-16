@@ -108,6 +108,9 @@ GameObject:
   - component: {fileID: 5163329936722938478}
   - component: {fileID: 1586937983954134956}
   - component: {fileID: 2949864599548723679}
+  - component: {fileID: 6567147681247352119}
+  - component: {fileID: 9108118504583821654}
+  - component: {fileID: 782652079751385997}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -208,6 +211,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6567147681247352119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320077030260805387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d846f6d36db78034f8eefd195f3c025c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
+  _body: {fileID: 6974336108964273257}
+--- !u!114 &9108118504583821654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320077030260805387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
+  _health: 5
+  _destroyOnDeath: 0
+  _isAlive: 1
+--- !u!114 &782652079751385997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320077030260805387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc31bb58f608114fa13365d97276a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _velocity: {x: 0, y: 0, z: 0}
+  _speed: 0
+  _approachDistance: 0
 --- !u!1 &6848169275459675324
 GameObject:
   m_ObjectHideFlags: 0
