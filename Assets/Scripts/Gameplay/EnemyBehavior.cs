@@ -23,7 +23,7 @@ public class EnemyBehavior : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         _movement = GetComponent<EnemyMovementBehavior>();
         _target = _gameManager.Goal.transform;
