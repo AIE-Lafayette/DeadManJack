@@ -29,7 +29,7 @@ public class PlayerInputBehavior : MonoBehaviour
     private void Start()
     {
         _playerController.DeadManJack.Shoot.started += context => _playerFists.Punch(context);
-        _playerController.DeadManJack.ChargeAbility.performed += context => _playerFists.CurrentPlayerAbility.ActivateAbility();
+        _playerController.DeadManJack.ChargeAbility.started += context => _playerFists.CurrentPlayerAbility.ActivateAbility();
     }
 
     // Update is called once per frame
