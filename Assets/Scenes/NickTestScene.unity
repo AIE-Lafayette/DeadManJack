@@ -228,7 +228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2573640447098364822, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2573640447098364822, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,11 +274,24 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 836187343}
+    - target: {fileID: 6393414421274027739, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
+      propertyPath: _speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393414421274027739, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
+      propertyPath: _approachDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8288289106201644954, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8692561674462423228, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 1531769184}
+    m_RemovedComponents:
+    - {fileID: 5537291215637718039, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
 --- !u!1 &836187338
 GameObject:
@@ -315,6 +328,7 @@ MonoBehaviour:
   _maxHealth: 0
   _health: 10000000
   _destroyOnDeath: 0
+  _isAlive: 1
 --- !u!135 &836187340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -448,6 +462,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
+--- !u!1 &1531769183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531769185}
+  - component: {fileID: 1531769184}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1531769184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531769183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0ea8be29b04964bbd222c99f589f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1569510974}
+  _goal: {fileID: 836187338}
+  _enemySpawnTime: 5
+  _zombieSpawner: {fileID: 0}
+  _skeltonSpawner: {fileID: 0}
+  _ghostSpawner: {fileID: 0}
+--- !u!4 &1531769185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531769183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19102372, y: 0.29888916, z: -2.8684912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1569510974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4224868895601059082, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
+  m_PrefabInstance: {fileID: 1496601919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1696532075
 GameObject:
   m_ObjectHideFlags: 0

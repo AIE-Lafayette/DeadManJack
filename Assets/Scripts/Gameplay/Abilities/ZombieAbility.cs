@@ -7,5 +7,6 @@ public class ZombieAbility : Ability
     public override void Activate(params object[] arguments)
     {
         
+        base.Activate(arguments);
     }
 }

@@ -26,4 +26,13 @@ public class UseAbilityBehavior : MonoBehaviour
     {
         _currentAbility.Activate(arguments);
     }
+
+    private void Update()
+    {
+        if (_currentAbility != null)
+        {
+            if (CurrentAbility.UseCounter <= 0)
+                CurrentAbility = null;
+        }
+    }
 }

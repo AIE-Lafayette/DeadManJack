@@ -33,7 +33,7 @@ public class GrappleBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyMovementBehavior enemyAbility = other.gameObject.GetComponent<EnemyMovementBehavior>();
+        EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
 
         if (enemyAbility)
         {
