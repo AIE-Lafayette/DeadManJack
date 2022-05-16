@@ -10,6 +10,7 @@ public class HealthBehavior : MonoBehaviour
     private float _health;
     [SerializeField]
     private bool _destroyOnDeath;
+    [SerializeField]
     private bool _isAlive = true;
 
     public float Health
