@@ -10,6 +10,14 @@ public class EnemyBehavior : MonoBehaviour
 
     //The Enemy's target
     private Transform _target;
+
+    private Ability _currentAbility;
+
+    public Ability CurrentAbility
+    {
+        get { return _currentAbility; }
+    }
+
     public Transform Target
     {
         get { return _target; }
@@ -20,7 +28,6 @@ public class EnemyBehavior : MonoBehaviour
     { 
         get { return _movement; } 
     }
-
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -40,6 +47,11 @@ public class EnemyBehavior : MonoBehaviour
             _movement.Velocity = new Vector3(0, 0, -1);
         else
             transform.LookAt(Target);
+    }
+
+    public void SetCurrentAbility(Ability ability)
+    {
+        _currentAbility = ability;
     }
 
     /// <summary>

@@ -31,4 +31,14 @@ public class GrappleBehavior : MonoBehaviour
        routineBehavior.StartNewTimedAction(arguments => _grabRadius.SetActive(false), TimedActionCountType.SCALEDTIME, 0.5f);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
+
+        if (enemyAbility)
+        {
+            GetComponent<PlayerFistBehavior>().CurrentPlayerAbility.CurrentAbility = enemyAbility.CurrentAbility;
+            Destroy(other.gameObject);
+        }
+    }
 }

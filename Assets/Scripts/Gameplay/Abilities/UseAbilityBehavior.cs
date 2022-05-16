@@ -7,6 +7,7 @@ public class UseAbilityBehavior : MonoBehaviour
     /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
+    [SerializeField]
     private Ability _currentAbility;
 
     /// <summary>
@@ -25,5 +26,14 @@ public class UseAbilityBehavior : MonoBehaviour
     public void ActivateAbility(params object[] arguments)
     {
         _currentAbility.Activate(arguments);
+    }
+
+    private void Update()
+    {
+        if (_currentAbility != null)
+        {
+            if (CurrentAbility.UseCounter <= 0)
+                CurrentAbility = null;
+        }
     }
 }
