@@ -6,6 +6,8 @@ public class GameManagerBehavior : MonoBehaviour
 {
     [SerializeField]
     private GameObject _player;
+    [SerializeField]
+    private GameObject _goal;
 
     private int _waveCount = 0;
     private int _enemyCount = 0;
@@ -31,6 +33,11 @@ public class GameManagerBehavior : MonoBehaviour
         get { return _player; }
     }
 
+    public GameObject Goal
+    {
+        get { return _goal; }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,32 +54,32 @@ public class GameManagerBehavior : MonoBehaviour
             _waveOver = false;
         }
 
-        if(_enemySpawnTime <= _spawnTimer)
-        {
-            bool enemyChosen = false;
-            while (!enemyChosen)
-            {
-                int randEnemy = Random.Range(1, 100);
+        //if(_enemySpawnTime <= _spawnTimer)
+        //{
+        //    bool enemyChosen = false;
+        //    while (!enemyChosen)
+        //    {
+        //        int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy <= 80)
-                {
-                    _zombieSpawner.SpawnEnemy();
-                    enemyChosen = true;
-                }
-                else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
-                {
-                    _skeltonSpawner.SpawnEnemy();
-                    enemyChosen = true;
-                }
-                else if (randEnemy > 95 && _waveCount >= 4)
-                {
-                    _ghostSpawner.SpawnEnemy();
-                    enemyChosen = true;
-                }
-            }
-            _spawnTimer = 0;
-            _waveSize--;
-        }
+        //        if (randEnemy <= 80)
+        //        {
+        //            _zombieSpawner.SpawnEnemy();
+        //            enemyChosen = true;
+        //        }
+        //        else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
+        //        {
+        //            _skeltonSpawner.SpawnEnemy();
+        //            enemyChosen = true;
+        //        }
+        //        else if (randEnemy > 95 && _waveCount >= 4)
+        //        {
+        //            _ghostSpawner.SpawnEnemy();
+        //            enemyChosen = true;
+        //        }
+        //    }
+        //    _spawnTimer = 0;
+        //    _waveSize--;
+        //}
 
         _spawnTimer += Time.deltaTime;
     }
