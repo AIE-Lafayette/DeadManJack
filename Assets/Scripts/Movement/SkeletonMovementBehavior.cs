@@ -4,33 +4,38 @@ using UnityEngine;
 
 public class SkeletonMovementBehavior : EnemyMovementBehavior
 {
-    /// <summary>
-    /// How far the enemy can be from the player before attacking.
-    /// </summary>
-    [SerializeField]
-    private float _maxRange;
-
-    [SerializeField]
-    private float _seekDistance;
-
-    // Update is called once per frame
+    private float _moveTimer = 0.0f;
+    private bool _wasHit = false;
     public override void Update()
     {
-        Vector3 direction = Target.position - transform.position;
-
-        // Finds the distance between the player and the enemy.
-        bool playerInRange = direction.magnitude < _maxRange;
-
-        if (!playerInRange)
+        if (!_wasHit)
+            Velocity = new Vector3(0, 0, -1);
+        else
         {
-            if (transform.position.z < _seekDistance)
-            {
-                Velocity = direction.normalized * Speed;
-                transform.LookAt(Target);
-            }
+            if(transform.position.x > 0)
+                Velocity = new Vector3(-1, 0, 0);
             else
-                Velocity = new Vector3(0, 0, -1) * Speed;
-            base.Update();
+                Velocity = new Vector3(1, 0, 0);
+            _moveTimer += Time.deltaTime;
+
+            if(_moveTimer > 1)
+            {
+                _wasHit = false;
+                _moveTimer = 0;
+            }
         }
+
+        base.Update();
+    }
+
+    public override void OnBeingGrabbed(PlayerFistBehavior player)
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _wasHit = true;
+        _moveTimer = 0.0f;
     }
 }

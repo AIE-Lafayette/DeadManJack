@@ -23,7 +23,25 @@ public class PlayerFistBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _grabRadius;
 
+    private GrappleAbilityBehavior playerGrapple;
+
+    /// <summary>
+    /// Checks to see which fist is currently active for the user.
+    /// </summary>
     private bool _currentFistRight = true;
+
+    /// <summary>
+    /// The player's current ability.
+    /// </summary>
+    private UseAbilityBehavior _currentPlayerAbility;
+
+    /// <summary>
+    /// The player's current ability.
+    /// </summary>
+    public UseAbilityBehavior CurrentPlayerAbility
+    {
+        get { return _currentPlayerAbility; }
+    }
 
     /// <summary>
     /// The ability for the player to throw hands at enemies. Swaps which hand after firing a projectile.
@@ -46,8 +64,15 @@ public class PlayerFistBehavior : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        // Sets up the new grapple ability and gives it the player's grab radius.
+        GrappleAbilityBehavior playerGrapple = new GrappleAbilityBehavior();
+        playerGrapple.GrabRadius = _grabRadius;
+
+        _currentPlayerAbility = GetComponent<UseAbilityBehavior>();
+
+        // Sets the player's current ability to be the player's grapple.
+        _currentPlayerAbility.CurrentAbility = playerGrapple;
     }
 }
