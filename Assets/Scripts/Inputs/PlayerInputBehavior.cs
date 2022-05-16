@@ -5,8 +5,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputBehavior : MonoBehaviour
 {
+    /// <summary>
+    /// The controller that sets the inputs that the player can use.
+    /// </summary>
     private PlayerController _playerController;
+
+    /// <summary>
+    /// The behavior that allows the player to move.
+    /// </summary>
     private PlayerMovementBehavior _playerMovement;
+
+    /// <summary>
+    /// The fists of the player that allow them to attack.
+    /// </summary>
     private PlayerFistBehavior _playerFists;
 
     private void Awake()
@@ -29,7 +40,7 @@ public class PlayerInputBehavior : MonoBehaviour
     private void Start()
     {
         _playerController.DeadManJack.Shoot.started += context => _playerFists.Punch(context);
-        _playerController.DeadManJack.ChargeAbility.performed += context => _playerFists.CurrentPlayerAbility.ActivateAbility();
+        _playerController.DeadManJack.ChargeAbility.started += context => _playerFists.PlayerGrapple.Activate();
     }
 
     // Update is called once per frame
