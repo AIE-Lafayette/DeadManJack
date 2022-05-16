@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnerBehavior : MonoBehaviour
 {
     [SerializeField]
-    private EnemyMovementBehavior _enemy;
+    private EnemyBehavior _enemy;
     [SerializeField]
     private Transform _enemyTarget;
 
@@ -13,7 +13,7 @@ public class EnemySpawnerBehavior : MonoBehaviour
     {
             float randX = Random.Range(-5000, 5000);
             Vector3 randSpawn = new Vector3(randX / 1000, 0.5f, transform.position.z);
-            EnemyMovementBehavior spawnedEnemy = Instantiate(_enemy, randSpawn, transform.rotation);
+            EnemyBehavior spawnedEnemy = Instantiate(_enemy, randSpawn, transform.rotation);
             spawnedEnemy.Target = _enemyTarget;
     }
 }

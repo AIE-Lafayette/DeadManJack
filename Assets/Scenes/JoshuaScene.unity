@@ -154,8 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 6848169275459675325, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
   _enemyTarget: {fileID: 1906616694}
-  _spawnTime: 2
-  _waveSize: 3
 --- !u!4 &75205378
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +175,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1305557848434819931, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
+      propertyPath: _maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6848169275459675321, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -239,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6848169275459675324, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6848169275459675324, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_TagString
@@ -267,26 +269,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5a4007bcdfb51df4882070d1ba6ac27b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
---- !u!1 &571689248 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6848169275459675324, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
-  m_PrefabInstance: {fileID: 571689247}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &571689249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571689248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _health: 5
-  _destroyOnDeath: 1
 --- !u!1 &664639409
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: -30, z: 0}
 --- !u!1 &795029911 stripped
 GameObject:
@@ -416,8 +398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 6291048238549936013, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
   _enemyTarget: {fileID: 1906616694}
-  _spawnTime: 1
-  _waveSize: 5
 --- !u!4 &820227698
 Transform:
   m_ObjectHideFlags: 0
@@ -462,6 +442,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 795029911}
+  _enemySpawnTime: 5
+  _zombieSpawner: {fileID: 0}
+  _skeltonSpawner: {fileID: 0}
+  _ghostSpawner: {fileID: 0}
 --- !u!4 &826908174
 Transform:
   m_ObjectHideFlags: 0
@@ -880,6 +864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 8288289106201644954, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
 --- !u!1 &1906616693
@@ -1006,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4224868895601059088, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4224868895601059088, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
       propertyPath: m_LocalPosition.x
