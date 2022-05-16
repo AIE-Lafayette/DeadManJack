@@ -7,12 +7,12 @@ public class UseAbilityBehavior : MonoBehaviour
     /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
-    private AbilityBehavior _currentAbility;
+    private Ability _currentAbility;
 
     /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
-    public AbilityBehavior CurrentAbility
+    public Ability CurrentAbility
     {
         get { return _currentAbility; }
         set { _currentAbility = value; }

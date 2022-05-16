@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrappleAbilityBehavior : AbilityBehavior
+public class GrappleBehavior : MonoBehaviour
 {
     /// <summary>
     /// The area where the player will be able to grab.
     /// </summary>
+    [SerializeField]
     private GameObject _grabRadius;
 
     /// <summary>
@@ -21,7 +22,7 @@ public class GrappleAbilityBehavior : AbilityBehavior
     /// <summary>
     /// Turns on the grapple for the player allowing them to grab an enemy.
     /// </summary>
-    public override void Activate(params object[] arguments)
+    public void Activate()
     {
         // Creates an instance of the Routine Behavior or copies the instance of it.
         RoutineBehavior routineBehavior = RoutineBehavior.Instance;
