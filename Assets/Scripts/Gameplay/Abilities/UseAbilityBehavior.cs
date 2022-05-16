@@ -7,6 +7,7 @@ public class UseAbilityBehavior : MonoBehaviour
     /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
+    [SerializeField]
     private Ability _currentAbility;
 
     /// <summary>
