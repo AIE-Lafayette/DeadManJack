@@ -176,9 +176,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1305557848434819931, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
+      propertyPath: _isAlive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1305557848434819931, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: _maxHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2715803361549244517, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
+      propertyPath: _head
+      value: 
+      objectReference: {fileID: 3249397583550397883, guid: 707bf0ba7034ece44b132d630f55e5ee, type: 3}
     - target: {fileID: 6848169275459675321, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -442,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 795029911}
+  _goal: {fileID: 0}
   _enemySpawnTime: 5
   _zombieSpawner: {fileID: 0}
   _skeltonSpawner: {fileID: 0}
@@ -919,6 +928,7 @@ MonoBehaviour:
   _maxHealth: 0
   _health: 10000000
   _destroyOnDeath: 0
+  _isAlive: 1
 --- !u!135 &1906616696
 SphereCollider:
   m_ObjectHideFlags: 0

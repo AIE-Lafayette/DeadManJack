@@ -8,9 +8,10 @@ public class SkeletonBehavior : EnemyBehavior
     private GameObject _head;
     private HealthBehavior _health;
 
-    private void Start()
+    public override void Start()
     {
         _health = GetComponent<HealthBehavior>();
+        base.Start();
     }
 
     public override void Update()
@@ -24,7 +25,10 @@ public class SkeletonBehavior : EnemyBehavior
             if (distanceFromTarget > Movement.ApproachDistance)
                 Movement.Velocity = new Vector3(0, 0, -1);
             else
+            {
+                Movement.Velocity = Vector3.zero;
                 transform.LookAt(Target);
+            }
         }
         else
         {
