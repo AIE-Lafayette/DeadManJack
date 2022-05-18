@@ -24,5 +24,13 @@ public class PlayerMovementBehavior : MonoBehaviour
     void FixedUpdate()
     {
         _rigidbody.MovePosition(transform.position + _velocity);
+        if(transform.position.x > 5)
+        {
+            transform.position = new Vector3(5, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x < -5)
+        {
+            transform.position = new Vector3(-5, transform.position.y, transform.position.z);
+        }
     }
 }

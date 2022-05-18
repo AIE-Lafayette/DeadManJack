@@ -9,7 +9,7 @@ public class EnemyBehavior : UseAbilityBehavior
     private EnemyMovementBehavior _movement;
 
     //The Enemy's target
-    private Transform _target;
+    private GameObject _target;
 
     private Ability _currentAbility;
 
@@ -18,7 +18,7 @@ public class EnemyBehavior : UseAbilityBehavior
         get { return _currentAbility; }
     }
 
-    public Transform Target
+    public GameObject Target
     {
         get { return _target; }
         set { _target = value; }
@@ -40,20 +40,20 @@ public class EnemyBehavior : UseAbilityBehavior
     public virtual void Awake()
     {
         _movement = GetComponent<EnemyMovementBehavior>();
-        _target = _gameManager.Goal.transform;
+        _target = _gameManager.Goal;
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
         //The distance of the enemy and the targets z-axis
-        float distanceFromTarget = transform.position.z - Target.position.z;
+        float distanceFromTarget = transform.position.z - Target.transform.position.z;
 
         //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
         if (distanceFromTarget > _movement.ApproachDistance)
             _movement.Velocity = new Vector3(0, 0, -1);
         else
-            transform.LookAt(Target);
+            transform.LookAt(Target.transform);
     }
 
     public void SetCurrentAbility(Ability ability)
@@ -61,11 +61,19 @@ public class EnemyBehavior : UseAbilityBehavior
         _currentAbility = ability;
     }
 
-    /// <summary>
-    /// Determines what happens when the enemy is grabbed by the player.
-    /// </summary>
-    public virtual void OnBeingGrabbed(PlayerFistBehavior player)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.name != "Heart")
+            return;
 
+        HealthBehavior health = other.GetComponent<HealthBehavior>();
+
+        if (!health)
+            return;
+
+        health.TakeDamage(1);
+
+        if (GetComponent<HealthBehavior>().DestroyOnDeath)
+            Destroy(gameObject);
     }
 }

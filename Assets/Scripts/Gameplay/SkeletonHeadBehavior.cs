@@ -20,14 +20,32 @@ public class SkeletonHeadBehavior : EnemyBehavior
     // Update is called once per frame
     public override void Update()
     {
-        if(_isGrounded)
+        float distanceFromTarget = transform.position.z - Target.transform.position.z;
+        Vector3 direction = Target.transform.position - transform.position;
+        direction = direction.normalized;
+        if (distanceFromTarget > Movement.ApproachDistance)
         {
-            Movement.Velocity = new Vector3(0, 5f, -1);
+            if (_isGrounded)
+            {
+                Movement.Velocity = new Vector3(0, 5f, -1);
+            }
+            else
+            {
+                Movement.Velocity = new Vector3(0, 0, -1);
+            }
         }
         else
         {
-            Movement.Velocity = new Vector3(0, 0, -1);
+            if (_isGrounded)
+            {
+                Movement.Velocity = new Vector3(direction.x, 5f, direction.z);
+            }
+            else
+            {
+                Movement.Velocity = new Vector3(direction.x, 0, direction.z);
+            }
         }
+
 
         if(!_health.IsAlive)
         {

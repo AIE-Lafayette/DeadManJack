@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManagerBehavior : MonoBehaviour
     private GameObject _player;
     [SerializeField]
     private GameObject _goal;
+    [SerializeField]
+    private GameObject _LoseUI;
 
     private int _waveCount = 0;
     private int _enemyCount = 0;
@@ -42,6 +45,11 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         WaveManager();
+
+        if(Goal.GetComponent<HealthBehavior>().IsAlive == false)
+        {
+            _LoseUI.SetActive(true);
+        }
     }
 
     private void WaveManager()
@@ -88,5 +96,15 @@ public class GameManagerBehavior : MonoBehaviour
     {
         _waveCooldown = 0;
         _waveSize = 15 + (6 * _waveCount);
+    }
+
+    public void RetartScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
