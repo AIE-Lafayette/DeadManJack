@@ -11,7 +11,7 @@ public class EnemyBehavior : UseAbilityBehavior
     //The Enemy's target
     private GameObject _target;
 
-    public Transform Target
+    public GameObject Target
     {
         get { return _target; }
         set { _target = value; }
