@@ -54,4 +54,13 @@ public class EnemyBehavior : UseAbilityBehavior
         ability.VisualPrefab = CurrentAbility.VisualPrefab;
         CurrentAbility = ability;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name != "Heart")
+            return;
+
+        other.GetComponent<HealthBehavior>().TakeDamage(1);
+        Destroy(gameObject);
+    }
 }
