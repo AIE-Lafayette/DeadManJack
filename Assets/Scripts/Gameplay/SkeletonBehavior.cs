@@ -12,10 +12,10 @@ public class SkeletonBehavior : EnemyBehavior
 
     private HealthBehavior _health;
 
-    public override void Start()
+    public override void Awake()
     {
         _health = GetComponent<HealthBehavior>();
-        base.Start();
+        base.Awake();
     }
 
     public override void Update()
@@ -49,6 +49,7 @@ public class SkeletonBehavior : EnemyBehavior
                 _headSpawned = true;
             }
         }
+
         if (!_head)
             Destroy(gameObject);
     }

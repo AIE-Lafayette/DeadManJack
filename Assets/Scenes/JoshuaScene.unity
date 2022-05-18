@@ -173,50 +173,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4320077030260805387, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
   m_PrefabInstance: {fileID: 571689247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &527066404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527066398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d846f6d36db78034f8eefd195f3c025c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameManager: {fileID: 826908173}
---- !u!114 &527066405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527066398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 5
-  _health: 5
-  _destroyOnDeath: 0
-  _isAlive: 1
---- !u!114 &527066406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527066398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc31bb58f608114fa13365d97276a6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 0}
-  _speed: 0
-  _approachDistance: 0
 --- !u!1001 &571689247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +212,10 @@ PrefabInstance:
       propertyPath: _speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6567147681247352119, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 826908173}
     - target: {fileID: 6848169275459675321, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -318,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6848169275459675324, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6848169275459675324, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: m_TagString
