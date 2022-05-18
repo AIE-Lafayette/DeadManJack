@@ -77,7 +77,7 @@ public class PlayerFistBehavior : MonoBehaviour
     private void Start()
     {
         // Sets up the new grapple ability and gives it the player's grab radius.
-        _playerGrapple = GetComponent<GrappleBehavior>();
+        _playerGrapple = GetComponentInChildren<GrappleBehavior>();
 
         _currentPlayerAbility = GetComponent<UseAbilityBehavior>();
     }
