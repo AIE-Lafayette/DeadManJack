@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Ability
 {
     /// <summary>
@@ -12,6 +13,7 @@ public class Ability
     /// <summary>
     /// The visual representation of the ability.
     /// </summary>
+    [SerializeField]
     private GameObject _visualPrefab;
 
     /// <summary>
@@ -20,7 +22,7 @@ public class Ability
     private int _useCounter = 5;
 
     /// <summary>
-    /// The owner of the ability, the one who used it.s
+    /// The owner of the ability, the one who used it.
     /// </summary>
     public GameObject Owner
     {
@@ -40,6 +42,11 @@ public class Ability
     public int UseCounter
     {
         get { return _useCounter; }
+    }
+
+    public Ability()
+    {
+
     }
 
     /// <summary>
