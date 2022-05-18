@@ -11,13 +11,6 @@ public class EnemyBehavior : UseAbilityBehavior
     //The Enemy's target
     private Transform _target;
 
-    private Ability _currentAbility;
-
-    public Ability CurrentAbility
-    {
-        get { return _currentAbility; }
-    }
-
     public Transform Target
     {
         get { return _target; }
@@ -51,7 +44,7 @@ public class EnemyBehavior : UseAbilityBehavior
 
     public void SetCurrentAbility(Ability ability)
     {
-        ability.VisualPrefab = _currentAbility.VisualPrefab;
-        _currentAbility = ability;
+        ability.VisualPrefab = CurrentAbility.VisualPrefab;
+        CurrentAbility = ability;
     }
 }

@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 8692561674462423228, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: _visualPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
     - target: {fileID: 8692561674462423228, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: _currentAbility._visualPrefab
       value: 

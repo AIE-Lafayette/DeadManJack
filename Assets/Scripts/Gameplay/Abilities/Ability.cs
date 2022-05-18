@@ -44,6 +44,11 @@ public class Ability
         get { return _useCounter; }
     }
 
+    public Ability()
+    {
+
+    }
+
     /// <summary>
     /// The effects of the ability.
     /// </summary>
