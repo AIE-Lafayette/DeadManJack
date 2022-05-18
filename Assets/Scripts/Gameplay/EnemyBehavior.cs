@@ -11,14 +11,7 @@ public class EnemyBehavior : UseAbilityBehavior
     //The Enemy's target
     private GameObject _target;
 
-    private Ability _currentAbility;
-
-    public Ability CurrentAbility
-    {
-        get { return _currentAbility; }
-    }
-
-    public GameObject Target
+    public Transform Target
     {
         get { return _target; }
         set { _target = value; }
@@ -58,22 +51,7 @@ public class EnemyBehavior : UseAbilityBehavior
 
     public void SetCurrentAbility(Ability ability)
     {
-        _currentAbility = ability;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name != "Heart")
-            return;
-
-        HealthBehavior health = other.GetComponent<HealthBehavior>();
-
-        if (!health)
-            return;
-
-        health.TakeDamage(1);
-
-        if (GetComponent<HealthBehavior>().DestroyOnDeath)
-            Destroy(gameObject);
+        ability.VisualPrefab = CurrentAbility.VisualPrefab;
+        CurrentAbility = ability;
     }
 }
