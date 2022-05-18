@@ -11,6 +11,12 @@ public class UseAbilityBehavior : MonoBehaviour
     private Ability _currentAbility;
 
     /// <summary>
+    /// The visual representation of the ability.
+    /// </summary>
+    [SerializeField]
+    private GameObject _visualPrefab;
+
+    /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
     public Ability CurrentAbility
@@ -20,12 +26,21 @@ public class UseAbilityBehavior : MonoBehaviour
     }
 
     /// <summary>
+    /// The visual representation of the ability.
+    /// </summary>
+    public GameObject VisualPrefab
+    {
+        get { return _visualPrefab; }
+        set { _visualPrefab = value; }
+    }
+
+    /// <summary>
     /// Activating the effect of the ability.
     /// </summary>
     /// <param name="arguments"> Arguments that need to be passed through to the ability. </param>
     public void ActivateAbility(params object[] arguments)
     {
-        _currentAbility.Activate(arguments);
+        _currentAbility.Activate(VisualPrefab);
     }
 
     private void Update()

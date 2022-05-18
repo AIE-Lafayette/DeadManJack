@@ -32,6 +32,12 @@ public class PlayerFistBehavior : MonoBehaviour
     /// </summary>
     private UseAbilityBehavior _currentPlayerAbility;
 
+    public BulletEmitterBehavior RightFist
+    {
+        get { return _rightFist; }
+        set { _rightFist = value; }
+    }
+
     /// <summary>
     /// The player's current ability.
     /// </summary>

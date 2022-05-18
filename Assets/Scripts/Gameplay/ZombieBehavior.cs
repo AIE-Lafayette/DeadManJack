@@ -25,10 +25,4 @@ public class ZombieBehavior : EnemyBehavior
             transform.LookAt(Target);
         }
     }
-
-    public override void OnBeingGrabbed(PlayerFistBehavior player)
-    {
-        if (!player)
-            return;
-    }
 }

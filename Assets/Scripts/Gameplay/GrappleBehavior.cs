@@ -62,10 +62,12 @@ public class GrappleBehavior : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
+        UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 
         if (enemyAbility)
         {
-            _owner.GetComponent<PlayerFistBehavior>().CurrentPlayerAbility.CurrentAbility = enemyAbility.CurrentAbility;
+            playerAbility.CurrentAbility = enemyAbility.CurrentAbility;
+            playerAbility.CurrentAbility.Owner = _owner;
             Destroy(other.gameObject);
         }
     }

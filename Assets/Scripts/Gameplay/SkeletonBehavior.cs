@@ -52,10 +52,4 @@ public class SkeletonBehavior : EnemyBehavior
         if (!_head)
             Destroy(gameObject);
     }
-
-    public override void OnBeingGrabbed(PlayerFistBehavior player)
-    {
-        if (!player)
-            return;
-    }
 }

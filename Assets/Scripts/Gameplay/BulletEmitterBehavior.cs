@@ -16,6 +16,12 @@ public class BulletEmitterBehavior : MonoBehaviour
         get { return _owner; }
     }
 
+    public BulletBehavior BulletRef
+    {
+        get { return _bulletRef; }
+        set { _bulletRef = value; }
+    }
+
     public virtual void Fire()
     {
         GameObject bullet = Instantiate(_bulletRef.gameObject, transform.position, transform.rotation);

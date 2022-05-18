@@ -51,14 +51,7 @@ public class EnemyBehavior : UseAbilityBehavior
 
     public void SetCurrentAbility(Ability ability)
     {
+        ability.VisualPrefab = _currentAbility.VisualPrefab;
         _currentAbility = ability;
-    }
-
-    /// <summary>
-    /// Determines what happens when the enemy is grabbed by the player.
-    /// </summary>
-    public virtual void OnBeingGrabbed(PlayerFistBehavior player)
-    {
-
     }
 }
