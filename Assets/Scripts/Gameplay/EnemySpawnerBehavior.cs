@@ -6,8 +6,6 @@ public class EnemySpawnerBehavior : MonoBehaviour
 {
     [SerializeField]
     private EnemyBehavior _enemy;
-    [SerializeField]
-    private Transform _enemyTarget;
     private GameManagerBehavior _gameManager;
 
     public void SpawnEnemy()
