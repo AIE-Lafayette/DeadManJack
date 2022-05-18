@@ -46,40 +46,40 @@ public class GameManagerBehavior : MonoBehaviour
 
     private void WaveManager()
     {
-        _waveOver = _waveSize > 0;
-        if(_waveOver)
-        {
-            _waveCount++;
-            GetNextWave();
-            _waveOver = false;
-        }
-
-        //if(_enemySpawnTime <= _spawnTimer)
+        //_waveOver = _waveSize > 0;
+        //if(_waveOver)
         //{
-        //    bool enemyChosen = false;
-        //    while (!enemyChosen)
-        //    {
-        //        int randEnemy = Random.Range(1, 100);
-
-        //        if (randEnemy <= 80)
-        //        {
-        //            _zombieSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //        else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
-        //        {
-        //            _skeltonSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //        else if (randEnemy > 95 && _waveCount >= 4)
-        //        {
-        //            _ghostSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //    }
-        //    _spawnTimer = 0;
-        //    _waveSize--;
+        //    _waveCount++;
+        //    GetNextWave();
+        //    _waveOver = false;
         //}
+
+        if (_enemySpawnTime <= _spawnTimer)
+        {
+            bool enemyChosen = false;
+            while (!enemyChosen)
+            {
+                int randEnemy = Random.Range(1, 100);
+
+                if (randEnemy <= 80)
+                {
+                    _zombieSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                else if (randEnemy > 80)
+                {
+                    _skeltonSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                //else if (randEnemy > 95 && _waveCount >= 4)
+                //{
+                //    _ghostSpawner.SpawnEnemy();
+                //    enemyChosen = true;
+                //}
+            }
+            _spawnTimer = 0;
+            //_waveSize--;
+        }
 
         _spawnTimer += Time.deltaTime;
     }

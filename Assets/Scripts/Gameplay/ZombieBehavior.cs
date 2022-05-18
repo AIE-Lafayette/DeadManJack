@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ZombieBehavior : EnemyBehavior
 {
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         SetCurrentAbility(new ZombieAbility());
     }
 

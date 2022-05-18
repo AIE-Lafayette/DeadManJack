@@ -29,8 +29,15 @@ public class EnemyBehavior : UseAbilityBehavior
         get { return _movement; } 
     }
 
+    public GameManagerBehavior GameManager
+    {
+        get { return _gameManager; }
+        set { _gameManager = value; }
+    }
+
+
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Awake()
     {
         _movement = GetComponent<EnemyMovementBehavior>();
         _target = _gameManager.Goal.transform;

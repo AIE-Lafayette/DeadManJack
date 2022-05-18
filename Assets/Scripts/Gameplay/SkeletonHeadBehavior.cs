@@ -5,15 +5,16 @@ using UnityEngine;
 public class SkeletonHeadBehavior : EnemyBehavior
 {
     [SerializeField]
-    private GameObject _body;
+    private SkeletonBehavior _body;
     private bool _isGrounded = false;
     private HealthBehavior _health;
 
     // Start is called before the first frame update
-    public override void Start()
+    public override void Awake()
     {
         _health = GetComponent<HealthBehavior>();
-        base.Start();
+        GameManager = _body.GameManager;
+        base.Awake();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
 
         if(!_health.IsAlive)
         {
-            Destroy(_body);
+            Destroy(_body.gameObject);
         }
     }
 
