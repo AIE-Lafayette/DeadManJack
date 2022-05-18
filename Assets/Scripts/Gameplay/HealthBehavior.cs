@@ -23,6 +23,11 @@ public class HealthBehavior : MonoBehaviour
         get { return _isAlive; }
     }
 
+    public bool DestroyOnDeath
+    {
+        get { return _destroyOnDeath; }
+    }
+
     private void Awake()
     {
         _health = _maxHealth;

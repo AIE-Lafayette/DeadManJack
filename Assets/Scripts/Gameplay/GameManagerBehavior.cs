@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManagerBehavior : MonoBehaviour
     private GameObject _player;
     [SerializeField]
     private GameObject _goal;
+    [SerializeField]
+    private GameObject _LoseUI;
 
     private int _waveCount = 0;
     private int _enemyCount = 0;
@@ -42,44 +45,49 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         WaveManager();
+
+        if(Goal.GetComponent<HealthBehavior>().IsAlive == false)
+        {
+            _LoseUI.SetActive(true);
+        }
     }
 
     private void WaveManager()
     {
-        _waveOver = _waveSize > 0;
-        if(_waveOver)
-        {
-            _waveCount++;
-            GetNextWave();
-            _waveOver = false;
-        }
-
-        //if(_enemySpawnTime <= _spawnTimer)
+        //_waveOver = _waveSize > 0;
+        //if(_waveOver)
         //{
-        //    bool enemyChosen = false;
-        //    while (!enemyChosen)
-        //    {
-        //        int randEnemy = Random.Range(1, 100);
-
-        //        if (randEnemy <= 80)
-        //        {
-        //            _zombieSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //        else if ((randEnemy > 80 && randEnemy <= 95) && _waveCount >= 2)
-        //        {
-        //            _skeltonSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //        else if (randEnemy > 95 && _waveCount >= 4)
-        //        {
-        //            _ghostSpawner.SpawnEnemy();
-        //            enemyChosen = true;
-        //        }
-        //    }
-        //    _spawnTimer = 0;
-        //    _waveSize--;
+        //    _waveCount++;
+        //    GetNextWave();
+        //    _waveOver = false;
         //}
+
+        if (_enemySpawnTime <= _spawnTimer)
+        {
+            bool enemyChosen = false;
+            while (!enemyChosen)
+            {
+                int randEnemy = Random.Range(1, 100);
+
+                if (randEnemy <= 80)
+                {
+                    _zombieSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                else if (randEnemy > 80)
+                {
+                    _skeltonSpawner.SpawnEnemy();
+                    enemyChosen = true;
+                }
+                //else if (randEnemy > 95 && _waveCount >= 4)
+                //{
+                //    _ghostSpawner.SpawnEnemy();
+                //    enemyChosen = true;
+                //}
+            }
+            _spawnTimer = 0;
+            //_waveSize--;
+        }
 
         _spawnTimer += Time.deltaTime;
     }
@@ -88,5 +96,15 @@ public class GameManagerBehavior : MonoBehaviour
     {
         _waveCooldown = 0;
         _waveSize = 15 + (6 * _waveCount);
+    }
+
+    public void RetartScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

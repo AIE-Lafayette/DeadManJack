@@ -12,10 +12,10 @@ public class SkeletonBehavior : EnemyBehavior
 
     private HealthBehavior _health;
 
-    public override void Start()
+    public override void Awake()
     {
         _health = GetComponent<HealthBehavior>();
-        base.Start();
+        base.Awake();
     }
 
     public override void Update()
@@ -23,7 +23,7 @@ public class SkeletonBehavior : EnemyBehavior
         if(_health.IsAlive)
         {
             //The distance of the enemy and the targets z-axis
-            float distanceFromTarget = transform.position.z - Target.position.z;
+            float distanceFromTarget = transform.position.z - Target.transform.position.z;
 
             //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
             if (distanceFromTarget > Movement.ApproachDistance)
@@ -31,7 +31,7 @@ public class SkeletonBehavior : EnemyBehavior
             else
             {
                 Movement.Velocity = Vector3.zero;
-                transform.LookAt(Target);
+                transform.LookAt(Target.transform);
             }
         }
         else
@@ -49,6 +49,7 @@ public class SkeletonBehavior : EnemyBehavior
                 _headSpawned = true;
             }
         }
+
         if (!_head)
             Destroy(gameObject);
     }

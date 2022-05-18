@@ -30,9 +30,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "QuitGame",
+                    "name": "QuitApplication",
                     "type": "Button",
-                    "id": "a7940dd4-7e65-40d6-8769-f7f3d961b5b8",
+                    "id": "4a790979-f317-46cb-b671-408d05646d09",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -96,12 +96,12 @@
                 },
                 {
                     "name": "",
-                    "id": "d56c93be-b837-443f-b09d-ba7edb7248bb",
+                    "id": "b7c93395-3124-41bf-afd8-0265c0a4d379",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "QuitGame",
+                    "action": "QuitApplication",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -270,18 +270,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5537291215637718039, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 836187343}
-    - target: {fileID: 6393414421274027739, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
-      propertyPath: _speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6393414421274027739, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
-      propertyPath: _approachDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8288289106201644954, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
       propertyPath: m_Name
       value: Zombie
@@ -290,16 +278,7 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1531769184}
-    - target: {fileID: 8692561674462423228, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
-      propertyPath: _visualPrefab
-      value: 
-      objectReference: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
-    - target: {fileID: 8692561674462423228, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
-      propertyPath: _currentAbility._visualPrefab
-      value: 
-      objectReference: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
-    m_RemovedComponents:
-    - {fileID: 5537291215637718039, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dc5ad2b047a5664e87567d5f2936c99, type: 3}
 --- !u!1 &836187338
 GameObject:
@@ -553,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1569510974}
   _goal: {fileID: 836187338}
+  _LoseUI: {fileID: 0}
   _enemySpawnTime: 5
   _zombieSpawner: {fileID: 0}
   _skeltonSpawner: {fileID: 0}
