@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
+  _maxHealth: 5
   _health: 5
   _destroyOnDeath: 0
   _isAlive: 1
@@ -184,6 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b15aa5598ea5648a9e38a4df938808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentAbility:
+    _visualPrefab: {fileID: 0}
+  _visualPrefab: {fileID: 0}
 --- !u!1 &6361416811500775986
 GameObject:
   m_ObjectHideFlags: 0
