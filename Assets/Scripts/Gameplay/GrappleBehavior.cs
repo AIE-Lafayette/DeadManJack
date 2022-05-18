@@ -5,18 +5,40 @@ using UnityEngine;
 public class GrappleBehavior : MonoBehaviour
 {
     /// <summary>
-    /// The area where the player will be able to grab.
+    /// The actor who has the ability to grab.
     /// </summary>
     [SerializeField]
-    private GameObject _grabRadius;
+    private GameObject _owner;
 
     /// <summary>
-    /// The area where the player will be able to grab.
+    /// The collider of the grab.
     /// </summary>
-    public GameObject GrabRadius
+    private SphereCollider _sphereCollider;
+
+    /// <summary>
+    /// The mesh of the grab.
+    /// </summary>
+    private MeshRenderer _meshRenderer;
+
+    /// <summary>
+    /// Disables the collider and mesh renderer if they are enabled and enables them otherwise.
+    /// </summary>
+    private void ToggleGrab()
     {
-        get { return _grabRadius; }
-        set { _grabRadius = value; }
+        // If both are disabled...
+        if (_sphereCollider.enabled == false && _meshRenderer.enabled == false)
+        {
+            // ...enable both of them.
+            _sphereCollider.enabled = true;
+            _meshRenderer.enabled = true;
+        }
+        // If they are both enabled...
+        else
+        {
+            // ...disable them both.
+            _sphereCollider.enabled = false;
+            _meshRenderer.enabled = false;
+        }
     }
 
     /// <summary>
@@ -26,9 +48,15 @@ public class GrappleBehavior : MonoBehaviour
     {
         // Creates an instance of the Routine Behavior or copies the instance of it.
         RoutineBehavior routineBehavior = RoutineBehavior.Instance;
-        _grabRadius.SetActive(true);
+        ToggleGrab();
         // Attempts to set up a timed action where the grab radius will be set back to inactive.
-       routineBehavior.StartNewTimedAction(arguments => _grabRadius.SetActive(false), TimedActionCountType.SCALEDTIME, 0.5f);
+       routineBehavior.StartNewTimedAction(arguments => ToggleGrab(), TimedActionCountType.SCALEDTIME, 0.5f);
+    }
+
+    private void Start()
+    {
+        _sphereCollider = GetComponent<SphereCollider>();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +65,7 @@ public class GrappleBehavior : MonoBehaviour
 
         if (enemyAbility)
         {
-            GetComponent<PlayerFistBehavior>().CurrentPlayerAbility.CurrentAbility = enemyAbility.CurrentAbility;
+            _owner.GetComponent<PlayerFistBehavior>().CurrentPlayerAbility.CurrentAbility = enemyAbility.CurrentAbility;
             Destroy(other.gameObject);
         }
     }
