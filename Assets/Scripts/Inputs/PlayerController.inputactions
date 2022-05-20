@@ -1,0 +1,112 @@
+{
+    "name": "PlayerController",
+    "maps": [
+        {
+            "name": "DeadManJack",
+            "id": "212b7528-9ce1-4d37-88e1-50ed03b2d8b9",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "8b438d69-fb91-4850-ac12-be37f6c42a37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "c026db93-0dcb-4dda-aa07-6e35af0cd701",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChargeAbility",
+                    "type": "Button",
+                    "id": "93d2dd82-8136-402f-ad16-7c1d7325c2ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "QuitApplication",
+                    "type": "Button",
+                    "id": "4a790979-f317-46cb-b671-408d05646d09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "AD Movement",
+                    "id": "1095977c-0504-48e7-b788-1702c63b132b",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "Clamp(min=-5,max=5)",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "e6072d59-ed79-4752-87c7-e1fea5e18b97",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9f77372e-e0be-42cc-b59b-8cc9e97e325f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "106af624-a710-4344-b7f8-4f5bf877cf56",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8dbbb084-423f-4a00-87e0-03e690c64f71",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChargeAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7c93395-3124-41bf-afd8-0265c0a4d379",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitApplication",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

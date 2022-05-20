@@ -4,54 +4,33 @@ using UnityEngine;
 
 public class PlayerMovementBehavior : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed;
     private Rigidbody _rigidbody;
-    private Vector3 _moveDirection;
-    private Vector3 _rotationDirection;
+    private Vector3 _velocity;
     [SerializeField]
-    private float _maxDistance;
-
-    public Vector3 MoveDirection
-    {
-        get { return _moveDirection; }
-        set { _moveDirection = value; }
-    }
-
-    public Vector3 RotationDirection
-    {
-        get { return _rotationDirection; }
-        set { _rotationDirection = value; }
-    }
+    private float _moveSpeed = 1;
 
     // Start is called before the first frame update
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _maxDistance += transform.position.z;
+    }
+
+    public void Move(Vector3 direction)
+    {
+        _velocity = direction * _moveSpeed * Time.deltaTime;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Moves the Player
-        Vector3 velocity = MoveDirection * _speed * Time.fixedDeltaTime;
-
-        RotationDirection = velocity.normalized;
-        velocity += transform.position;
-
-        //If the object's new position would be within the bound...
-        if (velocity.z < _maxDistance)
+        _rigidbody.MovePosition(transform.position + _velocity);
+        if(transform.position.x > 5)
         {
-            //...Translate the object
-            transform.Translate(MoveDirection * _speed * Time.fixedDeltaTime);
+            transform.position = new Vector3(5, transform.position.y, transform.position.z);
         }
-
-            //If the object would go beyond the bounds...
-        else if (velocity.z < _maxDistance)
+        if (transform.position.x < -5)
         {
-            //Set the objects x to be the minimum distance
-            transform.position = new Vector3(transform.position.x, transform.position.y, _maxDistance);
+            transform.position = new Vector3(-5, transform.position.y, transform.position.z);
         }
     }
 }

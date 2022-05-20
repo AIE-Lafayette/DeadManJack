@@ -45,14 +45,19 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(OwnerTag))
+        if (other.gameObject == null)
             return;
 
         HealthBehavior otherHealth = other.GetComponent<HealthBehavior>();
         if (!otherHealth)
             return;
 
-        if (other.name != "Ghost")
+        if (!otherHealth.IsAlive)
+            return;
+
+        if (other.CompareTag(OwnerTag))
+            return;
+
             otherHealth.TakeDamage(_damage);
 
         if (_destroyOnHit)
