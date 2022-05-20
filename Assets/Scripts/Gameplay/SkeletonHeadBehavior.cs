@@ -15,6 +15,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
         _health = GetComponent<HealthBehavior>();
         GameManager = _body.GameManager;
         base.Awake();
+        SetCurrentAbility(new BonemerangAbility());
     }
 
     // Update is called once per frame
