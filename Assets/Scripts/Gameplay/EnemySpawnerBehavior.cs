@@ -8,6 +8,12 @@ public class EnemySpawnerBehavior : MonoBehaviour
     private EnemyBehavior _enemy;
     private GameManagerBehavior _gameManager;
 
+    public GameManagerBehavior GameManager
+    {
+        get { return _gameManager; }
+        set { _gameManager = value; }
+    }
+
     public void SpawnEnemy()
     {
         float randX = Random.Range(-5000, 5000);

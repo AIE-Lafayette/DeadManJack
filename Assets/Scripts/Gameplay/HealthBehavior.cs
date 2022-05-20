@@ -68,6 +68,11 @@ public class HealthBehavior : MonoBehaviour
     {
         _isAlive = false;
 
+        EnemyBehavior enemy = GetComponent<EnemyBehavior>();
+        
+        if (enemy)
+            enemy.GameManager.EnemyCount--;
+
         //If the object should be destroyed on death, destroy the game object
         if (_destroyOnDeath)
             Destroy(gameObject);
