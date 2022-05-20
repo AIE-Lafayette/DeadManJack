@@ -29,6 +29,10 @@ public class BonemerangBehavior : BulletBehavior
         if (_startingPosition.z + transform.position.z >= _distance)
             _movingToOwner = true;
 
+        // Clamps the y position.
+        if (transform.position.y != _startingPosition.y)
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, _startingPosition.y, transform.position.z), transform.rotation);
+
         if (_movingToOwner)
         {
             Rigidbody.AddForce((Owner.transform.position - transform.position).normalized * 5, ForceMode.Impulse);
