@@ -86,5 +86,8 @@ public class PlayerFistBehavior : MonoBehaviour
         _playerGrapple = GetComponentInChildren<GrappleBehavior>();
 
         _currentPlayerAbility = GetComponent<UseAbilityBehavior>();
+
+        // Sets the current ability to null so that the player can use the grab immediately.
+        _currentPlayerAbility.CurrentAbility = null;
     }
 }

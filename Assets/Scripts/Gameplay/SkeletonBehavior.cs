@@ -16,6 +16,7 @@ public class SkeletonBehavior : EnemyBehavior
     {
         _health = GetComponent<HealthBehavior>();
         base.Awake();
+        SetCurrentAbility(new BonemerangAbility());
     }
 
     public override void Update()

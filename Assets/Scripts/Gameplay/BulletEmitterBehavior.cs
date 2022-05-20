@@ -26,7 +26,8 @@ public class BulletEmitterBehavior : MonoBehaviour
     {
         GameObject bullet = Instantiate(_bulletRef.gameObject, transform.position, transform.rotation);
         BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
-        bulletBehavior.OwnerTag = _owner.tag;
+        bulletBehavior.Owner = _owner;
+        bulletBehavior.OwnerTag = _owner.tag;     
         bulletBehavior.Rigidbody.AddForce(transform.forward * _bulletForce, ForceMode.Impulse);
     }
 }
