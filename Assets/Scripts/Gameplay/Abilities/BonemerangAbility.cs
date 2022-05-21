@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class BonemerangAbility : Ability
 {
+    public void MoveToOwner()
+    {
+        Rigidbody bonemerang = VisualPrefab.GetComponent<Rigidbody>();
+
+        if (bonemerang)
+            bonemerang.AddForce((Owner.transform.position + VisualPrefab.transform.position).normalized * 5, ForceMode.Impulse);  
+    }
+
     public override void Activate(params object[] arguments)
     {
+        RoutineBehavior instance = RoutineBehavior.Instance;
+
+        instance.StartNewTimedAction(arguments => MoveToOwner(), TimedActionCountType.SCALEDTIME, 3f);
+
         // Gets the owner's fist behavior.
         PlayerFistBehavior playerFist = Owner.GetComponent<PlayerFistBehavior>();
         // Gets the owner's current bullet.
