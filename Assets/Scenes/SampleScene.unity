@@ -1571,11 +1571,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Wave Count:
 
-    Zombies Left:
-
-    Skeletons Left:
-
-    Ghost Left'
+    Enemies Left:'
 --- !u!222 &1067582005
 CanvasRenderer:
   m_ObjectHideFlags: 0
