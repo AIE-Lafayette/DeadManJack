@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private Rigidbody _rigidbody;
+    private GameObject _owner;
     private string _ownerTag;
     [SerializeField]
     private float _lifeTime;
@@ -13,6 +14,12 @@ public class BulletBehavior : MonoBehaviour
     private float _damage;
     [SerializeField]
     private bool _destroyOnHit;
+
+    public GameObject Owner
+    {
+        get { return _owner; }
+        set { _owner = value; }
+    }
 
     public string OwnerTag
     { 
@@ -45,21 +52,26 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(OwnerTag))
+        if (other.gameObject == null)
             return;
 
         HealthBehavior otherHealth = other.GetComponent<HealthBehavior>();
         if (!otherHealth)
             return;
 
-        if (other.name != "Ghost")
+        if (!otherHealth.IsAlive)
+            return;
+
+        if (other.CompareTag(OwnerTag))
+            return;
+
             otherHealth.TakeDamage(_damage);
 
         if (_destroyOnHit)
             Destroy(gameObject);
     }
 
-    private void Update()
+    public void Update()
     {
         _currentLifeTime += Time.deltaTime;
 

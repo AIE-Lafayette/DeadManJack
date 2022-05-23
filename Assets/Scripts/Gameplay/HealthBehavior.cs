@@ -10,7 +10,8 @@ public class HealthBehavior : MonoBehaviour
     private float _health;
     [SerializeField]
     private bool _destroyOnDeath;
-    private bool _isAlive;
+    [SerializeField]
+    private bool _isAlive = true;
 
     public float Health
     {
@@ -22,10 +23,20 @@ public class HealthBehavior : MonoBehaviour
         get { return _isAlive; }
     }
 
+    public bool DestroyOnDeath
+    {
+        get { return _destroyOnDeath; }
+    }
+
+    private void Awake()
+    {
+        _health = _maxHealth;
+    }
+
     private void Update()
     {
         //If the object is still alive, but has less than zero health, call the on Death function
-        if (_health >= 0 && IsAlive)
+        if (_health <= 0 && IsAlive)
             OnDeath();
     }
 
@@ -56,6 +67,11 @@ public class HealthBehavior : MonoBehaviour
     private void OnDeath()
     {
         _isAlive = false;
+
+        EnemyBehavior enemy = GetComponent<EnemyBehavior>();
+        
+        if (enemy)
+            enemy.GameManager.EnemyCount--;
 
         //If the object should be destroyed on death, destroy the game object
         if (_destroyOnDeath)
