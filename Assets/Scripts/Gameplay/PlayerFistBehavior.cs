@@ -27,6 +27,8 @@ public class PlayerFistBehavior : MonoBehaviour
     /// </summary>
     private bool _currentFistRight = true;
 
+    private bool _canShoot = true;
+
     /// <summary>
     /// The player's current ability.
     /// </summary>
@@ -51,24 +53,36 @@ public class PlayerFistBehavior : MonoBehaviour
         get { return _playerGrapple; }
     }
 
+    public void ToggleShoot()
+    {
+        if (_canShoot)
+            _canShoot = false;
+        else
+            _canShoot = true;
+    }
+
     /// <summary>
     /// The ability for the player to throw hands at enemies. Swaps which hand after firing a projectile.
     /// </summary>
     public void Punch(InputAction.CallbackContext context)
     {
         // If the current fist is the right one...
-        if (_currentFistRight)
+        if (_currentFistRight && _canShoot)
         {
             // ...shoot and swap to the left.
             _rightFist.Fire();
             _currentFistRight = false;
+            ToggleShoot();
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.75f);
         }
         // If the current fist is the left one...
-        else
+        else if (_canShoot)
         {
             // ...shoot and swap to the right.
             _leftFist.Fire();
             _currentFistRight = true;
+            ToggleShoot();
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.75f);
         }
     }
 
@@ -76,8 +90,13 @@ public class PlayerFistBehavior : MonoBehaviour
     {
         if (CurrentPlayerAbility.CurrentAbility == null)
             PlayerGrapple.Activate();
-        else
+        else if (CurrentPlayerAbility.CurrentAbility != null && _canShoot)
+        {
             CurrentPlayerAbility.CurrentAbility.Activate();
+            ToggleShoot();
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.75f);
+        }
+            
     }
 
     private void Start()

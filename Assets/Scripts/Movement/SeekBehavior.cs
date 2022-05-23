@@ -43,7 +43,7 @@ public class SeekBehavior : MonoBehaviour
 
         Vector3 directionToTarget = _target.position - transform.position;
 
-        Vector3 desiredVelocity = directionToTarget.normalized * 20;
+        Vector3 desiredVelocity = directionToTarget.normalized * 5;
 
         _rigidbody.AddForce(desiredVelocity, ForceMode.Acceleration);
     }

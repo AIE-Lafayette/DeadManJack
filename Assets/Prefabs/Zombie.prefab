@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3
-  _health: 3
+  _maxHealth: 2
+  _health: 2
   _destroyOnDeath: 1
   _isAlive: 1
 --- !u!114 &6393414421274027739
@@ -175,5 +175,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentAbility:
     _visualPrefab: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
-  _visualPrefab: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
   _gameManager: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
