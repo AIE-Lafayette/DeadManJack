@@ -69,6 +69,7 @@ public class GrappleBehavior : MonoBehaviour
             playerAbility.CurrentAbility = enemyAbility.CurrentAbility;
             playerAbility.CurrentAbility.Owner = _owner;
             Destroy(other.gameObject);
+            GameManagerBehavior.EnemyCount--;
         }
     }
 }

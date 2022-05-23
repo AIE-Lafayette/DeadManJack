@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GhostBehavior : EnemyBehavior
 {
-    
     public override void Awake()
     {
         base.Awake();

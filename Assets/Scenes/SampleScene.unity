@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 1144726957}
   - component: {fileID: 1144726956}
   m_Layer: 0
-  m_Name: ZombieEnemySpawner
+  m_Name: Enemy Spawner (Zombie)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1834,7 +1834,7 @@ GameObject:
   - component: {fileID: 1197911249}
   - component: {fileID: 1197911248}
   m_Layer: 0
-  m_Name: SkeletonEnemySpawner
+  m_Name: Enemy Spawner (Skeleton)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
