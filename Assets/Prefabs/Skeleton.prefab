@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6567147681247352119}
   - component: {fileID: 9108118504583821654}
   - component: {fileID: 782652079751385997}
+  - component: {fileID: 679452642207526555}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Enemy
@@ -224,8 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentAbility:
-    _visualPrefab: {fileID: 0}
-  _visualPrefab: {fileID: 0}
+    _visualPrefab: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
   _gameManager: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
   _body: {fileID: 2715803361549244517}
 --- !u!114 &9108118504583821654
@@ -259,6 +259,20 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _approachDistance: 2
+--- !u!114 &679452642207526555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4320077030260805387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b15aa5598ea5648a9e38a4df938808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAbility:
+    _visualPrefab: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
 --- !u!1 &6848169275459675324
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentAbility:
-    _visualPrefab: {fileID: 0}
-  _visualPrefab: {fileID: 0}
+    _visualPrefab: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
   _gameManager: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
   _head: {fileID: 4320077030260805387}
   _body: {fileID: 6675287327125302515}
@@ -366,7 +379,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848169275459675324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2394d53d6f661a640b7fba0946086250, type: 3}
   m_Name: 

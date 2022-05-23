@@ -11,12 +11,6 @@ public class UseAbilityBehavior : MonoBehaviour
     private Ability _currentAbility;
 
     /// <summary>
-    /// The visual representation of the ability.
-    /// </summary>
-    [SerializeField]
-    private GameObject _visualPrefab;
-
-    /// <summary>
     /// The current ability of the actor with this behavior.
     /// </summary>
     public Ability CurrentAbility
@@ -30,8 +24,7 @@ public class UseAbilityBehavior : MonoBehaviour
     /// </summary>
     public GameObject VisualPrefab
     {
-        get { return _visualPrefab; }
-        set { _visualPrefab = value; }
+        get { return _currentAbility.VisualPrefab; }
     }
 
     /// <summary>
