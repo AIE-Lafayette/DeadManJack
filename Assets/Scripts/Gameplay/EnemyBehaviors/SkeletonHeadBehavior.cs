@@ -13,7 +13,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
     public override void Awake()
     {
         _health = GetComponent<HealthBehavior>();
-        GameManager = _body.GameManager;
+        Target = _body.Target;
         base.Awake();
         SetCurrentAbility(new BonemerangAbility());
     }
