@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyBehavior : UseAbilityBehavior
 {
-    [SerializeField]
-    private GameManagerBehavior _gameManager;
     private EnemyMovementBehavior _movement;
 
     //The Enemy's target
