@@ -43,7 +43,7 @@ public class GrappleBehavior : MonoBehaviour
         }
     }
 
-    public void ToggleGrapple()
+    public void ToggleCanGrapple()
     {
         if (_isGrabbing)
             _isGrabbing = false;
@@ -81,7 +81,7 @@ public class GrappleBehavior : MonoBehaviour
             Destroy(other.gameObject);
             GameManagerBehavior.EnemyCount--;
             _isGrabbing = true;
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleGrapple(), TimedActionCountType.SCALEDTIME, 0.75f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.75f);
         }
     }
 }
