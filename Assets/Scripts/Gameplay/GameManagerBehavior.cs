@@ -48,7 +48,7 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WaveManager();
+        //WaveManager();
 
         if(Goal.GetComponent<HealthBehavior>().IsAlive == false)
         {
