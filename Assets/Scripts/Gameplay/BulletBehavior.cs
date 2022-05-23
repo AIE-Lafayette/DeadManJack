@@ -45,7 +45,7 @@ public class BulletBehavior : MonoBehaviour
     }
     
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
