@@ -18,6 +18,7 @@ public class EnemyBehavior : UseAbilityBehavior
     public EnemyMovementBehavior Movement
     { 
         get { return _movement; } 
+        set { _movement = value; }
     }
 
     // Start is called before the first frame update
