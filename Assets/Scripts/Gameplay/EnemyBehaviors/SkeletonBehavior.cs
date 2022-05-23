@@ -17,6 +17,7 @@ public class SkeletonBehavior : EnemyBehavior
         _health = GetComponent<HealthBehavior>();
         base.Awake();
         SetCurrentAbility(new BonemerangAbility());
+
     }
 
     public override void Update()
@@ -45,7 +46,7 @@ public class SkeletonBehavior : EnemyBehavior
             if(!_headSpawned)
             {
                 _head.GetComponent<Rigidbody>().isKinematic = false;
-                _head.GetComponent<EnemyMovementBehavior>().Speed = Movement.Speed;
+                _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
                 _head.transform.SetParent(transform);
                 _headSpawned = true;
             }
