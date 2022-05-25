@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
         m_TargetAssemblyTypeName: GameManagerBehavior, Assembly-CSharp
         m_MethodName: RetartScene
         m_Mode: 1
