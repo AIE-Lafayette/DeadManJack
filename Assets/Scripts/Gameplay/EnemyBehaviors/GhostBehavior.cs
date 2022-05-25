@@ -14,7 +14,6 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Awake()
     {
-        base.Awake();
         //SetCurrentAbility(new GhostAbility());
         _teleportTime = Random.Range(5, 15);
     }
@@ -22,11 +21,7 @@ public class GhostBehavior : EnemyBehavior
     private void Update()
     {
         Target = GameManagerBehavior.Player;
-        if(transform.position.x <= -5)
-            Movement.Velocity = new Vector3(1, 0, 0);
-        if(transform.position.x >= 5)
-            Movement.Velocity = new Vector3(-1, 0, 0);
-        Movement.Velocity = Movement.Velocity.normalized;
+        transform.position = Vector3.Lerp(new Vector3(-5,0,0), new Vector3(5, 0, 0), Mathf.Sin(Time.time));
 
         if(_teleportTimer > _teleportTime)
         {
