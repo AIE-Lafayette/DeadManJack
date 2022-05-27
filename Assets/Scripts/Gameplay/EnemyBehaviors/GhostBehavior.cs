@@ -14,7 +14,7 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Awake()
     {
-        //SetCurrentAbility(new GhostAbility());
+        SetCurrentAbility(new FireProjectileAbility());
         _teleportTime = Random.Range(5, 15);
     }
 

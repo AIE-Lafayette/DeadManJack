@@ -38,6 +38,7 @@ public class SpectreShotBehavior : BulletBehavior
 
         // Sets the residue that remains after the shot active, and puts a timer for it to dissipate.
         _spectralResidue.SetActive(true);
+        Rigidbody.velocity = new Vector3(0, 0, 0);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Dissipate(), TimedActionCountType.SCALEDTIME, 4f);
     }
 
