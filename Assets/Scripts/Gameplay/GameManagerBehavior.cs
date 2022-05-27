@@ -71,7 +71,7 @@ public class GameManagerBehavior : MonoBehaviour
         _gameplayUI.text = "Wave " + _waveCount
                          + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if (_goal.GetComponent<HealthBehavior>().IsAlive == false)
+        if(_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
             _LoseUI.SetActive(true);
         }

@@ -49,10 +49,13 @@ public class EnemyBehavior : UseAbilityBehavior
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name != "Heart")
+        if(!other.CompareTag("Player"))
             return;
 
-        other.GetComponent<HealthBehavior>().TakeDamage(1);
-        Destroy(gameObject);
+        else if (other.name == "Lose Zone")
+            other.transform.parent.GetComponent<HealthBehavior>().TakeDamage(1);
+
+        else if(other.name == "Heart")
+            Destroy(gameObject);
     }
 }
