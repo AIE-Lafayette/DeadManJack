@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1382001204111976663}
-  - component: {fileID: 1001796223828366862}
   - component: {fileID: 7431109059096427036}
   - component: {fileID: 4386736531822968200}
+  - component: {fileID: 3239574968153858227}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -35,23 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1001796223828366862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150142770133784269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fd9f1ec800ff748a1e93806d76877d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 0}
-  _target: {fileID: 0}
-  _speed: 5
-  _leftBoundry: 5
-  _rightBoundry: 5
 --- !u!136 &7431109059096427036
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,9 +61,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51ea99c9af940c4f9f855109f922499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 0
   _health: 1
-  _isAlive: 0
   _destroyOnDeath: 1
+  _isAlive: 0
+--- !u!114 &3239574968153858227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150142770133784269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451e240fe574dc04a975d16219082eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAbility:
+    _visualPrefab: {fileID: 8730224610246480605, guid: 727e0702898e8eb4d8b84714e4d9845f, type: 3}
 --- !u!1 &7249261853533286370
 GameObject:
   m_ObjectHideFlags: 0
