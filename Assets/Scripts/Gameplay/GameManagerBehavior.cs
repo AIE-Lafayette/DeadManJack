@@ -67,11 +67,11 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //WaveManager();
-        //_gameplayUI.text = "Wave " + _waveCount
-        //                 + "\nEnemies Left: " + (_waveSize + _enemyCount);
+        WaveManager();
+        _gameplayUI.text = "Wave " + _waveCount
+                         + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if(_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
+        if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
             _LoseUI.SetActive(true);
         }

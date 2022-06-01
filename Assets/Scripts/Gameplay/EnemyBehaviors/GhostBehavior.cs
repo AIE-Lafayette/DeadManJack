@@ -10,7 +10,7 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Awake()
     {
-        //SetCurrentAbility(new GhostAbility());
+        //SetCurrentAbility(new FireProjectileAbility());
         _teleportTime = Random.Range(50, 150);
         _teleportTime /= 10;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Vanish(), TimedActionCountType.SCALEDTIME, _teleportTime);
