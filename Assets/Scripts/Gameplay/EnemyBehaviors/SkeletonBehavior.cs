@@ -32,8 +32,7 @@ public class SkeletonBehavior : EnemyBehavior
                 Movement.Velocity = new Vector3(0, 0, -1);
             else
             {
-                Movement.Velocity = Vector3.zero;
-                transform.LookAt(Target.transform);
+                _health.TakeDamage(99);
             }
         }
         else
