@@ -11,9 +11,7 @@ public class GhostBehavior : EnemyBehavior
     public override void Awake()
     {
         //SetCurrentAbility(new GhostAbility());
-        _teleportTime = Random.Range(50, 150);
-        _teleportTime /= 10;
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => Vanish(), TimedActionCountType.SCALEDTIME, _teleportTime);
+        PrepareNextAttack();
     }
 
     private void Update()
@@ -32,12 +30,15 @@ public class GhostBehavior : EnemyBehavior
             else if(transform.position.x <= -5)
                 _isGoingLeft = false;
         }
+
+        if(!GetComponent<HealthBehavior>().IsAlive)
+            RoutineBehavior.Instance.StopAllTimedActions();
     }
 
     private void Vanish()
     {
         transform.GetChild(0).gameObject.SetActive(false);
-        
+        _isAttacking = true;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
     }
 
@@ -45,18 +46,35 @@ public class GhostBehavior : EnemyBehavior
     {
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
-        _isAttacking = true;
 
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(true) , TimedActionCountType.SCALEDTIME, 0.25f);
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(false) , TimedActionCountType.SCALEDTIME, 0.5f);
+        if(transform.GetChild(1))
+        {
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.SCALEDTIME, 0.5f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(false), TimedActionCountType.SCALEDTIME, 0.6f);
+        }
         RoutineBehavior.Instance.StartNewTimedAction(arguments => PrepareNextAttack(), TimedActionCountType.SCALEDTIME, 1);
     }
 
     private void PrepareNextAttack()
     {
         _isAttacking = false;
-        _teleportTime = Random.Range(5, 15);
+
+        _teleportTime = Random.Range(50, 150);
         _teleportTime /= 10;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Vanish(), TimedActionCountType.SCALEDTIME, _teleportTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        PlayerMovementBehavior player = other.GetComponent<PlayerMovementBehavior>();
+
+        if(player)
+        {
+            player.IsStunned = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.50f);
+        }
     }
 }

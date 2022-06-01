@@ -15,8 +15,11 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _LoseUI;
     [SerializeField]
+    private GameObject _winUI;
+    [SerializeField]
     private Text _gameplayUI;
 
+    [SerializeField]
     private int _waveCount = 0;
     private static int _enemyCount = 0;
     private int _waveSize = 0;
@@ -73,14 +76,22 @@ public class GameManagerBehavior : MonoBehaviour
 
         if(_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
+            Time.timeScale = 0;
             _LoseUI.SetActive(true);
         }
+        if(_waveCount > 5)
+        {
+            _winUI.SetActive(true);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => _winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
+        }
+
+
     }
 
     private void WaveManager()
     {
         _waveOver = _waveSize + _enemyCount <= 0;
-        if (_waveOver)
+        if (_waveOver && _waveCount <= 5)
         {
             _waveCount++;
             GetNextWave();
@@ -94,9 +105,9 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 95 && _waveCount >= 4)
+                if (randEnemy > 95)
                 {
-                    if (_ghostSpawnWeight > 0 || _skeletonSpawnWeight + _zombieSpawnWeight <= 0)
+                    if (_ghostSpawnWeight > 0)
                     {
                         _ghostSpawner.SpawnEnemy();
                         enemyChosen = true;
@@ -104,7 +115,7 @@ public class GameManagerBehavior : MonoBehaviour
                             _ghostSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 80 && _waveCount >= 2)
+                else if (randEnemy > 80)
                 {
                     if(_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {
@@ -142,7 +153,9 @@ public class GameManagerBehavior : MonoBehaviour
                 _waveCount++;
                 break;
             case 1:
-                _waveSize = 15;
+                _waveSize = 12;
+                _zombieSpawnWeight = 11;
+                _ghostSpawnWeight = 1;
                 _waveCooldown = 5;
                 _enemySpawnTime = 3;
                 break;
@@ -152,6 +165,28 @@ public class GameManagerBehavior : MonoBehaviour
                 _skeletonSpawnWeight = 3;
                 _waveCooldown = 7.5f;
                 _enemySpawnTime = 2.75f;
+                break;
+            case 3:
+                _waveSize = 35;
+                _zombieSpawnWeight = 20;
+                _skeletonSpawnWeight = 12;
+                _waveCooldown = 7.5f;
+                _enemySpawnTime = 2.5f;
+                break;
+            case 4:
+                _waveSize = 40;
+                _zombieSpawnWeight = 17;
+                _skeletonSpawnWeight = 15;
+                _waveCooldown = 7.5f;
+                _enemySpawnTime = 2.5f;
+                break;
+            case 5:
+                _waveSize = 50;
+                _zombieSpawnWeight = 27;
+                _skeletonSpawnWeight = 15;
+                _ghostSpawnWeight = 1;
+                _waveCooldown = 7.5f;
+                _enemySpawnTime = 2.5f;
                 break;
             default:
                 break;
