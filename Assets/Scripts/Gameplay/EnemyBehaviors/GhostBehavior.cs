@@ -47,8 +47,11 @@ public class GhostBehavior : EnemyBehavior
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
 
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(true) , TimedActionCountType.SCALEDTIME, 0.5f);
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(false) , TimedActionCountType.SCALEDTIME, 0.6f);
+        if(transform.GetChild(1))
+        {
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.SCALEDTIME, 0.5f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(false), TimedActionCountType.SCALEDTIME, 0.6f);
+        }
         RoutineBehavior.Instance.StartNewTimedAction(arguments => PrepareNextAttack(), TimedActionCountType.SCALEDTIME, 1);
     }
 
@@ -68,7 +71,10 @@ public class GhostBehavior : EnemyBehavior
 
         PlayerMovementBehavior player = other.GetComponent<PlayerMovementBehavior>();
 
-        player.IsStunned = true;
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.25f);
+        if(player)
+        {
+            player.IsStunned = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.50f);
+        }
     }
 }

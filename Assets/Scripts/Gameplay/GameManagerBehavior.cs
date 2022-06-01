@@ -105,7 +105,7 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 95 && _waveCount >= 4)
+                if (randEnemy > 95)
                 {
                     if (_ghostSpawnWeight > 0)
                     {
@@ -155,7 +155,7 @@ public class GameManagerBehavior : MonoBehaviour
             case 1:
                 _waveSize = 12;
                 _zombieSpawnWeight = 11;
-                _skeletonSpawnWeight = 1;
+                _ghostSpawnWeight = 1;
                 _waveCooldown = 5;
                 _enemySpawnTime = 3;
                 break;
