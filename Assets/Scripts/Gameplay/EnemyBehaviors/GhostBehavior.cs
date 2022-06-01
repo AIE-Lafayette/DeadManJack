@@ -30,6 +30,9 @@ public class GhostBehavior : EnemyBehavior
             else if(transform.position.x <= -5)
                 _isGoingLeft = false;
         }
+
+        if(!GetComponent<HealthBehavior>().IsAlive)
+            RoutineBehavior.Instance.StopAllTimedActions();
     }
 
     private void Vanish()
@@ -67,10 +70,5 @@ public class GhostBehavior : EnemyBehavior
 
         player.IsStunned = true;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.25f);
-    }
-
-    private void OnDestroy()
-    {
-        RoutineBehavior.Instance.StopAllTimedActions();
     }
 }
