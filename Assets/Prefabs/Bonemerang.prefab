@@ -90,9 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8980277749853510916}
-  - component: {fileID: 4659905087188230331}
   - component: {fileID: 3534366185207918809}
   - component: {fileID: 7731278905061274447}
+  - component: {fileID: 8371030906722705634}
+  - component: {fileID: 5568518640737027669}
   m_Layer: 0
   m_Name: Bonemerang
   m_TagString: Untagged
@@ -115,22 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4659905087188230331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054997288813185354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32ad3e68ef67e744b9a070f634a3294a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeTime: 5
-  _damage: 3
-  _destroyOnHit: 0
-  _distance: 2
 --- !u!54 &3534366185207918809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,3 +146,30 @@ CapsuleCollider:
   m_Height: 1.7486761
   m_Direction: 1
   m_Center: {x: 0, y: -0.020006115, z: -0.0044946377}
+--- !u!114 &8371030906722705634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054997288813185354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad3e68ef67e744b9a070f634a3294a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 5
+  _damage: 3
+  _destroyOnHit: 0
+--- !u!114 &5568518640737027669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054997288813185354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2406fe9bd61b74caa5169e9423c512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

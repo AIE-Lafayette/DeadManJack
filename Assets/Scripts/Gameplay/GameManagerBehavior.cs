@@ -8,15 +8,17 @@ public class GameManagerBehavior : MonoBehaviour
 {
     [SerializeField]
     private GameObject _player;
+    private static GameObject _staticPlayer;
     [SerializeField]
     private GameObject _goal;
+    private static GameObject _staticGoal;
     [SerializeField]
     private GameObject _LoseUI;
     [SerializeField]
     private Text _gameplayUI;
 
     private int _waveCount = 0;
-    private int _enemyCount = 0;
+    private static int _enemyCount = 0;
     private int _waveSize = 0;
     private bool _waveOver = false;
 
@@ -38,40 +40,38 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     private EnemySpawnerBehavior _ghostSpawner;
 
-    public GameObject Player
+    public static GameObject Player
     {
-        get { return _player; }
+        get { return _staticPlayer; }
     }
 
-    public GameObject Goal
+    public static GameObject Goal
     {
-        get { return _goal; }
+        get { return _staticGoal; }
     }
 
-    public int EnemyCount
+    public static int EnemyCount
     { 
         get { return _enemyCount; }
         set { _enemyCount = value; }
     }
 
-    private void Awake()
+    private void Start()
     {
-        _zombieSpawner.GameManager = this;
-        _skeletonSpawner.GameManager = this;
-        _ghostSpawner.GameManager = this;
+        _staticGoal = _goal;
+        _staticPlayer = _player;
+        _enemyCount = 0;
+        _waveCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         WaveManager();
-        _gameplayUI.text = "Wave Count: " + _waveCount
-                         + "\nEnemies Left: " + _waveSize
-                         + "\nZombies Left: " + _zombieSpawnWeight
-                         + "\nSkeletons Left: " + _skeletonSpawnWeight
-                         + "\nGhosts Left: " + _ghostSpawnWeight;
+        _gameplayUI.text = "Wave " + _waveCount
+                         + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if(Goal.GetComponent<HealthBehavior>().IsAlive == false)
+        if(_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
             _LoseUI.SetActive(true);
         }
@@ -138,6 +138,9 @@ public class GameManagerBehavior : MonoBehaviour
         _spawnTimer = 0;
         switch (_waveCount)
         {
+            case 0:
+                _waveCount++;
+                break;
             case 1:
                 _waveSize = 15;
                 _waveCooldown = 5;
@@ -156,7 +159,7 @@ public class GameManagerBehavior : MonoBehaviour
     }
 
 
-        public void RetartScene()
+    public void RetartScene()
     {
         SceneManager.LoadScene("SampleScene");
     }

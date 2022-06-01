@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyBehavior : UseAbilityBehavior
 {
-    [SerializeField]
-    private GameManagerBehavior _gameManager;
     private EnemyMovementBehavior _movement;
 
     //The Enemy's target
@@ -20,20 +18,14 @@ public class EnemyBehavior : UseAbilityBehavior
     public EnemyMovementBehavior Movement
     { 
         get { return _movement; } 
+        set { _movement = value; }
     }
-
-    public GameManagerBehavior GameManager
-    {
-        get { return _gameManager; }
-        set { _gameManager = value; }
-    }
-
 
     // Start is called before the first frame update
     public virtual void Awake()
     {
         _movement = GetComponent<EnemyMovementBehavior>();
-        _target = _gameManager.Goal;
+        _target = GameManagerBehavior.Goal;
     }
 
     // Update is called once per frame
@@ -57,10 +49,13 @@ public class EnemyBehavior : UseAbilityBehavior
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name != "Heart")
+        if(!other.CompareTag("Player"))
             return;
 
-        other.GetComponent<HealthBehavior>().TakeDamage(1);
-        Destroy(gameObject);
+        else if (other.name == "Lose Zone")
+            other.transform.parent.GetComponent<HealthBehavior>().TakeDamage(1);
+
+        else if(other.name == "Heart")
+            Destroy(gameObject);
     }
 }

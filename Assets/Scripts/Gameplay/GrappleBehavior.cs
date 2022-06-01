@@ -20,6 +20,8 @@ public class GrappleBehavior : MonoBehaviour
     /// </summary>
     private MeshRenderer _meshRenderer;
 
+    private bool _isGrabbing = false;
+
     /// <summary>
     /// Disables the collider and mesh renderer if they are enabled and enables them otherwise.
     /// </summary>
@@ -39,6 +41,14 @@ public class GrappleBehavior : MonoBehaviour
             _sphereCollider.enabled = false;
             _meshRenderer.enabled = false;
         }
+    }
+
+    public void ToggleCanGrapple()
+    {
+        if (_isGrabbing)
+            _isGrabbing = false;
+        else
+            _isGrabbing = true;
     }
 
     /// <summary>
@@ -64,11 +74,14 @@ public class GrappleBehavior : MonoBehaviour
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
         UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 
-        if (enemyAbility)
+        if (enemyAbility && !_isGrabbing)
         {
             playerAbility.CurrentAbility = enemyAbility.CurrentAbility;
             playerAbility.CurrentAbility.Owner = _owner;
             Destroy(other.gameObject);
+            GameManagerBehavior.EnemyCount--;
+            _isGrabbing = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.75f);
         }
     }
 }
