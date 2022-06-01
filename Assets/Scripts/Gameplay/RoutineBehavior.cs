@@ -166,4 +166,13 @@ public class RoutineBehavior : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Stops all timed actions
+    /// </summary>
+    public void StopAllTimedActions()
+    {
+        for (int i = 0; i < _timedActions.Count; i++)
+            StopTimedAction(_timedActions[i]);
+    }
 }

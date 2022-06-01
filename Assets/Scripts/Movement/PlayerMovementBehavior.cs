@@ -9,6 +9,8 @@ public class PlayerMovementBehavior : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 1;
 
+    public  bool IsStunned { get; set; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +25,12 @@ public class PlayerMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (IsStunned)
+        {
+            _velocity = Vector3.zero;
+            return;
+        }
+
         _rigidbody.MovePosition(transform.position + _velocity);
         if(transform.position.x > 5)
         {
