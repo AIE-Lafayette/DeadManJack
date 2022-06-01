@@ -10,7 +10,7 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Awake()
     {
-        //SetCurrentAbility(new FireProjectileAbility());
+        SetCurrentAbility(new FireProjectileAbility());
         PrepareNextAttack();
     }
 
