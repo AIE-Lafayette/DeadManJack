@@ -16,7 +16,7 @@ public class SkeletonBehavior : EnemyBehavior
     {
         _health = GetComponent<HealthBehavior>();
         base.Awake();
-        SetCurrentAbility(new BonemerangAbility());
+        SetCurrentAbility(new FireProjectileAbility());
 
     }
 

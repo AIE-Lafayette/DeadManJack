@@ -12,7 +12,7 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Awake()
     {
-        //SetCurrentAbility(new GhostAbility());
+        SetCurrentAbility(new FireProjectileAbility());
         PrepareNextAttack();
     }
 
@@ -42,12 +42,12 @@ public class GhostBehavior : EnemyBehavior
 
     private void Vanish()
     {
-        if (!this)
-            return;
-
-        transform.GetChild(0).gameObject.SetActive(false);
-        _isAttacking = true;
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        if(this != null)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            _isApproaching = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        }
     }
 
     private void Appear()
@@ -64,8 +64,9 @@ public class GhostBehavior : EnemyBehavior
 
     private void Attack()
     {
-        if (this)
-        transform.GetChild(1).gameObject.SetActive(true);
+        if (this != null)
+            transform.GetChild(1).gameObject.SetActive(true);
+        _isAttacking = true;
     }
 
 
