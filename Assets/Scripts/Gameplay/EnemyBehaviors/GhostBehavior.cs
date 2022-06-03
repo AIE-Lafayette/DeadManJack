@@ -5,8 +5,11 @@ using UnityEngine;
 public class GhostBehavior : EnemyBehavior
 {
     private float _teleportTime;
-    private bool _isAttacking;
+    private bool _isApproaching;
     private bool _isGoingLeft = false;
+
+    private bool _isAttacking;
+    private float _attackTimer = 0.0f;
 
     public override void Awake()
     {
@@ -17,7 +20,7 @@ public class GhostBehavior : EnemyBehavior
     private void Update()
     {
         Target = GameManagerBehavior.Player;
-        if(!_isAttacking)
+        if(!_isApproaching)
         {
             transform.position = Vector3.Lerp(new Vector3(-5, 0, 15), new Vector3(5, 0, 15), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
             if(_isGoingLeft)
@@ -31,14 +34,17 @@ public class GhostBehavior : EnemyBehavior
                 _isGoingLeft = false;
         }
 
-        if(!GetComponent<HealthBehavior>().IsAlive)
+        if (transform && _attackTimer > 0.1f) 
+            transform.GetChild(1).gameObject.SetActive(false);
+
+        if (!GetComponent<HealthBehavior>().IsAlive)
             RoutineBehavior.Instance.StopAllTimedActions();
     }
 
     private void Vanish()
     {
         transform.GetChild(0).gameObject.SetActive(false);
-        _isAttacking = true;
+        _isApproaching = true;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
     }
 
@@ -47,17 +53,23 @@ public class GhostBehavior : EnemyBehavior
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
 
-        if(transform.GetChild(1))
-        {
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.SCALEDTIME, 0.5f);
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => transform.GetChild(1).gameObject.SetActive(false), TimedActionCountType.SCALEDTIME, 0.6f);
-        }
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => Attack(), TimedActionCountType.SCALEDTIME, 0.5f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => PrepareNextAttack(), TimedActionCountType.SCALEDTIME, 1);
     }
+
+    private void Attack()
+    {
+        if (transform)
+            transform.GetChild(1).gameObject.SetActive(true);
+        _isAttacking = true;
+    }
+
 
     private void PrepareNextAttack()
     {
         _isAttacking = false;
+        _attackTimer = 0.0f;
+        _isApproaching = false;
 
         _teleportTime = Random.Range(50, 150);
         _teleportTime /= 10;
