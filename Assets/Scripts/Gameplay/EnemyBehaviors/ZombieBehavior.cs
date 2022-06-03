@@ -7,7 +7,7 @@ public class ZombieBehavior : EnemyBehavior
     public override void Awake()
     {
         base.Awake();
-        SetCurrentAbility(new ZombieAbility());
+        SetCurrentAbility(new FireProjectileAbility());
     }
 
     public override void Update()

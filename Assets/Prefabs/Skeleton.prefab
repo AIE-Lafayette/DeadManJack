@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 2715803361549244517}
   - component: {fileID: 6444521071858054632}
   - component: {fileID: 7228109735437883221}
-  - component: {fileID: 5862877093508007128}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -370,22 +369,6 @@ CapsuleCollider:
   m_Height: 1.15
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0.6, z: -0.00000008940697}
---- !u!114 &5862877093508007128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848169275459675324}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2394d53d6f661a640b7fba0946086250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gun: {fileID: 8402152553842396522}
-  _bulletCooldown: 2
-  _ammo: 1
-  _infiniteAmmo: 1
 --- !u!1 &6974336108964273257
 GameObject:
   m_ObjectHideFlags: 0
