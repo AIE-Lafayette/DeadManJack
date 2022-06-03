@@ -18,6 +18,9 @@ public class GhostBehavior : EnemyBehavior
 
     private void Update()
     {
+        if (!this)
+            return;
+
         Target = GameManagerBehavior.Player;
         if(!_isAttacking)
         {
@@ -39,6 +42,9 @@ public class GhostBehavior : EnemyBehavior
 
     private void Vanish()
     {
+        if (!this)
+            return;
+
         transform.GetChild(0).gameObject.SetActive(false);
         _isAttacking = true;
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
@@ -46,6 +52,9 @@ public class GhostBehavior : EnemyBehavior
 
     private void Appear()
     {
+        if (!this)
+            return;
+
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
 
@@ -55,15 +64,17 @@ public class GhostBehavior : EnemyBehavior
 
     private void Attack()
     {
-        if (transform)
+        if (this)
         transform.GetChild(1).gameObject.SetActive(true);
     }
 
 
     private void PrepareNextAttack()
     {
-        if (transform)
-            transform.GetChild(1).gameObject.SetActive(false);
+        if (!this)
+            return;
+
+        transform.GetChild(1).gameObject.SetActive(false);
         _isAttacking = false;
 
         _teleportTime = Random.Range(50, 150);
