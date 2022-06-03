@@ -65,6 +65,7 @@ public class GameManagerBehavior : MonoBehaviour
         _staticPlayer = _player;
         _enemyCount = 0;
         _waveCount = 0;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
