@@ -19,8 +19,7 @@ public class SpectreShotBehavior : BulletBehavior
     /// <summary>
     /// The collider for the bullet.
     /// </summary>
-    [SerializeField]
-    private SphereCollider _collider;
+    private CapsuleCollider _collider;
 
     /// <summary>
     /// The timed action for figuring out when the bullet should burst.
@@ -47,12 +46,14 @@ public class SpectreShotBehavior : BulletBehavior
     /// </summary>
     public void Dissipate()
     {
-        Destroy(gameObject);
+        if(this != null)
+            Destroy(gameObject);
     }
 
     protected void Awake()
     {
         base.Awake();
+        _collider = GetComponent<CapsuleCollider>();
         _timedAction = RoutineBehavior.Instance.StartNewTimedAction(arguments => Burst(), TimedActionCountType.SCALEDTIME, 3f);
     }
 

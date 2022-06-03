@@ -10,7 +10,8 @@ public class SpectralResidueBehavior : MonoBehaviour
         EnemyMovementBehavior enemy = other.GetComponent<EnemyMovementBehavior>();
 
         // Halves the enemy's speed.
-        enemy.Speed = enemy.Speed / 2;
+        if(enemy)
+            enemy.Speed = enemy.Speed / 2;
     }
 
     private void OnTriggerExit(Collider other)
@@ -19,6 +20,7 @@ public class SpectralResidueBehavior : MonoBehaviour
         EnemyMovementBehavior enemy = other.GetComponent<EnemyMovementBehavior>();
         
         // Doubles the enemy's speed.
-        enemy.Speed = enemy.Speed * 2;
+        if(enemy)
+            enemy.Speed = enemy.Speed * 2;
     }
 }

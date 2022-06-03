@@ -43,9 +43,12 @@ public class GhostBehavior : EnemyBehavior
 
     private void Vanish()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
-        _isApproaching = true;
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        if(this != null)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            _isApproaching = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        }
     }
 
     private void Appear()
@@ -59,7 +62,7 @@ public class GhostBehavior : EnemyBehavior
 
     private void Attack()
     {
-        if (transform)
+        if (this != null)
             transform.GetChild(1).gameObject.SetActive(true);
         _isAttacking = true;
     }

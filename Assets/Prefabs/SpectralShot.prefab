@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 417284654746746899}
   - component: {fileID: 1845011912201313133}
   - component: {fileID: 5148366915468696267}
-  - component: {fileID: 9102837851648355992}
   m_Layer: 0
   m_Name: MeshRenderer
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9102837851648355992
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4354058493364373912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.73112774
-  m_Center: {x: 0.04417444, y: -1.04782e-16, z: -0.012324741}
 --- !u!1 &8227748734142311546
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +93,7 @@ GameObject:
   - component: {fileID: 4715617089056592810}
   - component: {fileID: 6486550610541969925}
   - component: {fileID: 2588476404637423370}
+  - component: {fileID: 7401857325654529344}
   m_Layer: 0
   m_Name: SpectralResidue
   m_TagString: Untagged
@@ -187,7 +174,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8227748734142311546}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.50867987
@@ -204,6 +191,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1def868ba11df1d4eba8914a4a1b96b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &7401857325654529344
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227748734142311546}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8730224610246480605
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,12 +250,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8730224610246480605}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.203856
+  m_Height: 2.407712
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.04463787, z: -0.0011300864}
 --- !u!114 &2496249644163747667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +273,6 @@ MonoBehaviour:
   _destroyOnHit: 0
   _spectralResidue: {fileID: 8227748734142311546}
   _meshRenderer: {fileID: 5148366915468696267}
-  _collider: {fileID: 9102837851648355992}
 --- !u!54 &850588536651560257
 Rigidbody:
   m_ObjectHideFlags: 0
