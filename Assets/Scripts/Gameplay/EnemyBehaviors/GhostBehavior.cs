@@ -45,7 +45,7 @@ public class GhostBehavior : EnemyBehavior
         if(this != null)
         {
             transform.GetChild(0).gameObject.SetActive(false);
-            _isApproaching = true;
+            _isAttacking = true;
             RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
         }
     }
