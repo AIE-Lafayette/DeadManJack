@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "QuitApplication",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "4a790979-f317-46cb-b671-408d05646d09",
                     "expectedControlType": "Button",
@@ -101,7 +101,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "QuitApplication",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

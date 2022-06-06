@@ -13,9 +13,7 @@ public class GameManagerBehavior : MonoBehaviour
     private GameObject _goal;
     private static GameObject _staticGoal;
     [SerializeField]
-    private GameObject _LoseUI;
-    [SerializeField]
-    private GameObject _winUI;
+    private GameObject _UI;
     [SerializeField]
     private Text _gameplayUI;
 
@@ -54,7 +52,7 @@ public class GameManagerBehavior : MonoBehaviour
     }
 
     public static int EnemyCount
-    { 
+    {
         get { return _enemyCount; }
         set { _enemyCount = value; }
     }
@@ -78,12 +76,13 @@ public class GameManagerBehavior : MonoBehaviour
         if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
             Time.timeScale = 0;
-            _LoseUI.SetActive(true);
+            _UI.transform.GetChild(0).gameObject.SetActive(true);
         }
-        if(_waveCount > 5)
+        if (_waveCount > 5)
         {
-            _winUI.SetActive(true);
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => _winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
+            GameObject winUI = _UI.transform.GetChild(1).gameObject;
+            winUI.SetActive(true);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
         }
 
 
@@ -112,13 +111,13 @@ public class GameManagerBehavior : MonoBehaviour
                     {
                         _ghostSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if(_ghostSpawnWeight > 0)
+                        if (_ghostSpawnWeight > 0)
                             _ghostSpawnWeight--;
                     }
                 }
                 else if (randEnemy > 50)
                 {
-                    if(_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
+                    if (_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {
                         _skeletonSpawner.SpawnEnemy();
                         enemyChosen = true;
@@ -132,7 +131,7 @@ public class GameManagerBehavior : MonoBehaviour
                     {
                         _zombieSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if(_zombieSpawnWeight > 0)
+                        if (_zombieSpawnWeight > 0)
                             _zombieSpawnWeight--;
                     }
                 }
@@ -203,5 +202,15 @@ public class GameManagerBehavior : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void UnpauseGame()
+    {
+        PauseBehavior pause = Player.GetComponent<PauseBehavior>();
+        Time.timeScale = 1;
+        Player.GetComponent<PlayerFistBehavior>().CanShoot = true;
+        pause.PauseUI.SetActive(false);
+        Debug.Log("Game Unpaused");
+        pause.IsPaused = false;
     }
 }

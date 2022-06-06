@@ -43,7 +43,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""QuitApplication"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""4a790979-f317-46cb-b671-408d05646d09"",
                     ""expectedControlType"": ""Button"",
@@ -114,7 +114,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""QuitApplication"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -128,7 +128,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_DeadManJack_Movement = m_DeadManJack.FindAction("Movement", throwIfNotFound: true);
         m_DeadManJack_Shoot = m_DeadManJack.FindAction("Shoot", throwIfNotFound: true);
         m_DeadManJack_ChargeAbility = m_DeadManJack.FindAction("ChargeAbility", throwIfNotFound: true);
-        m_DeadManJack_QuitApplication = m_DeadManJack.FindAction("QuitApplication", throwIfNotFound: true);
+        m_DeadManJack_Pause = m_DeadManJack.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -181,7 +181,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_DeadManJack_Movement;
     private readonly InputAction m_DeadManJack_Shoot;
     private readonly InputAction m_DeadManJack_ChargeAbility;
-    private readonly InputAction m_DeadManJack_QuitApplication;
+    private readonly InputAction m_DeadManJack_Pause;
     public struct DeadManJackActions
     {
         private @PlayerController m_Wrapper;
@@ -189,7 +189,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_DeadManJack_Movement;
         public InputAction @Shoot => m_Wrapper.m_DeadManJack_Shoot;
         public InputAction @ChargeAbility => m_Wrapper.m_DeadManJack_ChargeAbility;
-        public InputAction @QuitApplication => m_Wrapper.m_DeadManJack_QuitApplication;
+        public InputAction @Pause => m_Wrapper.m_DeadManJack_Pause;
         public InputActionMap Get() { return m_Wrapper.m_DeadManJack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,9 +208,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @ChargeAbility.started -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
                 @ChargeAbility.performed -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
                 @ChargeAbility.canceled -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnChargeAbility;
-                @QuitApplication.started -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnQuitApplication;
-                @QuitApplication.performed -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnQuitApplication;
-                @QuitApplication.canceled -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnQuitApplication;
+                @Pause.started -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_DeadManJackActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_DeadManJackActionsCallbackInterface = instance;
             if (instance != null)
@@ -224,9 +224,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @ChargeAbility.started += instance.OnChargeAbility;
                 @ChargeAbility.performed += instance.OnChargeAbility;
                 @ChargeAbility.canceled += instance.OnChargeAbility;
-                @QuitApplication.started += instance.OnQuitApplication;
-                @QuitApplication.performed += instance.OnQuitApplication;
-                @QuitApplication.canceled += instance.OnQuitApplication;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -236,6 +236,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnChargeAbility(InputAction.CallbackContext context);
-        void OnQuitApplication(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
