@@ -5,24 +5,24 @@ using UnityEngine;
 public class GhostBehavior : EnemyBehavior
 {
     private float _teleportTime;
-    private bool _isApproaching;
-    private bool _isGoingLeft = false;
-
     private bool _isAttacking;
-    private float _attackTimer = 0.0f;
+    private bool _isGoingLeft = false;
 
     public override void Awake()
     {
-        //SetCurrentAbility(new GhostAbility());
+        SetCurrentAbility(new FireProjectileAbility());
         PrepareNextAttack();
     }
 
     private void Update()
     {
+        if (!this)
+            return;
+
         Target = GameManagerBehavior.Player;
-        if(!_isApproaching)
+        if(!_isAttacking)
         {
-            transform.position = Vector3.Lerp(new Vector3(-5, 0, 15), new Vector3(5, 0, 15), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
+            transform.position = Vector3.Lerp(new Vector3(-5, 0, 5), new Vector3(5, 0, 5), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
             if(_isGoingLeft)
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Mathf.Sin(2 * Time.time));
             else
@@ -33,23 +33,23 @@ public class GhostBehavior : EnemyBehavior
             else if(transform.position.x <= -5)
                 _isGoingLeft = false;
         }
-
-        if (transform && _attackTimer > 0.1f) 
-            transform.GetChild(1).gameObject.SetActive(false);
-
-        if (!GetComponent<HealthBehavior>().IsAlive)
-            RoutineBehavior.Instance.StopAllTimedActions();
     }
 
     private void Vanish()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
-        _isApproaching = true;
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        if(this != null)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            _isAttacking = true;
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+        }
     }
 
     private void Appear()
     {
+        if (!this)
+            return;
+
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
 
@@ -59,7 +59,7 @@ public class GhostBehavior : EnemyBehavior
 
     private void Attack()
     {
-        if (transform)
+        if (this != null)
             transform.GetChild(1).gameObject.SetActive(true);
         _isAttacking = true;
     }
@@ -67,9 +67,11 @@ public class GhostBehavior : EnemyBehavior
 
     private void PrepareNextAttack()
     {
+        if (!this)
+            return;
+
+        transform.GetChild(1).gameObject.SetActive(false);
         _isAttacking = false;
-        _attackTimer = 0.0f;
-        _isApproaching = false;
 
         _teleportTime = Random.Range(50, 150);
         _teleportTime /= 10;

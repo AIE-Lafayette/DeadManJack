@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BonemerangAbility : Ability
+public class FireProjectileAbility : Ability
 {
     public override void Activate(params object[] arguments)
     {

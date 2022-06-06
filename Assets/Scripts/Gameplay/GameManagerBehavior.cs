@@ -65,6 +65,7 @@ public class GameManagerBehavior : MonoBehaviour
         _staticPlayer = _player;
         _enemyCount = 0;
         _waveCount = 0;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -74,7 +75,7 @@ public class GameManagerBehavior : MonoBehaviour
         _gameplayUI.text = "Wave " + _waveCount
                          + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if(_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
+        if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
         {
             Time.timeScale = 0;
             _LoseUI.SetActive(true);
@@ -105,7 +106,7 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 95)
+                if (randEnemy > 90)
                 {
                     if (_ghostSpawnWeight > 0)
                     {
@@ -115,7 +116,7 @@ public class GameManagerBehavior : MonoBehaviour
                             _ghostSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 80)
+                else if (randEnemy > 50)
                 {
                     if(_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {

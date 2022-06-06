@@ -15,7 +15,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
         _health = GetComponent<HealthBehavior>();
         Target = _body.Target;
         base.Awake();
-        SetCurrentAbility(new BonemerangAbility());
+        SetCurrentAbility(new FireProjectileAbility());
     }
 
     // Update is called once per frame

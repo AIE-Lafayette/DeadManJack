@@ -81,7 +81,7 @@ public class GrappleBehavior : MonoBehaviour
             Destroy(other.gameObject);
             GameManagerBehavior.EnemyCount--;
             _isGrabbing = true;
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.75f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.45f);
         }
     }
 }
