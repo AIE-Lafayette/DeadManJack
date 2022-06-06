@@ -72,6 +72,8 @@ public class HealthBehavior : MonoBehaviour
         
         if (enemy)
         {
+            ScoreCounterBehavior.Instance.IncreaseScore(enemy.ScoreAmount);
+
             SkeletonBehavior skeleton = GetComponent<SkeletonBehavior>();
             if(!skeleton)
                 GameManagerBehavior.EnemyCount--;

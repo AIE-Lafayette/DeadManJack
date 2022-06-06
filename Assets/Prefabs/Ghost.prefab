@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentAbility:
     _visualPrefab: {fileID: 8730224610246480605, guid: 727e0702898e8eb4d8b84714e4d9845f, type: 3}
+  _scoreAmount: 350
 --- !u!1 &7249261853533286370
 GameObject:
   m_ObjectHideFlags: 0
