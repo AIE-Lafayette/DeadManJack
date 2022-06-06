@@ -21,15 +21,22 @@ public class PlayerInputBehavior : MonoBehaviour
     private PlayerFistBehavior _playerFists;
 
     /// <summary>
+    /// The behavior to pause the game
+    /// </summary>
+    private PauseBehavior _pause;
+
+    /// <summary>
     /// Checks whether or not the player can grab or use an ability.
     /// </summary>
     private bool _playerCanGrab;
+
 
     private void Awake()
     {
         _playerController = new PlayerController();
         _playerMovement = GetComponent<PlayerMovementBehavior>();
         _playerFists = GetComponent<PlayerFistBehavior>();
+        _pause = GetComponent<PauseBehavior>();
     }
 
     private void OnEnable()
@@ -46,7 +53,7 @@ public class PlayerInputBehavior : MonoBehaviour
     {
         _playerController.DeadManJack.Shoot.started += context => _playerFists.Punch(context);
         _playerController.DeadManJack.ChargeAbility.started += context => _playerFists.Activate();
-        _playerController.DeadManJack.QuitApplication.started += context => Application.Quit();
+        _playerController.DeadManJack.Pause.started += context => _pause.TogglePause(context);
     }
 
     // Update is called once per frame

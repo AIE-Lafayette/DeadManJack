@@ -53,6 +53,12 @@ public class PlayerFistBehavior : MonoBehaviour
         get { return _playerGrapple; }
     }
 
+    public bool CanShoot 
+    {
+        get { return _canShoot; }
+        set { _canShoot = value; }
+    }
+
     public void ToggleShoot()
     {
         if (_canShoot)
