@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ScoreCounterBehavior : MonoBehaviour
 {
     /// <summary>
@@ -50,6 +49,11 @@ public class ScoreCounterBehavior : MonoBehaviour
 
             return _instance;
         }
+    }
+
+    private void Awake()
+    {
+        _currentScore = 0;
     }
 
     /// <summary>

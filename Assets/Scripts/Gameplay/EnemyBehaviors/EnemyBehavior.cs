@@ -52,11 +52,6 @@ public class EnemyBehavior : UseAbilityBehavior
             transform.LookAt(Target.transform);
     }
 
-    private void OnDestroy()
-    {
-        ScoreCounterBehavior.Instance.IncreaseScore(_scoreAmount);
-    }
-
     public void SetCurrentAbility(Ability ability)
     {
         ability.VisualPrefab = CurrentAbility.VisualPrefab;
