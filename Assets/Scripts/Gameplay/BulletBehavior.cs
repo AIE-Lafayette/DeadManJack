@@ -50,7 +50,7 @@ public class BulletBehavior : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == null)
             return;
