@@ -1692,7 +1692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &842385074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3585,6 +3585,10 @@ PrefabInstance:
       propertyPath: _grabRadius
       value: 
       objectReference: {fileID: 1749315000}
+    - target: {fileID: 7552665999078110257, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
+      propertyPath: PauseUI
+      value: 
+      objectReference: {fileID: 768209723}
     - target: {fileID: 7552665999078110257, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
       propertyPath: pauseMenuPanel
       value: 
