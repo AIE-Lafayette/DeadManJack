@@ -53,6 +53,9 @@ public class ScoreCounterBehavior : MonoBehaviour
 
     private void Awake()
     {
+        if (_currentScore > _highestScore)
+            _highestScore = _currentScore;
+
         _currentScore = 0;
     }
 
