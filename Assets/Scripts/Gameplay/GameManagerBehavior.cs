@@ -153,39 +153,40 @@ public class GameManagerBehavior : MonoBehaviour
                 _waveCount++;
                 break;
             case 1:
-                _waveSize = 12;
-                _zombieSpawnWeight = 11;
-                _ghostSpawnWeight = 1;
+                _waveSize = 20;
+                _zombieSpawnWeight = 17;
+                _skeletonSpawnWeight = 1;
                 _waveCooldown = 5;
                 _enemySpawnTime = 2;
                 break;
             case 2:
-                _waveSize = 25;
-                _zombieSpawnWeight = 18;
-                _skeletonSpawnWeight = 3;
-                _waveCooldown = 7.5f;
+                _waveSize = 32;
+                _zombieSpawnWeight = 20;
+                _skeletonSpawnWeight = 7;
+                _waveCooldown = 5f;
                 _enemySpawnTime = 1.9f;
                 break;
             case 3:
-                _waveSize = 35;
-                _zombieSpawnWeight = 20;
-                _skeletonSpawnWeight = 12;
-                _waveCooldown = 7.5f;
+                _waveSize = 45;
+                _zombieSpawnWeight = 10;
+                _skeletonSpawnWeight = 28;
+                _waveCooldown = 4.5f;
                 _enemySpawnTime = 1.65f;
                 break;
             case 4:
-                _waveSize = 40;
-                _zombieSpawnWeight = 17;
+                _waveSize = 60;
+                _zombieSpawnWeight = 30;
                 _skeletonSpawnWeight = 15;
-                _waveCooldown = 7.5f;
+                _ghostSpawnWeight = 3;
+                _waveCooldown = 4f;
                 _enemySpawnTime = 1.5f;
                 break;
             case 5:
-                _waveSize = 50;
-                _zombieSpawnWeight = 27;
-                _skeletonSpawnWeight = 15;
-                _ghostSpawnWeight = 1;
-                _waveCooldown = 7.5f;
+                _waveSize = 60;
+                _zombieSpawnWeight = 32;
+                _skeletonSpawnWeight = 20;
+                _ghostSpawnWeight = 5;
+                _waveCooldown = 3.5f;
                 _enemySpawnTime = 1.35f;
                 break;
             default:
@@ -210,7 +211,6 @@ public class GameManagerBehavior : MonoBehaviour
         Time.timeScale = 1;
         Player.GetComponent<PlayerFistBehavior>().CanShoot = true;
         pause.PauseUI.SetActive(false);
-        Debug.Log("Game Unpaused");
         pause.IsPaused = false;
     }
 }
