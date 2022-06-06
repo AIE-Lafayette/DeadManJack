@@ -175,4 +175,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentAbility:
     _visualPrefab: {fileID: 6294593815290388490, guid: d2f4decd0988a814d8ac32c49b7650f9, type: 3}
-  _gameManager: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
+  _scoreAmount: 150

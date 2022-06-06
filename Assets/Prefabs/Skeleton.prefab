@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentAbility:
     _visualPrefab: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
+  _scoreAmount: 200
   _body: {fileID: 2715803361549244517}
 --- !u!114 &9108118504583821654
 MonoBehaviour:
@@ -338,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentAbility:
     _visualPrefab: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
+  _scoreAmount: 0
   _head: {fileID: 4320077030260805387}
   _body: {fileID: 6675287327125302515}
 --- !u!114 &6444521071858054632

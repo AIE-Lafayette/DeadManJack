@@ -9,6 +9,12 @@ public class EnemyBehavior : UseAbilityBehavior
     //The Enemy's target
     private GameObject _target;
 
+    /// <summary>
+    /// The amount of points the enemy will give the player when defeated.
+    /// </summary>
+    [SerializeField]
+    private float _scoreAmount;
+
     public GameObject Target
     {
         get { return _target; }
@@ -19,6 +25,11 @@ public class EnemyBehavior : UseAbilityBehavior
     { 
         get { return _movement; } 
         set { _movement = value; }
+    }
+
+    public float ScoreAmount
+    {
+        get { return _scoreAmount; }
     }
 
     // Start is called before the first frame update
@@ -39,6 +50,11 @@ public class EnemyBehavior : UseAbilityBehavior
             _movement.Velocity = new Vector3(0, 0, -1);
         else
             transform.LookAt(Target.transform);
+    }
+
+    private void OnDestroy()
+    {
+        ScoreCounterBehavior.Instance.IncreaseScore(_scoreAmount);
     }
 
     public void SetCurrentAbility(Ability ability)

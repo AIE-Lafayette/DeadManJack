@@ -76,12 +76,17 @@ public class GrappleBehavior : MonoBehaviour
 
         if (enemyAbility && !_isGrabbing)
         {
+            // Sets the player's ability to be a copy of the enemy's ability.
             playerAbility.CurrentAbility = enemyAbility.CurrentAbility;
             playerAbility.CurrentAbility.Owner = _owner;
+            // Destroys the enemy and subtracts from the enemy count.
             Destroy(other.gameObject);
             GameManagerBehavior.EnemyCount--;
+            // Stops the player from grabbing for a moment, until the timed action is called.
             _isGrabbing = true;
             RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.45f);
+            // Increases the score based on the enemy's score count.
+            ScoreCounterBehavior.Instance.IncreaseScore(enemyAbility.ScoreAmount * 2);
         }
     }
 }
