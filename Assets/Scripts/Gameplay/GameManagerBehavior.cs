@@ -106,7 +106,7 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 95)
+                if (randEnemy > 90)
                 {
                     if (_ghostSpawnWeight > 0)
                     {
@@ -116,7 +116,7 @@ public class GameManagerBehavior : MonoBehaviour
                             _ghostSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 80)
+                else if (randEnemy > 50)
                 {
                     if(_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {

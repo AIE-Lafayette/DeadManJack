@@ -8,8 +8,6 @@ public class GhostBehavior : EnemyBehavior
     private bool _isAttacking;
     private bool _isGoingLeft = false;
 
-    private float _attackTimer = 0.0f;
-
     public override void Awake()
     {
         SetCurrentAbility(new FireProjectileAbility());
@@ -35,9 +33,6 @@ public class GhostBehavior : EnemyBehavior
             else if(transform.position.x <= -5)
                 _isGoingLeft = false;
         }
-
-        if(!GetComponent<HealthBehavior>().IsAlive)
-            RoutineBehavior.Instance.StopAllTimedActions();
     }
 
     private void Vanish()
