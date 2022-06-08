@@ -57,4 +57,9 @@ public class Ability
     {
         _useCounter--;
     }
+
+    public void SetUses(int uses)
+    {
+        _useCounter = uses;
+    }
 }

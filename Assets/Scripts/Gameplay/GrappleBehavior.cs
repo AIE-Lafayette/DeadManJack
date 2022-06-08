@@ -20,6 +20,12 @@ public class GrappleBehavior : MonoBehaviour
     /// </summary>
     private MeshRenderer _meshRenderer;
 
+    /// <summary>
+    /// The bonemerang prefab that can be grabbed to add another.
+    /// </summary>
+    [SerializeField]
+    private GameObject _bonemerang;
+
     private bool _isGrabbing = false;
 
     /// <summary>
@@ -71,6 +77,12 @@ public class GrappleBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.GetComponent<HealthBehavior>())
+            return;
+
+        if (other.GetComponent<HealthBehavior>().IsInvulnerable)
+            return;
+
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
         UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 
@@ -87,6 +99,17 @@ public class GrappleBehavior : MonoBehaviour
             RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.45f);
             // Increases the score based on the enemy's score count.
             ScoreCounterBehavior.Instance.IncreaseScore(enemyAbility.ScoreAmount * 2);
+        }
+
+        // If the other is a bonemerang, give the player another use of it.
+        if (other.GetComponent<BonemerangBehavior>())
+        {
+            playerAbility.CurrentAbility = new FireProjectileAbility();
+            playerAbility.CurrentAbility.VisualPrefab = _bonemerang;
+            playerAbility.CurrentAbility.SetUses(1);
+            playerAbility.CurrentAbility.Owner = _owner;
+            Destroy(other);
+            ScoreCounterBehavior.Instance.IncreaseScore(50);
         }
     }
 }
