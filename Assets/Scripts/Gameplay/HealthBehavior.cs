@@ -5,11 +5,13 @@ using UnityEngine;
 public class HealthBehavior : MonoBehaviour
 {
     [SerializeField]
+    private float _maxHealth;
+    [SerializeField]
     private float _health;
     [SerializeField]
-    private bool _isAlive;
-    [SerializeField]
     private bool _destroyOnDeath;
+    [SerializeField]
+    private bool _isAlive = true;
 
     public float Health
     {
@@ -21,25 +23,64 @@ public class HealthBehavior : MonoBehaviour
         get { return _isAlive; }
     }
 
-    public virtual void TakeDamage(float damageAmount)
+    public bool DestroyOnDeath
     {
-        _health -= damageAmount;
+        get { return _destroyOnDeath; }
     }
 
-    public virtual void OnDeath()
+    private void Awake()
     {
-
+        _health = _maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        //If the object is still alive, but has less than zero health, call the on Death function
         if (_health <= 0 && IsAlive)
             OnDeath();
+    }
 
-        _isAlive = _health > 0;
+    /// <summary>
+    /// Inflicts damage to the object
+    /// </summary>
+    /// <param name="damageToTake">The amount of damage inflicted</param>
+    public void TakeDamage(float damageToTake)
+    {
+        _health -= damageToTake;
+    }
 
-        if (!IsAlive && _destroyOnDeath)
-                Destroy(gameObject);
+    /// <summary>
+    /// Heals the object
+    /// </summary>
+    /// <param name="damageToHeal">The amount of damage to heal</param>
+    public void HealDamage(float damageToHeal)
+    {
+        _health += damageToHeal;
+
+        if (_health > _maxHealth)
+            _health = _maxHealth;
+    }
+
+    /// <summary>
+    /// Determines what happens to the object when it dies
+    /// </summary>
+    private void OnDeath()
+    {
+        _isAlive = false;
+
+        EnemyBehavior enemy = GetComponent<EnemyBehavior>();
+        
+        if (enemy)
+        {
+            ScoreCounterBehavior.Instance.IncreaseScore(enemy.ScoreAmount);
+
+            SkeletonBehavior skeleton = GetComponent<SkeletonBehavior>();
+            if(!skeleton)
+                GameManagerBehavior.EnemyCount--;
+        }
+
+        //If the object should be destroyed on death, destroy the game object
+        if (_destroyOnDeath)
+            Destroy(gameObject);
     }
 }
