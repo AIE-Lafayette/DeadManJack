@@ -2542,6 +2542,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 118975349}
     - target: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
+      propertyPath: _waveCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105533475970422532, guid: 5067a114056914a4ca9d3dc626fb1d0c, type: 3}
       propertyPath: _gameplayUI
       value: 
       objectReference: {fileID: 1067582004}
