@@ -9,18 +9,11 @@ public class SpectralResidueBehavior : MonoBehaviour
         // The enemy movement behavior that may be attached to the other this object is colliding with.
         EnemyMovementBehavior enemy = other.GetComponent<EnemyMovementBehavior>();
 
-        // Halves the enemy's speed.
+        // Halves the enemy's speed and increases the amount of points gained.
         if(enemy)
+        {
             enemy.Speed = enemy.Speed / 2;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // The enemy movement behavior that may be attached to the other this object is colliding with.
-        EnemyMovementBehavior enemy = other.GetComponent<EnemyMovementBehavior>();
-        
-        // Doubles the enemy's speed.
-        if(enemy)
-            enemy.Speed = enemy.Speed * 2;
+            ScoreCounterBehavior.Instance.IncreaseScore(150);
+        }
     }
 }
