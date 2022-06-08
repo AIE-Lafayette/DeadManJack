@@ -7,12 +7,7 @@ public class ScoreCounterBehavior : MonoBehaviour
     /// <summary>
     /// The current score for the current run of the game.
     /// </summary>
-    private float _currentScore;
-
-    /// <summary>
-    /// The highest score ever recorded.
-    /// </summary>
-    private float _highestScore; 
+    private float _currentScore; 
 
     /// <summary>
     /// The instance of an object this script is attached to.
@@ -23,11 +18,6 @@ public class ScoreCounterBehavior : MonoBehaviour
     /// The text that displays the player's score on the screen.
     /// </summary>
     public float CurrentScore { get { return _currentScore; } }
-
-    /// <summary>
-    /// Text detailing the highest known score.
-    /// </summary>
-    public float HighestScore { get { return _highestScore; } }
 
     /// <summary>
     /// The instance of an object this script is attached to.
@@ -49,14 +39,6 @@ public class ScoreCounterBehavior : MonoBehaviour
 
             return _instance;
         }
-    }
-
-    private void Awake()
-    {
-        if (_currentScore > _highestScore)
-            _highestScore = _currentScore;
-
-        _currentScore = 0;
     }
 
     /// <summary>

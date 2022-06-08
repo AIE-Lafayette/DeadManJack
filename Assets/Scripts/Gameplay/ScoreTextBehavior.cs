@@ -15,6 +15,6 @@ public class ScoreTextBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _textBox.text = "Current Score: " + ScoreCounterBehavior.Instance.CurrentScore + "\n" + "High Score: " + ScoreCounterBehavior.Instance.HighestScore;
+        _textBox.text = "Current Score: " + ScoreCounterBehavior.Instance.CurrentScore;
     }
 }
