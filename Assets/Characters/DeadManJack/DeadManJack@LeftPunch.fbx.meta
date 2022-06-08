@@ -1,32 +1,12 @@
 fileFormatVersion: 2
-guid: e939c0a7a8d27f84aab88d54ab734080
+guid: 04edbe30d99cc1d42b9858a5ee2875b6
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ArmMat
-    second: {fileID: 2100000, guid: 81b6841e85ed0214ca87341af1950bbc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CoreMat
-    second: {fileID: 2100000, guid: 8056afb5f4697ec4e9942bafd5cc082c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: HairMat
-    second: {fileID: 2100000, guid: 33a498e276b840c4da7363a0277ccdc4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PantsMat
-    second: {fileID: 2100000, guid: b71c57a8b0a033f41b23fec0f32303f4, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -46,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -95,17 +75,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - dd810e5dcc7ad1043a955df91bce14d2
-  - 78bb955b22a6cf9429c5169d3a3d9f8c
-  - fcdde762b3122e1449027a503b43a871
-  - 3dd9467b5c1decc46b387d2d4c979e32
-  - 04edbe30d99cc1d42b9858a5ee2875b6
-  - 998c714d75dc3f54784362fc35427932
-  - 291ca266d5370c04fb8c866f72b68268
-  - 2e61a06b131ba8546bbc52179ec4de26
-  - 850796e2585add1408b04bdcea8ebd36
-  - 1e49680455fe2fa4f960640d06ff38d7
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -123,11 +93,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e939c0a7a8d27f84aab88d54ab734080, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
