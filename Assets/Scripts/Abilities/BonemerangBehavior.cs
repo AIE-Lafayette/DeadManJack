@@ -18,7 +18,7 @@ public class BonemerangBehavior : BulletBehavior
     {
         base.Awake();
         _seekBehavior = GetComponent<SeekBehavior>();
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => MoveToOwner(), TimedActionCountType.SCALEDTIME, 1f);
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => MoveToOwner(), TimedActionCountType.SCALEDTIME, 0.45f);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
