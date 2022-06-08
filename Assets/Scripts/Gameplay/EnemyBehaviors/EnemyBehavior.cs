@@ -58,7 +58,7 @@ public class EnemyBehavior : UseAbilityBehavior
         CurrentAbility = ability;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Player"))
             return;
