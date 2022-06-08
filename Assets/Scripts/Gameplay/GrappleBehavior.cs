@@ -71,6 +71,12 @@ public class GrappleBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.GetComponent<HealthBehavior>())
+            return;
+
+        if (other.GetComponent<HealthBehavior>().IsInvulnerable)
+            return;
+
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
         UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 

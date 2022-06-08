@@ -30,8 +30,6 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     private float _enemySpawnTime = 5.0f;
     private float _spawnTimer = 0.0f;
-    private float _waveCooldown = 7.5f;
-    private float _waveCooldownTimer = 0.0f;
     private bool _isBossWave = false;
 
     [SerializeField]
@@ -105,7 +103,7 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 90)
+                if (randEnemy > 90 || _ghostSpawnWeight > 0)
                 {
                     if (_ghostSpawnWeight > 0)
                     {
@@ -156,21 +154,19 @@ public class GameManagerBehavior : MonoBehaviour
                 _waveSize = 20;
                 _zombieSpawnWeight = 17;
                 _skeletonSpawnWeight = 1;
-                _waveCooldown = 5;
-                _enemySpawnTime = 2;
+                _ghostSpawnWeight = 1;
+                _enemySpawnTime = 2f;
                 break;
             case 2:
                 _waveSize = 32;
                 _zombieSpawnWeight = 20;
                 _skeletonSpawnWeight = 7;
-                _waveCooldown = 5f;
-                _enemySpawnTime = 1.9f;
+                _enemySpawnTime = 1.75f;
                 break;
             case 3:
                 _waveSize = 45;
                 _zombieSpawnWeight = 10;
                 _skeletonSpawnWeight = 28;
-                _waveCooldown = 4.5f;
                 _enemySpawnTime = 1.65f;
                 break;
             case 4:
@@ -178,7 +174,6 @@ public class GameManagerBehavior : MonoBehaviour
                 _zombieSpawnWeight = 30;
                 _skeletonSpawnWeight = 15;
                 _ghostSpawnWeight = 3;
-                _waveCooldown = 4f;
                 _enemySpawnTime = 1.5f;
                 break;
             case 5:
@@ -186,7 +181,6 @@ public class GameManagerBehavior : MonoBehaviour
                 _zombieSpawnWeight = 32;
                 _skeletonSpawnWeight = 20;
                 _ghostSpawnWeight = 5;
-                _waveCooldown = 3.5f;
                 _enemySpawnTime = 1.35f;
                 break;
             default:
