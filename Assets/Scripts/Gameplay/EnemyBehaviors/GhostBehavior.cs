@@ -59,7 +59,7 @@ public class GhostBehavior : EnemyBehavior
             return;
 
         transform.GetChild(0).gameObject.SetActive(true);
-        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 1);
+        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 0.75f);
 
         RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.40f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Attack(), TimedActionCountType.SCALEDTIME, 0.5f);
@@ -107,8 +107,9 @@ public class GhostBehavior : EnemyBehavior
 
         if(player)
         {
+            if(transform.GetChild(1).gameObject.activeInHierarchy)
             player.IsStunned = true;
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.50f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => player.IsStunned = false, TimedActionCountType.SCALEDTIME, 0.75f);
         }
     }
 }
