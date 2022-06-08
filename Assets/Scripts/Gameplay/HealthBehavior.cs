@@ -66,6 +66,7 @@ public class HealthBehavior : MonoBehaviour
     /// </summary>
     private void OnDeath()
     {
+        Debug.Log("On Death");
         _isAlive = false;
 
         EnemyBehavior enemy = GetComponent<EnemyBehavior>();
@@ -77,10 +78,15 @@ public class HealthBehavior : MonoBehaviour
             SkeletonBehavior skeleton = GetComponent<SkeletonBehavior>();
             if(!skeleton)
                 GameManagerBehavior.EnemyCount--;
+
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => Destroy(gameObject), TimedActionCountType.SCALEDTIME, 1f);
+            enemy.Target = null;
+            return;
         }
 
         //If the object should be destroyed on death, destroy the game object
         if (_destroyOnDeath)
             Destroy(gameObject);
+            
     }
 }
