@@ -22,6 +22,8 @@ public class SkeletonBehavior : EnemyBehavior
 
     public override void Update()
     {
+        base.Update();
+
         if(_health.IsAlive)
         {
             //The distance of the enemy and the targets z-axis
@@ -30,10 +32,6 @@ public class SkeletonBehavior : EnemyBehavior
             //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
             if (distanceFromTarget > Movement.ApproachDistance)
                 Movement.Velocity = new Vector3(0, 0, -1);
-            else
-            {
-                _health.TakeDamage(99);
-            }
         }
         else
         {

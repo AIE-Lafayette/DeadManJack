@@ -42,6 +42,12 @@ public class EnemyBehavior : UseAbilityBehavior
     // Update is called once per frame
     public virtual void Update()
     {
+        if (_target == null)
+        {
+            _movement.Velocity = new Vector3(0, 0, 0);
+            return;
+        }
+
         //The distance of the enemy and the targets z-axis
         float distanceFromTarget = transform.position.z - Target.transform.position.z;
 
@@ -50,6 +56,7 @@ public class EnemyBehavior : UseAbilityBehavior
             _movement.Velocity = new Vector3(0, 0, -1);
         else
             transform.LookAt(Target.transform);
+            
     }
 
     public void SetCurrentAbility(Ability ability)

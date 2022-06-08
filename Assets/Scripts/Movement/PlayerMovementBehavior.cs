@@ -9,7 +9,9 @@ public class PlayerMovementBehavior : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 1;
 
-    public  bool IsStunned { get; set; }
+    public bool IsStunned { get; set; }
+
+    public Vector3 Velocity { get { return _velocity; } }
 
     // Start is called before the first frame update
     void Awake()
