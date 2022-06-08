@@ -3533,6 +3533,14 @@ PrefabInstance:
       propertyPath: _currentAbility._visualPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2621500491401327844, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
+      propertyPath: _bulletForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325542940510430701, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
+      propertyPath: _bulletForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4224868895601059082, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
       propertyPath: m_Name
       value: Player

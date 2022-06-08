@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletRef: {fileID: 3249397583550397884, guid: 707bf0ba7034ece44b132d630f55e5ee, type: 3}
-  _bulletForce: 5
+  _bulletForce: 8
   _owner: {fileID: 4224868895601059082}
 --- !u!1 &4224868895601059082
 GameObject:
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88af45446b4b5a1419f53e89092ef4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
-  pauseMenuPanel: {fileID: 0}
+  IsPaused: 0
+  PauseUI: {fileID: 0}
 --- !u!1 &6361416811500775986
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 4224868895601059082}
+  _bonemerang: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
 --- !u!1 &6989068887805991733
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletRef: {fileID: 3249397583550397884, guid: 707bf0ba7034ece44b132d630f55e5ee, type: 3}
-  _bulletForce: 5
+  _bulletForce: 8
   _owner: {fileID: 4224868895601059082}
 --- !u!1001 &5481637907797963118
 PrefabInstance:

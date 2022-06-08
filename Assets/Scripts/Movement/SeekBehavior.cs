@@ -32,18 +32,17 @@ public class SeekBehavior : MonoBehaviour
         _startingPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (transform.position.y != _startingPosition.y)
             transform.SetPositionAndRotation(new Vector3(transform.position.x, _startingPosition.y, transform.position.z), new Quaternion());
 
         if (_target == null)
-           return;
+            return;
 
         Vector3 directionToTarget = _target.position - transform.position;
 
-        Vector3 desiredVelocity = directionToTarget.normalized * 5;
+        Vector3 desiredVelocity = directionToTarget.normalized * 7;
 
         _rigidbody.AddForce(desiredVelocity, ForceMode.Acceleration);
     }
