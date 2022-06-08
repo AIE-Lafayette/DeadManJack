@@ -38,8 +38,10 @@ public class UseAbilityBehavior : MonoBehaviour
 
     private void Update()
     {
+        // If there is a current ability...
         if (_currentAbility != null)
         {
+            // ...check to see if its use counter is equal to or below zero. If it is, set the current ability to null.
             if (CurrentAbility.UseCounter <= 0)
                 CurrentAbility = null;
         }
