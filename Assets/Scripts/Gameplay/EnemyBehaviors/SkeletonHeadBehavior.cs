@@ -16,6 +16,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
         Target = _body.Target;
         base.Awake();
         SetCurrentAbility(new FireProjectileAbility());
+        CurrentAbility.SetUses(1);
     }
 
     // Update is called once per frame
