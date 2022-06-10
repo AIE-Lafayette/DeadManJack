@@ -34,22 +34,28 @@ public class SkeletonBehavior : EnemyBehavior
                 Movement.Velocity = new Vector3(0, 0, -1);
         }
         else
-        {
-            Movement.Velocity = Vector3.zero;
-            if(_body.rotation.eulerAngles.x < 80)
-                _body.Rotate(Time.deltaTime * 100, 0, 0);
-            if (_body.position.y > 0.1)
-                _body.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
-            if(!_headSpawned)
-            {
-                _head.GetComponent<Rigidbody>().isKinematic = false;
-                _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
-                _head.transform.SetParent(transform);
-                _headSpawned = true;
-            }
-        }
+            SplitHead();
 
         if (!_head)
             Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// The skeleton's way to split the head from the body.
+    /// </summary>
+    public void SplitHead()
+    {
+        Movement.Velocity = Vector3.zero;
+        //if (_body.rotation.eulerAngles.x < 80)
+        //    _body.Rotate(Time.deltaTime * 100, 0, 0);
+        //if (_body.position.y > 0.1)
+        //    _body.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
+        if (!_headSpawned)
+        {
+            _head.GetComponent<Rigidbody>().isKinematic = false;
+            _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
+            _head.transform.SetParent(transform);
+            _headSpawned = true;
+        }
     }
 }
