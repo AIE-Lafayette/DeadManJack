@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerFistBehavior : MonoBehaviour
 {
+    public delegate void ShootHandeler(bool didPunchRight);
+
+    public delegate void GrabHandeler();
+
     /// <summary>
     /// The first fist the player character will shoot from.
     /// </summary>
@@ -30,9 +34,18 @@ public class PlayerFistBehavior : MonoBehaviour
     private bool _canShoot = true;
 
     /// <summary>
+    /// Checks to see if the player is grabbing.
+    /// </summary>
+    private bool _isGrabbing = false;
+
+    /// <summary>
     /// The player's current ability.
     /// </summary>
     private UseAbilityBehavior _currentPlayerAbility;
+
+    public ShootHandeler OnShoot;
+
+    public GrabHandeler OnGrapple;
 
     public BulletEmitterBehavior RightFist
     {
@@ -59,6 +72,10 @@ public class PlayerFistBehavior : MonoBehaviour
         set { _canShoot = value; }
     }
 
+    public bool CurrentFistRight { get { return _currentFistRight; } }
+
+    public bool IsGrabbing { get { return _isGrabbing; } }
+
     public void ToggleShoot()
     {
         if (_canShoot)
@@ -76,31 +93,33 @@ public class PlayerFistBehavior : MonoBehaviour
         if (_currentFistRight && _canShoot)
         {
             // ...shoot and swap to the left.
+            OnShoot.Invoke(_currentFistRight);
             _rightFist.Fire();
             _currentFistRight = false;
-            ToggleShoot();
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
         }
         // If the current fist is the left one...
         else if (_canShoot)
         {
             // ...shoot and swap to the right.
+            OnShoot.Invoke(_currentFistRight);
             _leftFist.Fire();
             _currentFistRight = true;
-            ToggleShoot();
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
         }
     }
 
     public void Activate()
     {
         if (CurrentPlayerAbility.CurrentAbility == null)
+        {
             PlayerGrapple.Activate();
+            OnGrapple.Invoke();
+        }
         else if (CurrentPlayerAbility.CurrentAbility != null && _canShoot)
         {
             CurrentPlayerAbility.CurrentAbility.Activate();
             ToggleShoot();
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+            OnShoot.Invoke(true);
+           RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
         }
             
     }

@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 2421393649259180713}
+  _playerFist: {fileID: 3781663097128283482}
   _animator: {fileID: 2504357026442242195}
 --- !u!1001 &8334991774084191490
 PrefabInstance:
