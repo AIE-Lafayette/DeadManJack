@@ -53,7 +53,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0.9
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -99,9 +128,7 @@ ModelImporter:
   - dd810e5dcc7ad1043a955df91bce14d2
   - 78bb955b22a6cf9429c5169d3a3d9f8c
   - fcdde762b3122e1449027a503b43a871
-  - 3dd9467b5c1decc46b387d2d4c979e32
   - 04edbe30d99cc1d42b9858a5ee2875b6
-  - 998c714d75dc3f54784362fc35427932
   - 291ca266d5370c04fb8c866f72b68268
   - 2e61a06b131ba8546bbc52179ec4de26
   - 850796e2585add1408b04bdcea8ebd36

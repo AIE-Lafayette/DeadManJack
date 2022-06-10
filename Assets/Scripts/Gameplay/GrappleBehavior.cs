@@ -77,17 +77,14 @@ public class GrappleBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.GetComponent<HealthBehavior>())
-            return;
-
-        if (other.GetComponent<HealthBehavior>().IsInvulnerable)
-            return;
-
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
         UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 
         if (enemyAbility && !_isGrabbing)
         {
+            if (other.GetComponent<HealthBehavior>().IsInvulnerable)
+                return;
+
             // Sets the player's ability to be a copy of the enemy's ability.
             playerAbility.CurrentAbility = enemyAbility.CurrentAbility;
             playerAbility.CurrentAbility.Owner = _owner;

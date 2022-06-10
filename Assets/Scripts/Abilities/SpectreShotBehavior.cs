@@ -65,6 +65,7 @@ public class SpectreShotBehavior : BulletBehavior
         {
             Burst();
             RoutineBehavior.Instance.StopTimedAction(_timedAction);
+            base.OnTriggerEnter(other);
         }
     }
 }

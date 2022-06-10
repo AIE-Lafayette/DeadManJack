@@ -13,7 +13,7 @@ public class SkeletonHeadBehavior : EnemyBehavior
     public override void Awake()
     {
         _health = GetComponent<HealthBehavior>();
-        Target = _body.Target;
+        Target = GameManagerBehavior.Goal;
         base.Awake();
         SetCurrentAbility(new FireProjectileAbility());
         CurrentAbility.SetUses(1);
@@ -22,30 +22,15 @@ public class SkeletonHeadBehavior : EnemyBehavior
     // Update is called once per frame
     public override void Update()
     {
-        float distanceFromTarget = transform.position.z - Target.transform.position.z;
-        Vector3 direction = Target.transform.position - transform.position;
-        direction = direction.normalized;
-        if (distanceFromTarget > Movement.ApproachDistance)
+        base.Update();
+
+        if (_isGrounded)
         {
-            if (_isGrounded)
-            {
-                Movement.Velocity = new Vector3(0, 5f, -1);
-            }
-            else
-            {
-                Movement.Velocity = new Vector3(0, 0, -1);
-            }
+            Movement.Velocity = new Vector3(0, 5f, -1);
         }
         else
         {
-            if (_isGrounded)
-            {
-                Movement.Velocity = new Vector3(direction.x, 5f, direction.z);
-            }
-            else
-            {
-                Movement.Velocity = new Vector3(direction.x, 0, direction.z);
-            }
+            Movement.Velocity = new Vector3(0, 0, -1);
         }
 
 
