@@ -3,7 +3,27 @@ guid: 76f50e6f1644187408f09aa5cf247c13
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ArmMat
+    second: {fileID: 2100000, guid: dfea294d2a92b9f4a85186c6602eaddc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CoreMat
+    second: {fileID: 2100000, guid: ec747701167e9e643b0263fe643cdffc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantsMat
+    second: {fileID: 2100000, guid: a24eb1491bb04fd43a0c0fa85c29ec92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShoesMat
+    second: {fileID: 2100000, guid: 423082f6dc544f24380dc374b273f65f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
