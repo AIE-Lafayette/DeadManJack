@@ -11,12 +11,6 @@ public class EnemyMovementBehavior : MovementBehavior
     [SerializeField]
     private float _approachDistance;
 
-    private Ability _currentAbility;
-
-    public Ability CurrentAbility
-    {
-        get { return _currentAbility; }
-    }
     public float Speed
     {
         get { return _speed; }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpectralResidueBehavior : MonoBehaviour
 {
+    private EnemyMovementBehavior _enemy;
+
     private void OnTriggerEnter(Collider other)
     {
         // The enemy movement behavior that may be attached to the other this object is colliding with.
@@ -12,6 +14,7 @@ public class SpectralResidueBehavior : MonoBehaviour
         // Halves the enemy's speed and increases the amount of points gained.
         if(enemy)
         {
+            _enemy = enemy;
             enemy.Speed = enemy.Speed / 2;
             ScoreCounterBehavior.Instance.IncreaseScore(150);
         }
