@@ -48,15 +48,7 @@ public class EnemyBehavior : UseAbilityBehavior
             return;
         }
 
-        //The distance of the enemy and the targets z-axis
-        float distanceFromTarget = transform.position.z - Target.transform.position.z;
-
-        //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
-        if (distanceFromTarget > _movement.ApproachDistance)
-            _movement.Velocity = new Vector3(0, 0, -1);
-        else
-            transform.LookAt(Target.transform);
-            
+        _movement.Velocity = new Vector3(0, 0, -1);
     }
 
     public void SetCurrentAbility(Ability ability)
