@@ -30,7 +30,6 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     private float _enemySpawnTime = 5.0f;
     private float _spawnTimer = 0.0f;
-    private bool _isBossWave = false;
 
     [SerializeField]
     private EnemySpawnerBehavior _zombieSpawner;
@@ -76,7 +75,7 @@ public class GameManagerBehavior : MonoBehaviour
             Time.timeScale = 0;
             _UI.transform.GetChild(0).gameObject.SetActive(true);
         }
-        if (_waveCount > 5)
+        if (_waveCount > 10)
         {
             GameObject winUI = _UI.transform.GetChild(1).gameObject;
             winUI.SetActive(true);
@@ -89,7 +88,7 @@ public class GameManagerBehavior : MonoBehaviour
     private void WaveManager()
     {
         _waveOver = _waveSize + _enemyCount <= 0;
-        if (_waveOver && _waveCount <= 5)
+        if (_waveOver && _waveCount <= 10)
         {
             _waveCount++;
             GetNextWave();
@@ -153,8 +152,8 @@ public class GameManagerBehavior : MonoBehaviour
             case 1:
                 _waveSize = 20;
                 _zombieSpawnWeight = 17;
-                _skeletonSpawnWeight = 1;
-                _ghostSpawnWeight = 1;
+                _skeletonSpawnWeight = 1; //Only for Testing, remove in final release
+                _ghostSpawnWeight = 1; //Only for Testing, remove in final release
                 _enemySpawnTime = 2f;
                 break;
             case 2:
@@ -170,18 +169,25 @@ public class GameManagerBehavior : MonoBehaviour
                 _enemySpawnTime = 1.65f;
                 break;
             case 4:
-                _waveSize = 60;
+                _waveSize = 59;
                 _zombieSpawnWeight = 30;
                 _skeletonSpawnWeight = 15;
-                _ghostSpawnWeight = 3;
+                _ghostSpawnWeight = 1;
                 _enemySpawnTime = 1.5f;
                 break;
             case 5:
-                _waveSize = 60;
-                _zombieSpawnWeight = 32;
+                _waveSize = 74;
+                _zombieSpawnWeight = 45;
                 _skeletonSpawnWeight = 20;
-                _ghostSpawnWeight = 5;
+                _ghostSpawnWeight = 3;
                 _enemySpawnTime = 1.35f;
+                break;
+            case 6:
+                _waveSize = 25;
+                _zombieSpawnWeight = 15;
+                _skeletonSpawnWeight = 5;
+                _ghostSpawnWeight = 3;
+                _enemySpawnTime = 0.9f;
                 break;
             default:
                 break;
