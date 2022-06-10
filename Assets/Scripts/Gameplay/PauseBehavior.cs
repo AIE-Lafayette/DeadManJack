@@ -21,7 +21,6 @@ public class PauseBehavior : MonoBehaviour
             Time.timeScale = 0;
             playerFist.CanShoot = false;
             PauseUI.SetActive(true);
-            Debug.Log("Game Paused");
             IsPaused = true;
         }
         else
@@ -29,7 +28,6 @@ public class PauseBehavior : MonoBehaviour
             Time.timeScale = 1;
             playerFist.CanShoot = true;
             PauseUI.SetActive(false);
-            Debug.Log("Game Unpaused");
             IsPaused = false;
         }
 

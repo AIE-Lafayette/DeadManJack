@@ -12,6 +12,7 @@ public class HealthBehavior : MonoBehaviour
     private bool _destroyOnDeath;
     [SerializeField]
     private bool _isAlive = true;
+    private bool _isInvulnerable = false;
 
     public float Health
     {
@@ -27,6 +28,13 @@ public class HealthBehavior : MonoBehaviour
     {
         get { return _destroyOnDeath; }
     }
+
+    public bool IsInvulnerable
+    { 
+        get { return _isInvulnerable; }
+        set { _isInvulnerable = value; }
+    }
+
 
     private void Awake()
     {
@@ -46,7 +54,8 @@ public class HealthBehavior : MonoBehaviour
     /// <param name="damageToTake">The amount of damage inflicted</param>
     public void TakeDamage(float damageToTake)
     {
-        _health -= damageToTake;
+        if(!IsInvulnerable)
+            _health -= damageToTake;
     }
 
     /// <summary>
