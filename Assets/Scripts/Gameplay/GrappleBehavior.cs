@@ -16,11 +16,6 @@ public class GrappleBehavior : MonoBehaviour
     private SphereCollider _sphereCollider;
 
     /// <summary>
-    /// The mesh of the grab.
-    /// </summary>
-    private MeshRenderer _meshRenderer;
-
-    /// <summary>
     /// The bonemerang prefab that can be grabbed to add another.
     /// </summary>
     [SerializeField]
@@ -33,20 +28,14 @@ public class GrappleBehavior : MonoBehaviour
     /// </summary>
     private void ToggleGrab()
     {
-        // If both are disabled...
-        if (_sphereCollider.enabled == false && _meshRenderer.enabled == false)
-        {
-            // ...enable both of them.
+        // If it is disabled...
+        if (_sphereCollider.enabled == false)
+            // ...enable it.
             _sphereCollider.enabled = true;
-            _meshRenderer.enabled = true;
-        }
-        // If they are both enabled...
+        // If it is enabled...
         else
-        {
-            // ...disable them both.
+            // ...disable is.
             _sphereCollider.enabled = false;
-            _meshRenderer.enabled = false;
-        }
     }
 
     public void ToggleCanGrapple()
@@ -72,7 +61,6 @@ public class GrappleBehavior : MonoBehaviour
     private void Start()
     {
         _sphereCollider = GetComponent<SphereCollider>();
-        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -16,6 +16,10 @@ public class GameManagerBehavior : MonoBehaviour
     private GameObject _UI;
     [SerializeField]
     private Text _gameplayUI;
+    /// <summary>
+    /// Checks to see if the game is over.
+    /// </summary>
+    private bool _isGameOver = false;
 
     [SerializeField]
     private int _waveCount = 0;
