@@ -23,7 +23,10 @@ public class PlayerAnimationBehavior : MonoBehaviour
 
     private void Update()
     {
+        // The velocity of the player.
+        Vector3 playerVelocity = _playerMovement.Velocity;
+
         // Checks to see if the player is standing still or moving.
-        _animator.SetFloat("XDirection", _playerMovement.Velocity.x);
+        _animator.SetFloat("XDirection", (playerVelocity.normalized).x);
     }
 }
