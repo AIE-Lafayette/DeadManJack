@@ -103,7 +103,7 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 90 || _ghostSpawnWeight > 0)
+                if (randEnemy > 90)
                 {
                     if (_ghostSpawnWeight > 0)
                     {

@@ -9,20 +9,4 @@ public class ZombieBehavior : EnemyBehavior
         base.Awake();
         SetCurrentAbility(new FireProjectileAbility());
     }
-
-    public override void Update()
-    {
-        //Gets the direction and distance of the target from the Zombie
-        float distanceFromTarget = transform.position.z - Target.transform.position.z;
-        Vector3 direction = Target.transform.position - transform.position;
-
-        //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
-        if (distanceFromTarget > Movement.ApproachDistance)
-            Movement.Velocity = new Vector3(0, 0, -1);
-        else
-        {
-            Movement.Velocity = direction.normalized;
-            transform.LookAt(Target.transform);
-        }
-    }
 }
