@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GhostBehavior : EnemyBehavior
 {
+    // The delegates that will set up the times when the ghost will hide and scare.
+    public delegate void SetHide();
+    public delegate void SetScare();
+    public SetHide HideAnimation;
+    public SetScare ScareAnimation;
+
     private float _teleportTime;
     private bool _isAttacking;
     private float _numberOfAttacksPerformed = 0;
@@ -45,6 +51,8 @@ public class GhostBehavior : EnemyBehavior
 
     private void Vanish()
     {
+        HideAnimation.Invoke();
+
         if(this != null)
         {
             transform.GetChild(0).gameObject.SetActive(false);
@@ -60,6 +68,8 @@ public class GhostBehavior : EnemyBehavior
 
         transform.GetChild(0).gameObject.SetActive(true);
         transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z + 0.75f);
+
+        ScareAnimation.Invoke();
 
         RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.40f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Attack(), TimedActionCountType.SCALEDTIME, 0.5f);
