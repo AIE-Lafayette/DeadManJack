@@ -53,4 +53,9 @@ public class PlayerAnimationBehavior : MonoBehaviour
     {
         _animator.SetTrigger("Grab");
     }
+
+    public void PlayVictoryAnimation()
+    {
+        _animator.SetTrigger("BeatWave");
+    }
 }
