@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAnimationBehavior : MonoBehaviour
+public class EnemyAnimationBehavior : MonoBehaviour
 {
     /// <summary>
-    /// The zombie's health behavior, so it can tell when it dies.
+    /// The enemy's health behavior, so it can tell when it dies.
     /// </summary>
     [SerializeField]
     private HealthBehavior _health;
@@ -14,13 +14,19 @@ public class ZombieAnimationBehavior : MonoBehaviour
     private EnemyMovementBehavior _movement;
 
     /// <summary>
-    /// The animator for the zombie.
+    /// The animator for the enemy.
     /// </summary>
     [SerializeField]
     private Animator _animator;
 
+    public HealthBehavior Health { get { return _health; } }
+
+    public EnemyMovementBehavior Movement { get { return _movement; } }
+
+    public Animator Animator { get { return _animator; } }
+
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         _animator.SetBool("IsAlive", _health.IsAlive);
         _animator.SetFloat("Speed", _movement.Speed);
