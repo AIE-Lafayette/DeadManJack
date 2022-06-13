@@ -10,10 +10,17 @@ public class GhostBehavior : EnemyBehavior
     public SetHide HideAnimation;
     public SetScare ScareAnimation;
 
+    //The time before the ghost vanishes to move to the player
     private float _teleportTime;
-    private bool _isAttacking;
+
+    //Bools used to change the Ghost's behavior
+    private bool _isTargetingHeart; //The ghost rushes the heart
+    private bool _isAttacking; //The ghost tries to attack the player
+
+    //The number of attacks the ghost performed, used to change behavior
     private float _numberOfAttacksPerformed = 0;
-    private bool _isTargetingHeart;
+
+    //The health for the ghost
     private HealthBehavior _health;
 
     public override void Awake()
@@ -27,20 +34,27 @@ public class GhostBehavior : EnemyBehavior
 
     public override void Update()
     {
+        //A reoccuring null check. This is for when the ghost dies
         if (!this)
             return;
 
         Target = GameManagerBehavior.Player;
 
+        //The ghost should lerp from side to side around the middle of runway while not attacking
         if(!_isAttacking && _numberOfAttacksPerformed < 3)
         {
             transform.position = Vector3.Lerp(new Vector3(-5, 0, 0), new Vector3(5, 0, 0), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
         }
+        //If the ghost has attacked 2 or more times
         else if (_numberOfAttacksPerformed >= 3)
         {
+            //The ghost lerps like before, but further back in the runway
             if(!_isTargetingHeart)
-            transform.position = Vector3.Lerp(new Vector3(-5, 0, 15), new Vector3(5, 0, 15), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
+                transform.position = Vector3.Lerp(new Vector3(-5, 0, 15), new Vector3(5, 0, 15), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
+
             Target = GameManagerBehavior.Goal;
+
+            //When the ghost is ready to target the heart, it should rush the heart and move to evade incoming attacks
             if (_isTargetingHeart)
             {
                 Movement.Velocity = Target.transform.position - transform.position;
