@@ -28,6 +28,9 @@ public class EnemyAnimationBehavior : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (_animator == null)
+            return;
+
         _animator.SetBool("IsAlive", _health.IsAlive);
         _animator.SetFloat("Speed", _movement.Speed);
     }
