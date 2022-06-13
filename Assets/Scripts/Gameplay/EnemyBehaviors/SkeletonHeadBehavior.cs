@@ -9,6 +9,14 @@ public class SkeletonHeadBehavior : EnemyBehavior
     private bool _isGrounded = false;
     private HealthBehavior _health;
 
+    /// <summary>
+    /// The visualization of the head.
+    /// </summary>
+    [SerializeField]
+    private GameObject _headModel;
+
+    public GameObject HeadModel { get { return _headModel; } }
+
     // Start is called before the first frame update
     public override void Awake()
     {
