@@ -26,6 +26,7 @@ public class GameManagerBehavior : MonoBehaviour
     private static int _enemyCount = 0;
     private int _waveSize = 0;
     private bool _waveOver = false;
+    private bool _isFirstWave = true;
 
     private int _zombieSpawnWeight = 0;
     private int _skeletonSpawnWeight = 0;
@@ -94,9 +95,14 @@ public class GameManagerBehavior : MonoBehaviour
         _waveOver = _waveSize + _enemyCount <= 0;
         if (_waveOver && _waveCount <= 10)
         {
+            if(!_isFirstWave)
+            {
+                _player.GetComponentInChildren<PlayerAnimationBehavior>().PlayVictoryAnimation();
+            }
             _waveCount++;
             GetNextWave();
             _waveOver = false;
+            _isFirstWave = false;
         }
 
         if (_enemySpawnTime <= _spawnTimer && _waveSize > 0)

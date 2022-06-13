@@ -83,8 +83,8 @@ public class HealthBehavior : MonoBehaviour
         {
             ScoreCounterBehavior.Instance.IncreaseScore(enemy.ScoreAmount);
 
-            // If the enemy is not a skeleton...
-            if(!enemy.GetComponent<SkeletonBehavior>())
+            // If the enemy is not a skeleton or a ghost...
+            if(!enemy.GetComponent<SkeletonBehavior>() && !enemy.GetComponent<GhostBehavior>())
             {
                 // ...decrease the enemy count and attempt to set its death timer so its animation can play.
                 GameManagerBehavior.EnemyCount--;
@@ -94,13 +94,15 @@ public class HealthBehavior : MonoBehaviour
                 return;
             }
             // If it is a skeleton...
-            else
+            else if (enemy.GetComponent<SkeletonBehavior>())
             {
                 // ...sets the timer for the head to split from the body.
                 RoutineBehavior.Instance.StartNewTimedAction(arguments => (enemy as SkeletonBehavior).SplitHead(), TimedActionCountType.SCALEDTIME, 0.5f);
                 enemy.Target = null;
                 return;
             }
+            else if(enemy.GetComponent<GhostBehavior>())
+                GameManagerBehavior.EnemyCount--;
         }
 
         //If the object should be destroyed on death, destroy the game object
