@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908641634845773271}
-  - component: {fileID: 1586937983954134956}
   - component: {fileID: 2949864599548723679}
   - component: {fileID: 6567147681247352119}
   - component: {fileID: 9108118504583821654}
@@ -37,19 +36,6 @@ Transform:
   m_Father: {fileID: 6848169275459675321}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1586937983954134956
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4320077030260805387}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2949864599548723679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82,6 +68,7 @@ MonoBehaviour:
     _visualPrefab: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
   _scoreAmount: 200
   _body: {fileID: 2715803361549244517}
+  _headModel: {fileID: 7569331112566521751}
 --- !u!114 &9108118504583821654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 0, z: 0}
-  _speed: 3
+  _speed: 2.65
 --- !u!136 &7228109735437883221
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -284,6 +271,19 @@ MonoBehaviour:
   _health: {fileID: -1305557848434819931}
   _movement: {fileID: 6444521071858054632}
   _animator: {fileID: 4162841385306465351}
+--- !u!135 &6872179993095019854
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569331112566521751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7334889739068883654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,10 +353,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 649f7e8eb4f937d4ca43fa7ed7beddf6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 649f7e8eb4f937d4ca43fa7ed7beddf6, type: 3}
+--- !u!1 &7569331112566521751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 649f7e8eb4f937d4ca43fa7ed7beddf6, type: 3}
+  m_PrefabInstance: {fileID: 7334889739068883654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7079792919689209133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 649f7e8eb4f937d4ca43fa7ed7beddf6, type: 3}

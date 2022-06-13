@@ -96,6 +96,8 @@ public class PlayerFistBehavior : MonoBehaviour
             OnShoot.Invoke(_currentFistRight);
             _rightFist.Fire();
             _currentFistRight = false;
+            ToggleShoot();
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
         }
         // If the current fist is the left one...
         else if (_canShoot)
@@ -104,6 +106,8 @@ public class PlayerFistBehavior : MonoBehaviour
             OnShoot.Invoke(_currentFistRight);
             _leftFist.Fire();
             _currentFistRight = true;
+            ToggleShoot();
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
         }
     }
 
