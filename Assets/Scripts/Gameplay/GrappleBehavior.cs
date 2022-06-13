@@ -93,7 +93,7 @@ public class GrappleBehavior : MonoBehaviour
             playerAbility.CurrentAbility.VisualPrefab = _bonemerang;
             playerAbility.CurrentAbility.SetUses(1);
             playerAbility.CurrentAbility.Owner = _owner;
-            Destroy(other);
+            Destroy(other.gameObject);
             ScoreCounterBehavior.Instance.IncreaseScore(50);
         }
     }
