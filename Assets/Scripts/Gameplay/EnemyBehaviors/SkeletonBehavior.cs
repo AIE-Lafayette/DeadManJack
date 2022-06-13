@@ -26,8 +26,6 @@ public class SkeletonBehavior : EnemyBehavior
 
         if(_health.IsAlive)
             Movement.Velocity = new Vector3(0, 0, -1);
-        else
-            SplitHead();
 
         if (!_head)
             Destroy(gameObject);
@@ -38,19 +36,15 @@ public class SkeletonBehavior : EnemyBehavior
     /// </summary>
     public void SplitHead()
     {
-        _head.HeadModel.SetActive(true);
+        if (_headSpawned || !_head)
+            return;
 
+        _head.HeadModel.SetActive(true);
         Movement.Velocity = Vector3.zero;
-        if (_body.rotation.eulerAngles.x < 80)
-            _body.Rotate(Time.deltaTime * 100, 0, 0);
-        if (_body.position.y > 0.1)
-            _body.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
-        if (!_headSpawned)
-        {
-            _head.GetComponent<Rigidbody>().isKinematic = false;
-            _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
-            _head.transform.SetParent(transform);
-            _headSpawned = true;
-        }
+        _head.GetComponent<Rigidbody>().isKinematic = false;
+        _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
+        _head.transform.SetParent(transform);
+        _headSpawned = true;
+        
     }
 }
