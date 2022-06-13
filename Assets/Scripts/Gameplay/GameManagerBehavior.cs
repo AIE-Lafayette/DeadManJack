@@ -187,11 +187,17 @@ public class GameManagerBehavior : MonoBehaviour
                 _enemySpawnTime = 1.35f;
                 break;
             case 6:
-                _waveSize = 25;
-                _zombieSpawnWeight = 15;
-                _skeletonSpawnWeight = 5;
-                _ghostSpawnWeight = 3;
-                _enemySpawnTime = 0.9f;
+                _waveSize = 90;
+                _zombieSpawnWeight = 60;
+                _skeletonSpawnWeight = 20;
+                _ghostSpawnWeight = 2;
+                _enemySpawnTime = 1.3f;
+                break;
+            case 7:
+                _waveSize = 107;
+                _zombieSpawnWeight = 75;
+                _skeletonSpawnWeight = 10;
+                _enemySpawnTime = 1.25f;
                 break;
             default:
                 break;
