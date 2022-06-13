@@ -51,6 +51,6 @@ public class PlayerAnimationBehavior : MonoBehaviour
 
     public void PlayGrabAnimation()
     {
-        _animator.SetTrigger("Grabbing");
+        _animator.SetTrigger("Grab");
     }
 }
