@@ -7,6 +7,14 @@ public class MovementBehavior : MonoBehaviour
     [SerializeField]
     private Vector3 _velocity;
 
+    private bool _useScaledMovement = true;
+
+    public bool UseScaledMovement
+    { 
+        get { return _useScaledMovement; }
+        set { _useScaledMovement = value; }
+    }
+
     public Vector3 Velocity
     { 
         get { return _velocity; }
@@ -16,6 +24,9 @@ public class MovementBehavior : MonoBehaviour
 
     public virtual void Update()
     {
-        transform.position += Velocity * Time.deltaTime;
+        if (_useScaledMovement)
+            transform.position += Velocity * Time.deltaTime;
+        else if (!_useScaledMovement)
+            transform.position += Velocity * Time.unscaledDeltaTime;
     }
 }

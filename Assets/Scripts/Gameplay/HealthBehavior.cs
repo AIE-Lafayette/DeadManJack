@@ -97,7 +97,7 @@ public class HealthBehavior : MonoBehaviour
             else
             {
                 // ...sets the timer for the head to split from the body.
-                RoutineBehavior.Instance.StartNewTimedAction(arguments => (enemy as SkeletonBehavior).SplitHead(), TimedActionCountType.SCALEDTIME, 1f);
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => (enemy as SkeletonBehavior).SplitHead(), TimedActionCountType.SCALEDTIME, 0.5f);
                 enemy.Target = null;
                 return;
             }

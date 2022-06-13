@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkeletonBehavior : EnemyBehavior
 {
     [SerializeField]
-    private GameObject _head;
+    private SkeletonHeadBehavior _head;
     [SerializeField]
     private Transform _body = null;
     private bool _headSpawned = false;
@@ -25,16 +25,7 @@ public class SkeletonBehavior : EnemyBehavior
         base.Update();
 
         if(_health.IsAlive)
-        {
-            //The distance of the enemy and the targets z-axis
-            float distanceFromTarget = transform.position.z - Target.transform.position.z;
-
-            //If the distance of the Target is greater than the approach distance, continue moving down on the z-axis
-            if (distanceFromTarget > Movement.ApproachDistance)
-                Movement.Velocity = new Vector3(0, 0, -1);
-        }
-        else
-            SplitHead();
+            Movement.Velocity = new Vector3(0, 0, -1);
 
         if (!_head)
             Destroy(gameObject);
@@ -45,17 +36,15 @@ public class SkeletonBehavior : EnemyBehavior
     /// </summary>
     public void SplitHead()
     {
+        if (_headSpawned || !_head)
+            return;
+
+        _head.HeadModel.SetActive(true);
         Movement.Velocity = Vector3.zero;
-        //if (_body.rotation.eulerAngles.x < 80)
-        //    _body.Rotate(Time.deltaTime * 100, 0, 0);
-        //if (_body.position.y > 0.1)
-        //    _body.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
-        if (!_headSpawned)
-        {
-            _head.GetComponent<Rigidbody>().isKinematic = false;
-            _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
-            _head.transform.SetParent(transform);
-            _headSpawned = true;
-        }
+        _head.GetComponent<Rigidbody>().isKinematic = false;
+        _head.GetComponent<EnemyMovementBehavior>().Speed = 3;
+        _head.transform.SetParent(transform);
+        _headSpawned = true;
+        
     }
 }
