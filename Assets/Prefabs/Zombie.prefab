@@ -93,8 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 0, z: 0}
-  _speed: 3.5
-  _approachDistance: 1
+  _speed: 3
 --- !u!114 &8692561674462423228
 MonoBehaviour:
   m_ObjectHideFlags: 0

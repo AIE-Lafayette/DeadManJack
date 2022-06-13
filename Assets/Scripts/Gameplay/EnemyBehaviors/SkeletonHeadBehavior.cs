@@ -6,8 +6,15 @@ public class SkeletonHeadBehavior : EnemyBehavior
 {
     [SerializeField]
     private SkeletonBehavior _body;
-    private bool _isGrounded = false;
     private HealthBehavior _health;
+
+    /// <summary>
+    /// The visualization of the head.
+    /// </summary>
+    [SerializeField]
+    private GameObject _headModel;
+
+    public GameObject HeadModel { get { return _headModel; } }
 
     // Start is called before the first frame update
     public override void Awake()
@@ -24,8 +31,9 @@ public class SkeletonHeadBehavior : EnemyBehavior
     {
         base.Update();
 
-        if (_isGrounded)
+        if (transform.position.y < 0)
         {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             Movement.Velocity = new Vector3(0, 5f, -1);
         }
         else
@@ -37,22 +45,6 @@ public class SkeletonHeadBehavior : EnemyBehavior
         if(!_health.IsAlive)
         {
             Destroy(_body.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.name == "Plane")
-        {
-            _isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.name == "Plane")
-        {
-            _isGrounded = false;
         }
     }
 }
