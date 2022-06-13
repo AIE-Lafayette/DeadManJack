@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb3c50e494e7ca24aa8ef75b506c478d, type: 2}
     - target: {fileID: 919132149155446097, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
       propertyPath: m_Name
       value: Cross_Grave_Stone (2)
@@ -1516,6 +1520,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (2)
@@ -1702,6 +1710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (3)
@@ -2160,6 +2172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eac65b7f843e3be42bd7e0ed98cb3c00, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 09296bb8789504f49a74d64d6fd04faa, type: 2}
     - target: {fileID: 919132149155446097, guid: eac65b7f843e3be42bd7e0ed98cb3c00, type: 3}
       propertyPath: m_Name
       value: Mausoleum
@@ -2217,6 +2233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb3c50e494e7ca24aa8ef75b506c478d, type: 2}
     - target: {fileID: 919132149155446097, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
       propertyPath: m_Name
       value: Cross_Grave_Stone
@@ -2632,6 +2652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (4)
@@ -3146,6 +3170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (7)
@@ -3346,6 +3374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (1)
@@ -3536,6 +3568,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb3c50e494e7ca24aa8ef75b506c478d, type: 2}
     - target: {fileID: 919132149155446097, guid: cf8cab520b9af4140884b0cc36a48869, type: 3}
       propertyPath: m_Name
       value: Cross_Grave_Stone (1)
@@ -3748,6 +3784,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (5)
@@ -5064,6 +5104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave (6)
@@ -5655,6 +5699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2bc88ce6b68c3429de005898097bd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 6da3a444025cca14e8d9d0ad1f51a9df, type: 3}
       propertyPath: m_Name
       value: Grave
@@ -6055,7 +6103,7 @@ PrefabInstance:
     - target: {fileID: 2715803361549244517, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: _head
       value: 
-      objectReference: {fileID: 1905282132}
+      objectReference: {fileID: 0}
     - target: {fileID: 2715803361549244517, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
       propertyPath: _gameManager
       value: 
@@ -6166,11 +6214,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5a4007bcdfb51df4882070d1ba6ac27b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
---- !u!1 &1905282132 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4320077030260805387, guid: 0af1023f2b969d34195bd21cd2d2f439, type: 3}
-  m_PrefabInstance: {fileID: 1905282131}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1910157522
 PrefabInstance:
   m_ObjectHideFlags: 0
