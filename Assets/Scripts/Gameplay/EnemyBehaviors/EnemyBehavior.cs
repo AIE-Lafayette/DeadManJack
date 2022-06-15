@@ -6,7 +6,9 @@ public class EnemyBehavior : UseAbilityBehavior
 {
     private EnemyMovementBehavior _movement;
 
-    //The Enemy's target
+    /// <summary>
+    /// The Enemy's Target
+    /// </summary>
     private GameObject _target;
 
     /// <summary>
@@ -32,7 +34,6 @@ public class EnemyBehavior : UseAbilityBehavior
         get { return _scoreAmount; }
     }
 
-    // Start is called before the first frame update
     public virtual void Awake()
     {
         _movement = GetComponent<EnemyMovementBehavior>();
@@ -42,12 +43,14 @@ public class EnemyBehavior : UseAbilityBehavior
     // Update is called once per frame
     public virtual void Update()
     {
+        //Enemy should not move if it does not have a target. Mainly used for death animations
         if (_target == null)
         {
             _movement.Velocity = new Vector3(0, 0, 0);
             return;
         }
 
+        //The base movement directions for enemies, should be overriten in the specific behaviors
         _movement.Velocity = new Vector3(0, 0, -1);
     }
 
