@@ -34,7 +34,7 @@ public class GameManagerBehavior : MonoBehaviour
     private int _ghostSpawnWeight = 0;
 
     [SerializeField]
-    private float _enemySpawnTime = 5.0f;
+    private float _enemySpawnTime = 2.0f;
     private float _spawnTimer = 0.0f;
 
     [SerializeField]
@@ -86,9 +86,9 @@ public class GameManagerBehavior : MonoBehaviour
                 _gameShouldEnd = true;
                 RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
             }
-            else if (_waveCount > 10)
+            else if (_waveCount == 10)
             {
-                GameObject winUI = _UI.transform.GetChild(1).gameObject;
+                GameObject winUI = _UI.transform.GetChild(0).gameObject;
                 winUI.SetActive(true);
                 RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
             }
@@ -98,13 +98,14 @@ public class GameManagerBehavior : MonoBehaviour
     private void WaveManager()
     {
         _waveOver = _waveSize + _enemyCount <= 0;
-        if (_waveOver && _waveCount <= 10)
+        if (_waveOver)
         {
             if(!_isFirstWave)
             {
                 _player.GetComponentInChildren<PlayerAnimationBehavior>().PlayVictoryAnimation();
             }
-            _waveCount++;
+            if(_waveCount != 10)
+                _waveCount++;
             GetNextWave();
             _waveOver = false;
             _isFirstWave = false;
@@ -160,46 +161,31 @@ public class GameManagerBehavior : MonoBehaviour
     {
         _spawnTimer = 0;
         _waveSize = 8 + ((12 * _waveCount) - (_waveCount + 1));
+
+        if (_enemySpawnTime <= 1)
+            _enemySpawnTime -= .15f;
+
+        int waveWeight = _waveSize * 3 / 4;
+        _zombieSpawnWeight = waveWeight / 2;
+        if (_waveCount >= 2)
+            _skeletonSpawnWeight = waveWeight * 2 / 5;
+        if (_waveCount >= 4)
+            _ghostSpawnWeight = waveWeight / 10;
+
+
         switch (_waveCount)
         {
             case 0:
                 _waveCount++;
                 break;
-            case 1:
-                _enemySpawnTime = 2f;
-                break;
-            case 2:
-                _zombieSpawnWeight = 20;
-                _skeletonSpawnWeight = 7;
-                _enemySpawnTime = 1.75f;
-                break;
             case 3:
                 _zombieSpawnWeight = 10;
                 _skeletonSpawnWeight = 28;
-                _enemySpawnTime = 1.65f;
                 break;
-            case 4:
-                _zombieSpawnWeight = 30;
-                _skeletonSpawnWeight = 15;
-                _ghostSpawnWeight = 1;
-                _enemySpawnTime = 1.5f;
-                break;
-            case 5:
-                _zombieSpawnWeight = 45;
-                _skeletonSpawnWeight = 20;
-                _ghostSpawnWeight = 3;
-                _enemySpawnTime = 1.35f;
-                break;
-            case 6:
-                _zombieSpawnWeight = 60;
-                _skeletonSpawnWeight = 20;
-                _ghostSpawnWeight = 2;
-                _enemySpawnTime = 1.3f;
-                break;
-            case 7:
-                _zombieSpawnWeight = 75;
-                _skeletonSpawnWeight = 10;
-                _enemySpawnTime = 1.25f;
+            case 8:
+                _zombieSpawnWeight = 95;
+                _skeletonSpawnWeight = 0;
+                _ghostSpawnWeight = 0;
                 break;
             default:
                 break;
@@ -247,5 +233,13 @@ public class GameManagerBehavior : MonoBehaviour
         Player.GetComponent<PlayerFistBehavior>().CanShoot = true;
         pause.PauseUI.SetActive(false);
         pause.IsPaused = false;
+    }
+
+    //Enables Endless Mode
+    public void EndlessMode()
+    {
+        GameObject endlessUI = _UI.transform.GetChild(0).gameObject;
+        endlessUI.SetActive(false);
+        _waveCount = 11;
     }
 }
