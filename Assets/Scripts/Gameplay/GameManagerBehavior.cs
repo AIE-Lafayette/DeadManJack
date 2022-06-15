@@ -117,17 +117,17 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 90 && _waveCount >= 4)
+                if (randEnemy <= 50)
                 {
-                    if (_ghostSpawnWeight > 0 || _zombieSpawnWeight + _skeletonSpawnWeight <= 0)
+                    if (_zombieSpawnWeight > 0 || _skeletonSpawnWeight + _ghostSpawnWeight <= 0)
                     {
-                        _ghostSpawner.SpawnEnemy();
+                        _zombieSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if (_ghostSpawnWeight > 0)
-                            _ghostSpawnWeight--;
+                        if (_zombieSpawnWeight > 0)
+                            _zombieSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 50 && _waveCount >= 2)
+                else if (randEnemy <= 90 && _waveCount >= 2)
                 {
                     if (_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {
@@ -137,14 +137,14 @@ public class GameManagerBehavior : MonoBehaviour
                             _skeletonSpawnWeight--;
                     }
                 }
-                else
+                else if(_waveCount >= 4)
                 {
-                    if (_zombieSpawnWeight > 0 || _skeletonSpawnWeight + _ghostSpawnWeight <= 0)
+                    if (_ghostSpawnWeight > 0 || _zombieSpawnWeight + _skeletonSpawnWeight <= 0)
                     {
-                        _zombieSpawner.SpawnEnemy();
+                        _ghostSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if (_zombieSpawnWeight > 0)
-                            _zombieSpawnWeight--;
+                        if (_ghostSpawnWeight > 0)
+                            _ghostSpawnWeight--;
                     }
                 }
             }
