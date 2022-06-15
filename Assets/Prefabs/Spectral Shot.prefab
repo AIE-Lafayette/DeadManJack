@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 2496249644163747667}
   - component: {fileID: 850588536651560257}
   m_Layer: 0
-  m_Name: SpectralShot
+  m_Name: Spectral Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
