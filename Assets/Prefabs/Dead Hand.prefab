@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6294593815290388493}
   - component: {fileID: 7506547600697527544}
   m_Layer: 0
-  m_Name: ChargeShot
+  m_Name: Dead Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
