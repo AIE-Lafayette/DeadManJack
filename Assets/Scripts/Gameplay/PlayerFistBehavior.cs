@@ -47,30 +47,16 @@ public class PlayerFistBehavior : MonoBehaviour
 
     public GrabHandeler OnGrapple;
 
-    public BulletEmitterBehavior RightFist
-    {
-        get { return _rightFist; }
-        set { _rightFist = value; }
-    }
+    public BulletEmitterBehavior RightFist { get { return _rightFist; } set { _rightFist = value; } }
 
     /// <summary>
     /// The player's current ability.
     /// </summary>
-    public UseAbilityBehavior CurrentPlayerAbility
-    {
-        get { return _currentPlayerAbility; }
-    }
+    public UseAbilityBehavior CurrentPlayerAbility { get { return _currentPlayerAbility; } }
 
-    public GrappleBehavior PlayerGrapple
-    {
-        get { return _playerGrapple; }
-    }
+    public GrappleBehavior PlayerGrapple { get { return _playerGrapple; } }
 
-    public bool CanShoot 
-    {
-        get { return _canShoot; }
-        set { _canShoot = value; }
-    }
+    public bool CanShoot { get { return _canShoot; } set { _canShoot = value; } }
 
     public bool CurrentFistRight { get { return _currentFistRight; } }
 
@@ -123,9 +109,25 @@ public class PlayerFistBehavior : MonoBehaviour
             CurrentPlayerAbility.CurrentAbility.Activate();
             ToggleShoot();
             OnShoot.Invoke(true);
-           RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+
+            // If the current player ability is a bonemerang...
+            if(CurrentPlayerAbility.CurrentAbility.VisualPrefab.GetComponent<BonemerangBehavior>())
+            {
+                // ...get rid of the ability when its used.
+                CurrentPlayerAbility.CurrentAbility = null;
+            }   
         }
             
+    }
+
+    /// <summary>
+    /// Checks to see if the player has an ability currently. If they do, it gets rid of it.
+    /// </summary>
+    public void LoseAbility()
+    {
+        if (CurrentPlayerAbility.CurrentAbility != null)
+            CurrentPlayerAbility.CurrentAbility = null;
     }
 
     private void Start()
