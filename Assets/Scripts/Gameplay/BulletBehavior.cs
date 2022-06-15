@@ -14,6 +14,8 @@ public class BulletBehavior : MonoBehaviour
     private float _damage;
     [SerializeField]
     private bool _destroyOnHit;
+    [SerializeField]
+    private Sprite _abilitySprite;
 
     public GameObject Owner
     {
@@ -30,6 +32,11 @@ public class BulletBehavior : MonoBehaviour
     public Rigidbody Rigidbody
     {
         get { return _rigidbody; }
+    }
+
+    public Sprite AbilitySprite
+    {
+        get { return _abilitySprite; }
     }
 
     public float Damage
