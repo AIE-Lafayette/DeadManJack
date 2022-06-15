@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6294593815290388493}
   - component: {fileID: 7506547600697527544}
   m_Layer: 0
-  m_Name: ChargeShot
+  m_Name: Dead Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   _lifeTime: 2
   _damage: 5
   _destroyOnHit: 1
+  _abilitySprite: {fileID: -2130598178945338338, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
 --- !u!54 &7506547600697527544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,6 +193,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b41d9a31c2b8b72438c89977efd45cb6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 115fed2280557b949b2253bf00359440, type: 2}
     - target: {fileID: 919132149155446097, guid: b41d9a31c2b8b72438c89977efd45cb6, type: 3}
       propertyPath: m_Name
       value: DMJ_RightFist

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Ability
@@ -15,11 +16,6 @@ public class Ability
     /// </summary>
     [SerializeField]
     private GameObject _visualPrefab;
-
-    /// <summary>
-    /// The number of uses the ability has.
-    /// </summary>
-    private int _useCounter = 5;
 
     /// <summary>
     /// The owner of the ability, the one who used it.
@@ -39,11 +35,6 @@ public class Ability
         set { _visualPrefab = value; }
     }
 
-    public int UseCounter
-    {
-        get { return _useCounter; }
-    }
-
     public Ability()
     {
 
@@ -55,11 +46,6 @@ public class Ability
     /// <param name="arguments"> Arguments that need to be passed through for the ability to function. </param>
     public virtual void Activate(params object[] arguments)
     {
-        _useCounter--;
-    }
 
-    public void SetUses(int uses)
-    {
-        _useCounter = uses;
     }
 }

@@ -161,6 +161,7 @@ MonoBehaviour:
   _lifeTime: 4.5
   _damage: 3
   _destroyOnHit: 0
+  _abilitySprite: {fileID: -9040564375860118876, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
 --- !u!114 &5568518640737027669
 MonoBehaviour:
   m_ObjectHideFlags: 0

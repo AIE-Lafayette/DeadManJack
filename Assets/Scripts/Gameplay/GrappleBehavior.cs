@@ -23,6 +23,8 @@ public class GrappleBehavior : MonoBehaviour
 
     private bool _isGrabbing = false;
 
+    public GameObject Bonemerang { get { return _bonemerang; } }
+
     /// <summary>
     /// Disables the collider and mesh renderer if they are enabled and enables them otherwise.
     /// </summary>
@@ -65,12 +67,13 @@ public class GrappleBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Gets the ability for the player and for the enemy.
         EnemyBehavior enemyAbility = other.gameObject.GetComponent<EnemyBehavior>();
         UseAbilityBehavior playerAbility = _owner.GetComponent<UseAbilityBehavior>();
 
         if (enemyAbility && !_isGrabbing)
         {
-            if (other.GetComponent<HealthBehavior>().IsInvulnerable)
+            if (other.GetComponent<HealthBehavior>().IsInvulnerable || !other.GetComponent<HealthBehavior>().IsAlive)
                 return;
 
             // Sets the player's ability to be a copy of the enemy's ability.
@@ -84,17 +87,11 @@ public class GrappleBehavior : MonoBehaviour
             RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleCanGrapple(), TimedActionCountType.SCALEDTIME, 0.45f);
             // Increases the score based on the enemy's score count.
             ScoreCounterBehavior.Instance.IncreaseScore(enemyAbility.ScoreAmount * 2);
-        }
 
-        // If the other is a bonemerang, give the player another use of it.
-        if (other.GetComponent<BonemerangBehavior>())
-        {
-            playerAbility.CurrentAbility = new FireProjectileAbility();
-            playerAbility.CurrentAbility.VisualPrefab = _bonemerang;
-            playerAbility.CurrentAbility.SetUses(1);
-            playerAbility.CurrentAbility.Owner = _owner;
-            Destroy(other.gameObject);
-            ScoreCounterBehavior.Instance.IncreaseScore(50);
+            // If the player ability is not a bonemerang...
+            if (!playerAbility.VisualPrefab.GetComponent<BonemerangBehavior>())
+                // ...sets a timer for the ability to be taken away.
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => _owner.GetComponent<PlayerFistBehavior>().LoseAbility(), TimedActionCountType.SCALEDTIME, 5f);
         }
     }
 }
