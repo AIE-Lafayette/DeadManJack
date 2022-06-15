@@ -24,6 +24,11 @@ public class GameManagerBehavior : MonoBehaviour
     private bool _waveOver = false;
     private bool _isFirstWave = true;
 
+    /// <summary>
+    /// Checks to see if the game is over.
+    /// </summary>
+    private static bool _gameShouldEnd = false;
+
     private int _zombieSpawnWeight = 0;
     private int _skeletonSpawnWeight = 0;
     private int _ghostSpawnWeight = 0;
@@ -55,6 +60,8 @@ public class GameManagerBehavior : MonoBehaviour
         set { _enemyCount = value; }
     }
 
+    public static bool GameShouldEnd { get { return _gameShouldEnd; } }
+
     private void Start()
     {
         _staticGoal = _goal;
@@ -62,6 +69,7 @@ public class GameManagerBehavior : MonoBehaviour
         _enemyCount = 0;
         _waveCount = 0;
         Time.timeScale = 1;
+        _gameShouldEnd = false;
     }
 
     // Update is called once per frame
@@ -75,8 +83,8 @@ public class GameManagerBehavior : MonoBehaviour
 
             if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
             {
-                Time.timeScale = 0;
-                _UI.transform.GetChild(0).gameObject.SetActive(true);
+                _gameShouldEnd = true;
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(0).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
             }
             if (_waveCount > 10)
             {
