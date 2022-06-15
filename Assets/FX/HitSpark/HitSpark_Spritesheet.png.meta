@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: 51017cabd04ef284ba1bc44252546d7b
+guid: e15e075730d0eea4dbcfed4cc567da9e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5725383368583609821
+    second: HitSparkSpritesheet3_0
+  - first:
+      213: -1939969377142016821
+    second: HitSparkSpritesheet3_1
+  - first:
+      213: -5500834556085302185
+    second: HitSparkSpritesheet3_2
+  - first:
+      213: -5973980914492502420
+    second: HitSparkSpritesheet3_3
+  - first:
+      213: -1035007109599839471
+    second: HitSparkSpritesheet3_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,211 +154,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_HP
+      name: HitSparkSpritesheet3_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1700
-        width: 293
-        height: 292
+        x: 0
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8448c974ddb8f910800000000000000
-      internalID: 1871454365446325388
+      spriteID: dddfa5fd6d5a47f40800000000000000
+      internalID: 5725383368583609821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_HPDead
+      name: HitSparkSpritesheet3_1
       rect:
         serializedVersion: 2
-        x: 410
-        y: 1720
-        width: 211
-        height: 251
+        x: 512
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2944fe2bcfb3a9fb0800000000000000
-      internalID: -4640330509532052334
+      spriteID: bc470504128d315e0800000000000000
+      internalID: -1939969377142016821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_GhostShot
+      name: HitSparkSpritesheet3_2
       rect:
         serializedVersion: 2
-        x: 1458
-        y: 1121
-        width: 352
-        height: 579
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29e71d29a1b141c10800000000000000
-      internalID: 2023271933542497938
+      spriteID: 75c875cad1c19a3b0800000000000000
+      internalID: -5500834556085302185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_SkeletonShot
+      name: HitSparkSpritesheet3_3
       rect:
         serializedVersion: 2
-        x: 866
-        y: 1177
-        width: 326
-        height: 473
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b572aa1ba20c4ca0800000000000000
-      internalID: -6031442867046419024
+      spriteID: c6e06b08208281da0800000000000000
+      internalID: -5973980914492502420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_ZombieShot
+      name: HitSparkSpritesheet3_4
       rect:
         serializedVersion: 2
-        x: 53
-        y: 1205
-        width: 606
-        height: 395
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4919698ba87f4ff0800000000000000
-      internalID: -49688392737679028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_ButtonFrame
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 773
-        width: 606
-        height: 263
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 238f7e164b5e4fc70800000000000000
-      internalID: 9004074117919930418
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_AbilityFrame
-      rect:
-        serializedVersion: 2
-        x: 1154
-        y: 43
-        width: 810
-        height: 969
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79c29280a6ae08410800000000000000
-      internalID: 1477438418901871767
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_ButtonUnPushed
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 525
-        width: 493
-        height: 182
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26f8eb568032b9110800000000000000
-      internalID: 1268646239008624482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_ButtonHighlighted
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 289
-        width: 493
-        height: 184
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60516569ce660e670800000000000000
-      internalID: 8565959657579222278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_ButtonPush
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 54
-        width: 493
-        height: 183
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36d0e875d2b144490800000000000000
-      internalID: -7763049976123486877
+      spriteID: 11b3c4c748ae2a1f0800000000000000
+      internalID: -1035007109599839471
       vertices: []
       indices: 
       edges: []
@@ -351,7 +261,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 1d04716aa03b548409e212ced29268c5
     internalID: 0
     vertices: []
     indices: 
