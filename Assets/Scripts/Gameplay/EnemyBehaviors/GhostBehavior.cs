@@ -43,6 +43,7 @@ public class GhostBehavior : EnemyBehavior
         //The ghost should lerp from side to side around the middle of runway while not attacking
         if(!_isAttacking && _numberOfAttacksPerformed < 3)
         {
+            _health.IsInvulnerable = false;
             transform.position = Vector3.Lerp(new Vector3(-5, 0, 0), new Vector3(5, 0, 0), (Mathf.Sin(2 * Time.time) / 2) + 0.5f);
         }
         //If the ghost has attacked 2 or more times
@@ -85,7 +86,7 @@ public class GhostBehavior : EnemyBehavior
 
         ScareAnimation.Invoke();
 
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.40f);
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.25f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Attack(), TimedActionCountType.SCALEDTIME, 0.5f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = true, TimedActionCountType.SCALEDTIME, 0.75f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => PrepareNextAttack(), TimedActionCountType.SCALEDTIME, 1);

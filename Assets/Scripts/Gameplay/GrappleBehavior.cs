@@ -23,6 +23,12 @@ public class GrappleBehavior : MonoBehaviour
 
     private bool _isGrabbing = false;
 
+    /// <summary>
+    /// The particles that will appear when grabbing an enemy.
+    /// </summary>
+    [SerializeField]
+    private ParticleSystem _particleSystem;
+
     public GameObject Bonemerang { get { return _bonemerang; } }
 
     /// <summary>
@@ -75,6 +81,8 @@ public class GrappleBehavior : MonoBehaviour
         {
             if (other.GetComponent<HealthBehavior>().IsInvulnerable || !other.GetComponent<HealthBehavior>().IsAlive)
                 return;
+
+            Instantiate(_particleSystem, transform);
 
             // Sets the player's ability to be a copy of the enemy's ability.
             playerAbility.CurrentAbility = enemyAbility.CurrentAbility;

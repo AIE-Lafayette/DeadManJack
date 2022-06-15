@@ -75,50 +75,55 @@ public class PlayerFistBehavior : MonoBehaviour
     /// </summary>
     public void Punch(InputAction.CallbackContext context)
     {
-        // If the current fist is the right one...
-        if (_currentFistRight && _canShoot)
+        if(!GameManagerBehavior.GameShouldEnd)
         {
-            // ...shoot and swap to the left.
-            OnShoot.Invoke(_currentFistRight);
-            _rightFist.Fire();
-            _currentFistRight = false;
-            ToggleShoot();
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
-        }
-        // If the current fist is the left one...
-        else if (_canShoot)
-        {
-            // ...shoot and swap to the right.
-            OnShoot.Invoke(_currentFistRight);
-            _leftFist.Fire();
-            _currentFistRight = true;
-            ToggleShoot();
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+            // If the current fist is the right one...
+            if (_currentFistRight && _canShoot)
+            {
+                // ...shoot and swap to the left.
+                OnShoot.Invoke(_currentFistRight);
+                _rightFist.Fire();
+                _currentFistRight = false;
+                ToggleShoot();
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+            }
+            // If the current fist is the left one...
+            else if (_canShoot)
+            {
+                // ...shoot and swap to the right.
+                OnShoot.Invoke(_currentFistRight);
+                _leftFist.Fire();
+                _currentFistRight = true;
+                ToggleShoot();
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+            }
         }
     }
 
     public void Activate()
     {
-        if (CurrentPlayerAbility.CurrentAbility == null)
+        if(!GameManagerBehavior.GameShouldEnd)
         {
-            PlayerGrapple.Activate();
-            OnGrapple.Invoke();
-        }
-        else if (CurrentPlayerAbility.CurrentAbility != null && _canShoot)
-        {
-            CurrentPlayerAbility.CurrentAbility.Activate();
-            ToggleShoot();
-            OnShoot.Invoke(true);
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
-
-            // If the current player ability is a bonemerang...
-            if(CurrentPlayerAbility.CurrentAbility.VisualPrefab.GetComponent<BonemerangBehavior>())
+            if (CurrentPlayerAbility.CurrentAbility == null)
             {
-                // ...get rid of the ability when its used.
-                CurrentPlayerAbility.CurrentAbility = null;
-            }   
+                PlayerGrapple.Activate();
+                OnGrapple.Invoke();
+            }
+            else if (CurrentPlayerAbility.CurrentAbility != null && _canShoot)
+            {
+                CurrentPlayerAbility.CurrentAbility.Activate();
+                ToggleShoot();
+                OnShoot.Invoke(true);
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleShoot(), TimedActionCountType.SCALEDTIME, 0.35f);
+
+                // If the current player ability is a bonemerang...
+                if (CurrentPlayerAbility.CurrentAbility.VisualPrefab.GetComponent<BonemerangBehavior>())
+                {
+                    // ...get rid of the ability when its used.
+                    CurrentPlayerAbility.CurrentAbility = null;
+                }
+            }
         }
-            
     }
 
     /// <summary>

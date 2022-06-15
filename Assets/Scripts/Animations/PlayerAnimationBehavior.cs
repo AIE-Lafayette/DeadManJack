@@ -35,6 +35,8 @@ public class PlayerAnimationBehavior : MonoBehaviour
 
         // Checks to see if the player is standing still or moving.
         _animator.SetFloat("XDirection", (playerVelocity.normalized).x);
+
+        _animator.SetBool("GameOver", GameManagerBehavior.GameShouldEnd);
     }
 
     /// <summary>

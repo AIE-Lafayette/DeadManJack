@@ -43,6 +43,9 @@ public class EnemyBehavior : UseAbilityBehavior
     // Update is called once per frame
     public virtual void Update()
     {
+        if (GameManagerBehavior.GameShouldEnd)
+            Destroy(gameObject);
+
         //Enemy should not move if it does not have a target. Mainly used for death animations
         if (_target == null)
         {
