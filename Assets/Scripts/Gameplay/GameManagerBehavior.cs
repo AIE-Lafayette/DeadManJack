@@ -24,12 +24,17 @@ public class GameManagerBehavior : MonoBehaviour
     private bool _waveOver = false;
     private bool _isFirstWave = true;
 
+    /// <summary>
+    /// Checks to see if the game is over.
+    /// </summary>
+    private static bool _gameShouldEnd = false;
+
     private int _zombieSpawnWeight = 0;
     private int _skeletonSpawnWeight = 0;
     private int _ghostSpawnWeight = 0;
 
     [SerializeField]
-    private float _enemySpawnTime = 5.0f;
+    private float _enemySpawnTime = 2.0f;
     private float _spawnTimer = 0.0f;
 
     [SerializeField]
@@ -55,6 +60,8 @@ public class GameManagerBehavior : MonoBehaviour
         set { _enemyCount = value; }
     }
 
+    public static bool GameShouldEnd { get { return _gameShouldEnd; } }
+
     private void Start()
     {
         _staticGoal = _goal;
@@ -62,40 +69,43 @@ public class GameManagerBehavior : MonoBehaviour
         _enemyCount = 0;
         _waveCount = 0;
         Time.timeScale = 1;
+        _gameShouldEnd = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        WaveManager();
-        _gameplayUI.text = "Wave " + _waveCount
+        if(_zombieSpawner != null)
+        {
+            WaveManager();
+            _gameplayUI.text = "Wave " + _waveCount
                          + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
-        {
-            Time.timeScale = 0;
-            _UI.transform.GetChild(0).gameObject.SetActive(true);
+            if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
+            {
+                _gameShouldEnd = true;
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
+            }
+            else if (_waveCount == 10)
+            {
+                GameObject winUI = _UI.transform.GetChild(0).gameObject;
+                winUI.SetActive(true);
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
+            }
         }
-        if (_waveCount > 10)
-        {
-            GameObject winUI = _UI.transform.GetChild(1).gameObject;
-            winUI.SetActive(true);
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
-        }
-
-
     }
 
     private void WaveManager()
     {
         _waveOver = _waveSize + _enemyCount <= 0;
-        if (_waveOver && _waveCount <= 10)
+        if (_waveOver)
         {
             if(!_isFirstWave)
             {
                 _player.GetComponentInChildren<PlayerAnimationBehavior>().PlayVictoryAnimation();
             }
-            _waveCount++;
+            if(_waveCount != 10)
+                _waveCount++;
             GetNextWave();
             _waveOver = false;
             _isFirstWave = false;
@@ -108,17 +118,17 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 90)
+                if (randEnemy <= 50)
                 {
-                    if (_ghostSpawnWeight > 0)
+                    if (_zombieSpawnWeight > 0 || _skeletonSpawnWeight + _ghostSpawnWeight <= 0)
                     {
-                        _ghostSpawner.SpawnEnemy();
+                        _zombieSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if (_ghostSpawnWeight > 0)
-                            _ghostSpawnWeight--;
+                        if (_zombieSpawnWeight > 0)
+                            _zombieSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 50)
+                else if (randEnemy <= 90 && _waveCount >= 2)
                 {
                     if (_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {
@@ -128,14 +138,14 @@ public class GameManagerBehavior : MonoBehaviour
                             _skeletonSpawnWeight--;
                     }
                 }
-                else
+                else if(_waveCount >= 4)
                 {
-                    if (_zombieSpawnWeight > 0 || _skeletonSpawnWeight + _ghostSpawnWeight <= 0)
+                    if (_ghostSpawnWeight > 0 || _zombieSpawnWeight + _skeletonSpawnWeight <= 0)
                     {
-                        _zombieSpawner.SpawnEnemy();
+                        _ghostSpawner.SpawnEnemy();
                         enemyChosen = true;
-                        if (_zombieSpawnWeight > 0)
-                            _zombieSpawnWeight--;
+                        if (_ghostSpawnWeight > 0)
+                            _ghostSpawnWeight--;
                     }
                 }
             }
@@ -150,62 +160,61 @@ public class GameManagerBehavior : MonoBehaviour
     private void GetNextWave()
     {
         _spawnTimer = 0;
+        _waveSize = 8 + ((12 * _waveCount) - (_waveCount + 1));
+
+        if (_enemySpawnTime <= 1)
+            _enemySpawnTime -= .15f;
+
+        int waveWeight = _waveSize * 3 / 4;
+        _zombieSpawnWeight = waveWeight / 2;
+        if (_waveCount >= 2)
+            _skeletonSpawnWeight = waveWeight * 2 / 5;
+        if (_waveCount >= 4)
+            _ghostSpawnWeight = waveWeight / 10;
+
+
         switch (_waveCount)
         {
             case 0:
                 _waveCount++;
                 break;
-            case 1:
-                _waveSize = 20;
-                _zombieSpawnWeight = 17;
-                _skeletonSpawnWeight = 1; //Only for Testing, remove in final release
-                _ghostSpawnWeight = 1; //Only for Testing, remove in final release
-                _enemySpawnTime = 2f;
-                break;
-            case 2:
-                _waveSize = 32;
-                _zombieSpawnWeight = 20;
-                _skeletonSpawnWeight = 7;
-                _enemySpawnTime = 1.75f;
-                break;
             case 3:
-                _waveSize = 45;
                 _zombieSpawnWeight = 10;
                 _skeletonSpawnWeight = 28;
-                _enemySpawnTime = 1.65f;
                 break;
-            case 4:
-                _waveSize = 59;
-                _zombieSpawnWeight = 30;
-                _skeletonSpawnWeight = 15;
-                _ghostSpawnWeight = 1;
-                _enemySpawnTime = 1.5f;
-                break;
-            case 5:
-                _waveSize = 74;
-                _zombieSpawnWeight = 45;
-                _skeletonSpawnWeight = 20;
-                _ghostSpawnWeight = 3;
-                _enemySpawnTime = 1.35f;
-                break;
-            case 6:
-                _waveSize = 90;
-                _zombieSpawnWeight = 60;
-                _skeletonSpawnWeight = 20;
-                _ghostSpawnWeight = 2;
-                _enemySpawnTime = 1.3f;
-                break;
-            case 7:
-                _waveSize = 107;
-                _zombieSpawnWeight = 75;
-                _skeletonSpawnWeight = 10;
-                _enemySpawnTime = 1.25f;
+            case 8:
+                _zombieSpawnWeight = 95;
+                _skeletonSpawnWeight = 0;
+                _ghostSpawnWeight = 0;
                 break;
             default:
                 break;
         }
     }
 
+    /// <summary>
+    /// Sets the scene from the main menu to the actual game scene.
+    /// </summary>
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    /// <summary>
+    /// Returns the player from the game scene to the main menu.
+    /// </summary>
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// Loads up the controls menu.
+    /// </summary>
+    public void ToControlMenu()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     public void RetartScene()
     {
@@ -224,5 +233,13 @@ public class GameManagerBehavior : MonoBehaviour
         Player.GetComponent<PlayerFistBehavior>().CanShoot = true;
         pause.PauseUI.SetActive(false);
         pause.IsPaused = false;
+    }
+
+    //Enables Endless Mode
+    public void EndlessMode()
+    {
+        GameObject endlessUI = _UI.transform.GetChild(0).gameObject;
+        endlessUI.SetActive(false);
+        _waveCount = 11;
     }
 }

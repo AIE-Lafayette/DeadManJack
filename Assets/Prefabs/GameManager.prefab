@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0ea8be29b04964bbd222c99f589f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4224868895601059082, guid: c5be184c9b003ac4289833d81ba4103f, type: 3}
-  _goal: {fileID: 3815101808510022810, guid: 1c165d19ac7e79b4fb9e42f690000c2d, type: 3}
+  _player: {fileID: 0}
+  _goal: {fileID: 0}
+  _UI: {fileID: 0}
+  _gameplayUI: {fileID: 0}
+  _waveCount: 3
   _enemySpawnTime: 3
   _zombieSpawner: {fileID: 0}
-  _skeltonSpawner: {fileID: 0}
+  _skeletonSpawner: {fileID: 0}
   _ghostSpawner: {fileID: 0}

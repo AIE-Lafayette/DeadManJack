@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 670a9f9221999724ea3f8a135f5f3323
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: '{"shaderPath":"Shader Graphs/GrassDirt_Shader","attributes":[{"isBaseTexture":false,"channel":4,"index":0,"range":{"x":0.0,"y":1.0},"propertyTarget":"Texture2D_d02aacec62c6457685ca4c8a73fe819e","mask":0},{"isBaseTexture":false,"channel":4,"index":1,"range":{"x":0.0,"y":1.0},"propertyTarget":"Texture2D_7890b6e04b5e422593ca1c7284b33380","mask":0}]}'
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}

@@ -17,6 +17,12 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField]
     private Sprite _abilitySprite;
 
+    /// <summary>
+    /// The particle system for the bullet that will play on hit.
+    /// </summary>
+    [SerializeField]
+    private ParticleSystem _particleSystem;
+
     public GameObject Owner
     {
         get { return _owner; }
@@ -72,7 +78,9 @@ public class BulletBehavior : MonoBehaviour
         if (other.CompareTag(OwnerTag))
             return;
 
-            otherHealth.TakeDamage(_damage);
+        otherHealth.TakeDamage(_damage);
+
+        Instantiate(_particleSystem, transform.position, Quaternion.identity);
 
         if (_destroyOnHit)
             Destroy(gameObject);
