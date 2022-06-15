@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 4.5
-  _damage: 3
+  _damage: 4
   _destroyOnHit: 0
   _abilitySprite: {fileID: -9040564375860118876, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
   _particleSystem: {fileID: 683922704307551392, guid: 68c0c0e283c8d104d8b2cd7bb3e5f13d, type: 3}
