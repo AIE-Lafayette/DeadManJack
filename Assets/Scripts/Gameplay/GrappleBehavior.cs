@@ -73,7 +73,7 @@ public class GrappleBehavior : MonoBehaviour
 
         if (enemyAbility && !_isGrabbing)
         {
-            if (other.GetComponent<HealthBehavior>().IsInvulnerable)
+            if (other.GetComponent<HealthBehavior>().IsInvulnerable || !other.GetComponent<HealthBehavior>().IsAlive)
                 return;
 
             // Sets the player's ability to be a copy of the enemy's ability.
