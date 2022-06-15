@@ -150,53 +150,47 @@ public class GameManagerBehavior : MonoBehaviour
     private void GetNextWave()
     {
         _spawnTimer = 0;
+        _waveSize = 8 + ((12 * _waveCount) - (_waveCount + 1));
         switch (_waveCount)
         {
             case 0:
                 _waveCount++;
                 break;
             case 1:
-                _waveSize = 20;
                 _zombieSpawnWeight = 17;
                 _skeletonSpawnWeight = 1; //Only for Testing, remove in final release
                 _ghostSpawnWeight = 1; //Only for Testing, remove in final release
                 _enemySpawnTime = 2f;
                 break;
             case 2:
-                _waveSize = 32;
                 _zombieSpawnWeight = 20;
                 _skeletonSpawnWeight = 7;
                 _enemySpawnTime = 1.75f;
                 break;
             case 3:
-                _waveSize = 45;
                 _zombieSpawnWeight = 10;
                 _skeletonSpawnWeight = 28;
                 _enemySpawnTime = 1.65f;
                 break;
             case 4:
-                _waveSize = 59;
                 _zombieSpawnWeight = 30;
                 _skeletonSpawnWeight = 15;
                 _ghostSpawnWeight = 1;
                 _enemySpawnTime = 1.5f;
                 break;
             case 5:
-                _waveSize = 74;
                 _zombieSpawnWeight = 45;
                 _skeletonSpawnWeight = 20;
                 _ghostSpawnWeight = 3;
                 _enemySpawnTime = 1.35f;
                 break;
             case 6:
-                _waveSize = 90;
                 _zombieSpawnWeight = 60;
                 _skeletonSpawnWeight = 20;
                 _ghostSpawnWeight = 2;
                 _enemySpawnTime = 1.3f;
                 break;
             case 7:
-                _waveSize = 107;
                 _zombieSpawnWeight = 75;
                 _skeletonSpawnWeight = 10;
                 _enemySpawnTime = 1.25f;
