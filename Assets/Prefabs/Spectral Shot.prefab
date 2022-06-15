@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 10
-  _damage: 1
+  _damage: 3
   _destroyOnHit: 0
   _abilitySprite: {fileID: -5145698233529485342, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
   _spectralResidue: {fileID: 8227748734142311546}

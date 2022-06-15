@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 2
-  _damage: 5
+  _damage: 7
   _destroyOnHit: 1
   _abilitySprite: {fileID: -2130598178945338338, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
 --- !u!54 &7506547600697527544
