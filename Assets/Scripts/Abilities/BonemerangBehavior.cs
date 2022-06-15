@@ -42,6 +42,9 @@ public class BonemerangBehavior : BulletBehavior
             playerAbility.CurrentAbility = new FireProjectileAbility();
             playerAbility.CurrentAbility.VisualPrefab = playerAbility.GetComponentInChildren<GrappleBehavior>().Bonemerang;
             playerAbility.CurrentAbility.Owner = Owner;
+
+            ScoreCounterBehavior.Instance.IncreaseScore(50);
+
             Destroy(gameObject);
         }
 
