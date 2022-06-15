@@ -84,9 +84,9 @@ public class GameManagerBehavior : MonoBehaviour
             if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
             {
                 _gameShouldEnd = true;
-                RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(0).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(1).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
             }
-            if (_waveCount > 10)
+            else if (_waveCount > 10)
             {
                 GameObject winUI = _UI.transform.GetChild(1).gameObject;
                 winUI.SetActive(true);
