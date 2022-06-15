@@ -108,9 +108,9 @@ public class GameManagerBehavior : MonoBehaviour
             {
                 int randEnemy = Random.Range(1, 100);
 
-                if (randEnemy > 90)
+                if (randEnemy > 90 && _waveCount >= 4)
                 {
-                    if (_ghostSpawnWeight > 0)
+                    if (_ghostSpawnWeight > 0 || _zombieSpawnWeight + _skeletonSpawnWeight <= 0)
                     {
                         _ghostSpawner.SpawnEnemy();
                         enemyChosen = true;
@@ -118,7 +118,7 @@ public class GameManagerBehavior : MonoBehaviour
                             _ghostSpawnWeight--;
                     }
                 }
-                else if (randEnemy > 50)
+                else if (randEnemy > 50 && _waveCount >= 2)
                 {
                     if (_skeletonSpawnWeight > 0 || _zombieSpawnWeight + _ghostSpawnWeight <= 0)
                     {
@@ -157,9 +157,6 @@ public class GameManagerBehavior : MonoBehaviour
                 _waveCount++;
                 break;
             case 1:
-                _zombieSpawnWeight = 17;
-                _skeletonSpawnWeight = 1; //Only for Testing, remove in final release
-                _ghostSpawnWeight = 1; //Only for Testing, remove in final release
                 _enemySpawnTime = 2f;
                 break;
             case 2:
