@@ -272,6 +272,7 @@ MonoBehaviour:
   _damage: 1
   _destroyOnHit: 0
   _abilitySprite: {fileID: -5145698233529485342, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
+  _particleSystem: {fileID: 683922704307551392, guid: 68c0c0e283c8d104d8b2cd7bb3e5f13d, type: 3}
   _spectralResidue: {fileID: 8227748734142311546}
   _meshRenderer: {fileID: 5148366915468696267}
 --- !u!54 &850588536651560257
