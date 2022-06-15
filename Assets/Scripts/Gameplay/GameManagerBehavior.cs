@@ -24,6 +24,11 @@ public class GameManagerBehavior : MonoBehaviour
     private bool _waveOver = false;
     private bool _isFirstWave = true;
 
+    /// <summary>
+    /// Checks to see if the game is over.
+    /// </summary>
+    private static bool _gameShouldEnd = false;
+
     private int _zombieSpawnWeight = 0;
     private int _skeletonSpawnWeight = 0;
     private int _ghostSpawnWeight = 0;
@@ -55,6 +60,8 @@ public class GameManagerBehavior : MonoBehaviour
         set { _enemyCount = value; }
     }
 
+    public static bool GameShouldEnd { get { return _gameShouldEnd; } }
+
     private void Start()
     {
         _staticGoal = _goal;
@@ -62,28 +69,30 @@ public class GameManagerBehavior : MonoBehaviour
         _enemyCount = 0;
         _waveCount = 0;
         Time.timeScale = 1;
+        _gameShouldEnd = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        WaveManager();
-        _gameplayUI.text = "Wave " + _waveCount
+        if(_zombieSpawner != null)
+        {
+            WaveManager();
+            _gameplayUI.text = "Wave " + _waveCount
                          + "\nEnemies Left: " + (_waveSize + _enemyCount);
 
-        if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
-        {
-            Time.timeScale = 0;
-            _UI.transform.GetChild(0).gameObject.SetActive(true);
+            if (_goal.GetComponentInChildren<HealthBehavior>().IsAlive == false)
+            {
+                _gameShouldEnd = true;
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => _UI.transform.GetChild(0).gameObject.SetActive(true), TimedActionCountType.UNSCALEDTIME, 2f);
+            }
+            if (_waveCount > 10)
+            {
+                GameObject winUI = _UI.transform.GetChild(1).gameObject;
+                winUI.SetActive(true);
+                RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
+            }
         }
-        if (_waveCount > 10)
-        {
-            GameObject winUI = _UI.transform.GetChild(1).gameObject;
-            winUI.SetActive(true);
-            RoutineBehavior.Instance.StartNewTimedAction(arguments => winUI.transform.GetChild(0).GetComponent<Text>().text = "For Now", TimedActionCountType.SCALEDTIME, 1.5f);
-        }
-
-
     }
 
     private void WaveManager()
@@ -197,6 +206,29 @@ public class GameManagerBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the scene from the main menu to the actual game scene.
+    /// </summary>
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    /// <summary>
+    /// Returns the player from the game scene to the main menu.
+    /// </summary>
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// Loads up the controls menu.
+    /// </summary>
+    public void ToControlMenu()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     public void RetartScene()
     {
