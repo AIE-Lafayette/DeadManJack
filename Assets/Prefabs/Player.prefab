@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 4224868895601059082}
   _bonemerang: {fileID: 5054997288813185354, guid: 4cf5c044264b010479ef4d4fb7059d2e, type: 3}
+  _particleSystem: {fileID: 1552806839300208899, guid: 901e71d006e68fe40a0b4924793eef6e, type: 3}
 --- !u!1 &6989068887805991733
 GameObject:
   m_ObjectHideFlags: 0

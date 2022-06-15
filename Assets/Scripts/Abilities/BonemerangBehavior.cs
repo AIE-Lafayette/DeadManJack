@@ -11,6 +11,8 @@ public class BonemerangBehavior : BulletBehavior
 
     private bool _canBeCaught = false;
 
+    private RoutineBehavior.TimedAction _moveToOwner;
+
     /// <summary>
     /// The bonemerang will begin to seek whatever it was that threw it.
     /// </summary>
@@ -26,7 +28,16 @@ public class BonemerangBehavior : BulletBehavior
     {
         base.Awake();
         _seekBehavior = GetComponent<SeekBehavior>();
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => MoveToOwner(), TimedActionCountType.SCALEDTIME, 0.45f);
+        _moveToOwner = RoutineBehavior.Instance.StartNewTimedAction(arguments => MoveToOwner(), TimedActionCountType.SCALEDTIME, 0.45f);
+    }
+
+    private void Update()
+    {
+        if(GameManagerBehavior.GameShouldEnd)
+        {
+            RoutineBehavior.Instance.StopTimedAction(_moveToOwner);
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void OnTriggerEnter(Collider other)
