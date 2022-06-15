@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class HeartAnimationBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// The animator for the player.
+    /// </summary>
+    [SerializeField]
+    private Animator _animator;
 
     // Update is called once per frame
     void Update()
     {
-        
+        _animator.SetBool("GameOver", GameManagerBehavior.GameShouldEnd);
     }
 }
