@@ -114,6 +114,7 @@ MonoBehaviour:
   _damage: 7
   _destroyOnHit: 1
   _abilitySprite: {fileID: -2130598178945338338, guid: 51017cabd04ef284ba1bc44252546d7b, type: 3}
+  _particleSystem: {fileID: 683922704307551392, guid: 68c0c0e283c8d104d8b2cd7bb3e5f13d, type: 3}
 --- !u!54 &7506547600697527544
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -33,14 +33,17 @@ public class PlayerMovementBehavior : MonoBehaviour
             return;
         }
 
-        _rigidbody.MovePosition(transform.position + _velocity);
-        if(transform.position.x > 5)
+        if(!GameManagerBehavior.GameShouldEnd)
         {
-            transform.position = new Vector3(5, transform.position.y, transform.position.z);
-        }
-        if (transform.position.x < -5)
-        {
-            transform.position = new Vector3(-5, transform.position.y, transform.position.z);
+            _rigidbody.MovePosition(transform.position + _velocity);
+            if (transform.position.x > 5)
+            {
+                transform.position = new Vector3(5, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x < -5)
+            {
+                transform.position = new Vector3(-5, transform.position.y, transform.position.z);
+            }
         }
     }
 }
