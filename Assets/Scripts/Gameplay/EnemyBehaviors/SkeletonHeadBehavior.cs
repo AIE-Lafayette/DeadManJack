@@ -30,9 +30,9 @@ public class SkeletonHeadBehavior : EnemyBehavior
     {
         base.Update();
 
-        if (transform.position.y < -0.38f)
+        if (transform.position.y < 0f)
         {
-            transform.position = new Vector3(transform.position.x, -0.38f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
             Movement.Velocity = new Vector3(0, 0, -1);
         }
 
