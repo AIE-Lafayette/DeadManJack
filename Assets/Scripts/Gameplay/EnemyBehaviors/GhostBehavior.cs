@@ -73,6 +73,7 @@ public class GhostBehavior : EnemyBehavior
             transform.GetChild(0).gameObject.SetActive(false);
             _isAttacking = true;
             RoutineBehavior.Instance.StartNewTimedAction(arguments => Appear(), TimedActionCountType.SCALEDTIME, 1);
+            _health.IsInvulnerable = true;
         }
     }
 
@@ -86,7 +87,7 @@ public class GhostBehavior : EnemyBehavior
 
         ScareAnimation.Invoke();
 
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.25f);
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = false, TimedActionCountType.SCALEDTIME, 0.35f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => Attack(), TimedActionCountType.SCALEDTIME, 0.5f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => _health.IsInvulnerable = true, TimedActionCountType.SCALEDTIME, 0.75f);
         RoutineBehavior.Instance.StartNewTimedAction(arguments => PrepareNextAttack(), TimedActionCountType.SCALEDTIME, 1);
