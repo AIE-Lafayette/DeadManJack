@@ -56,11 +56,12 @@ public class BulletBehavior : MonoBehaviour
         get { return _destroyOnHit; }
         set { _destroyOnHit = value; }
     }
-    
+
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => DestroyBullet(), TimedActionCountType.SCALEDTIME, _lifeTime);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -85,12 +86,10 @@ public class BulletBehavior : MonoBehaviour
         if (_destroyOnHit)
             Destroy(gameObject);
     }
-
-    public void Update()
+    
+    private void DestroyBullet()
     {
-        _currentLifeTime += Time.deltaTime;
-
-        if (_currentLifeTime >= _lifeTime)
+        if (this != null)
             Destroy(gameObject);
     }
 }
