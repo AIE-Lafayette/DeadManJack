@@ -24,12 +24,6 @@ public class GrappleBehavior : MonoBehaviour
     private bool _isGrabbing = false;
 
     /// <summary>
-    /// The game object that represents Jack's rib cage.
-    /// </summary>
-    [SerializeField]
-    private GameObject _ribcagePrefab;
-
-    /// <summary>
     /// The particles that will appear when grabbing an enemy.
     /// </summary>
     [SerializeField]
@@ -66,10 +60,8 @@ public class GrappleBehavior : MonoBehaviour
     public void Activate()
     {
         ToggleGrab();
-        _ribcagePrefab.SetActive(true);
         // Attempts to set up a timed action where the grab radius will be set back to inactive.
-       RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleGrab(), TimedActionCountType.SCALEDTIME, 0.5f);
-        RoutineBehavior.Instance.StartNewTimedAction(arguments => _ribcagePrefab.SetActive(false), TimedActionCountType.UNSCALEDTIME, 0.35f);
+        RoutineBehavior.Instance.StartNewTimedAction(arguments => ToggleGrab(), TimedActionCountType.SCALEDTIME, 0.5f);
     }
 
     private void Start()
